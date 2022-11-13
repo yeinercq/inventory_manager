@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_13_205948) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_13_214100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_205948) do
     t.bigint "provider_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "initial_quantity"
     t.index ["provider_id"], name: "index_products_on_provider_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -51,6 +52,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_205948) do
     t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer "quantity", null: false
+    t.decimal "unit_price", precision: 10, scale: 2, null: false
+    t.decimal "total", precision: 10, scale: 2, null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_stocks_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,4 +78,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_205948) do
 
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
+  add_foreign_key "stocks", "products"
 end
