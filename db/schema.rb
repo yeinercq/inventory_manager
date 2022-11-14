@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_13_222447) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_14_022059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_222447) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "quantity", null: false
+    t.decimal "unit_price", precision: 10, scale: 2, null: false
+    t.bigint "sale_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_items_on_product_id"
+    t.index ["sale_id"], name: "index_items_on_sale_id"
   end
 
   create_table "movements", force: :cascade do |t|
@@ -68,6 +79,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_222447) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.decimal "total", precision: 10, scale: 2
+    t.string "codel"
+    t.bigint "user_id", null: false
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_sales_on_customer_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.integer "quantity", null: false
     t.decimal "unit_price", precision: 10, scale: 2, null: false
@@ -90,9 +112,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_222447) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "products"
+  add_foreign_key "items", "sales"
   add_foreign_key "movements", "products"
   add_foreign_key "movements", "users"
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
+  add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "users"
   add_foreign_key "stocks", "products"
 end

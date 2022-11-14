@@ -12,4 +12,5 @@
 #  updated_at   :datetime         not null
 #
 class Customer < ApplicationRecord
+  has_many :purchases, class_name: 'Sale', dependent: :destroy
 end

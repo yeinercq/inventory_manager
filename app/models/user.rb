@@ -17,6 +17,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :products
-  has_many :movements
+  has_many :products, dependent: :destroy
+  has_many :movements, dependent: :destroy
+  has_many :sales, dependent: :destroy
 end

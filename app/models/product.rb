@@ -21,8 +21,9 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :provider
 
-  has_many :stocks
-  has_many :movements
+  has_many :stocks, dependent: :destroy
+  has_many :movements, dependent: :destroy
+  has_many :items, dependent: :destroy
 
   enum unit: { bulto: 1, kilo: 2, unidad: 3 }
 

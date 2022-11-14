@@ -24,7 +24,7 @@ class Movement < ApplicationRecord
 
   validates :mov_type, :mov_sub_type, :quantity, :unit_price, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
-  validates :unit_price,numericality: { greater_than: 0 }
+  validates :unit_price, numericality: { greater_than: 0 }
   validates_with Stocks::ValidatesStock, if: :is_output?
 
   def total_price

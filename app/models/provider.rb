@@ -10,5 +10,5 @@
 #  updated_at   :datetime         not null
 #
 class Provider < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :destroy
 end
