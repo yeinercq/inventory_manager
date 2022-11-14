@@ -14,12 +14,14 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  initial_quantity :integer
+#  company_id       :bigint           not null
 #
 class Product < ApplicationRecord
   after_create :create_initial_stock
 
   belongs_to :user
   belongs_to :provider
+  belongs_to :company
 
   has_many :stocks, dependent: :destroy
   has_many :movements, dependent: :destroy
@@ -28,7 +30,7 @@ class Product < ApplicationRecord
   enum unit: { bulto: 1, kilo: 2, unidad: 3 }
 
   validates :name, :brand, :unit, :size, :price, :initial_quantity, presence: true
-  validates :name, uniqueness: { case_sensitive: false }
+  validates :name, uniqueness: { scope: :company_id, message: "has already been taken", case_sensitive: false }
   validates :price, :initial_quantity, numericality: { greater_than: 0 }
 
   def current_stock

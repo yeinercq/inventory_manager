@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_022059) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_14_163106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_022059) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_customers_on_company_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -67,6 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_022059) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "initial_quantity"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["provider_id"], name: "index_products_on_provider_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -77,6 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_022059) do
     t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_providers_on_company_id"
   end
 
   create_table "sales", force: :cascade do |t|
@@ -108,17 +114,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_022059) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "companies"
   add_foreign_key "items", "products"
   add_foreign_key "items", "sales"
   add_foreign_key "movements", "products"
   add_foreign_key "movements", "users"
+  add_foreign_key "products", "companies"
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
+  add_foreign_key "providers", "companies"
   add_foreign_key "sales", "customers"
   add_foreign_key "sales", "users"
   add_foreign_key "stocks", "products"
+  add_foreign_key "users", "companies"
 end

@@ -12,15 +12,12 @@
 #  updated_at             :datetime         not null
 #  company_id             :bigint           not null
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+require 'rails_helper'
 
-  belongs_to :company
+RSpec.describe User, type: :model do
+  subject(:user) { build :user }
 
-  has_many :products, dependent: :destroy
-  has_many :movements, dependent: :destroy
-  has_many :sales, dependent: :destroy
+  describe 'associations' do
+    it { should belong_to(:company) }
+  end
 end

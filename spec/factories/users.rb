@@ -12,15 +12,11 @@
 #  updated_at             :datetime         not null
 #  company_id             :bigint           not null
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  belongs_to :company
-
-  has_many :products, dependent: :destroy
-  has_many :movements, dependent: :destroy
-  has_many :sales, dependent: :destroy
+FactoryBot.define do
+  factory :user do
+    sequence(:email) { |n| "email#{n}@mail.com" }
+    password { "123456" }
+    password_confirmation { "123456" }
+    company
+  end
 end
