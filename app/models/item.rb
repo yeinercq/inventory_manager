@@ -16,9 +16,10 @@ class Item < ApplicationRecord
   belongs_to :sale
   belongs_to :product
 
+  validates :quantity, :unit_price, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_price, numericality: { greater_than: 0 }
-  validates :product_id, uniqueness: {scope: :sale_id, message: "has already been taken"}
+  validates :product_id, uniqueness: { scope: :sale_id, message: "has already been taken" }
   validates_with Stocks::ValidatesStock
 
   def create_movement

@@ -12,7 +12,7 @@
 #
 FactoryBot.define do
   factory :item do
-    quantity { 5 }
+    quantity { 1 }
     unit_price { 1012 }
     sale
     product
