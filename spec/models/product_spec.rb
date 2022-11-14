@@ -14,7 +14,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  initial_quantity :integer
-#  company_id       :bigint           not null
+#  company_id       :integer
 #
 require 'rails_helper'
 

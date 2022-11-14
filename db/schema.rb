@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_163106) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_14_182217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,8 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_163106) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "initial_quantity"
-    t.bigint "company_id", null: false
-    t.index ["company_id"], name: "index_products_on_company_id"
+    t.integer "company_id"
     t.index ["provider_id"], name: "index_products_on_provider_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -87,12 +86,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_163106) do
 
   create_table "sales", force: :cascade do |t|
     t.decimal "total", precision: 10, scale: 2
-    t.string "codel"
     t.bigint "user_id", null: false
-    t.bigint "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_sales_on_customer_id"
+    t.string "code"
+    t.bigint "client_id", null: false
+    t.index ["client_id"], name: "index_sales_on_client_id"
     t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
@@ -125,11 +124,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_163106) do
   add_foreign_key "items", "sales"
   add_foreign_key "movements", "products"
   add_foreign_key "movements", "users"
-  add_foreign_key "products", "companies"
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
   add_foreign_key "providers", "companies"
-  add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "customers", column: "client_id"
   add_foreign_key "sales", "users"
   add_foreign_key "stocks", "products"
   add_foreign_key "users", "companies"
