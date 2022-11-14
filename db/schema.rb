@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_13_214100) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_13_222447) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_214100) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.integer "mov_type", null: false
+    t.integer "mov_sub_type", null: false
+    t.integer "quantity", null: false
+    t.decimal "unit_price", precision: 10, scale: 2, null: false
+    t.decimal "total", precision: 10, scale: 2
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_movements_on_product_id"
+    t.index ["user_id"], name: "index_movements_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -76,6 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_13_214100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "movements", "products"
+  add_foreign_key "movements", "users"
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
   add_foreign_key "stocks", "products"
