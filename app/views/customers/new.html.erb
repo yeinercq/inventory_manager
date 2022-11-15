@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; Back to customers"), customers_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h1>New customer</h1>
+      <%= render "form", customer: @customer %>
+    </div>
+  </div>
+</div>

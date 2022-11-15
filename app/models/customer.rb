@@ -15,7 +15,7 @@
 class Customer < ApplicationRecord
   belongs_to :company
 
-  has_many :purchases, class_name: 'Sale', dependent: :destroy
+  # has_many :purchases, class_name: 'Sale', dependent: :destroy
 
   validates :name, :email, :phone_number, :id_number, :address, presence: true
   validates :name, :email, uniqueness: {scope: :company_id, message: "has already been taken", case_sensitive: false}

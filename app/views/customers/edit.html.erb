@@ -1,0 +1,13 @@
+<div class="container">
+  <%= link_to sanitize("&larr; Back to customers"), customers_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+
+      <h1>Edit customer</h1>
+
+      <%= turbo_frame_tag @customer do %>
+        <%= render "form", customer: @customer %>
+      <% end %>
+    </div>
+  </div>
+</div>
