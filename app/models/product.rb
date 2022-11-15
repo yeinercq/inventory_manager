@@ -14,7 +14,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  initial_quantity :integer
-#  company_id       :integer
+#  company_id       :bigint           not null
 #
 class Product < ApplicationRecord
   after_create :create_initial_stock
@@ -23,9 +23,10 @@ class Product < ApplicationRecord
   belongs_to :provider
   belongs_to :company
 
-  has_many :stocks, dependent: :destroy
   has_many :movements, dependent: :destroy
-  has_many :items, dependent: :destroy
+  has_many :stocks, through: :movements
+  has_many :items, dependent: :destroy # TODO: ajust association with items-sales
+  has_many :sales, through: :items
 
   enum unit: { bulto: 1, kilo: 2, unidad: 3 }
 
@@ -72,11 +73,12 @@ class Product < ApplicationRecord
   private
 
   def create_initial_stock
-    Stock.create(
+    self.movements.create(
+      mov_type: "input",
+      mov_sub_type: "initial_stock",
       quantity: initial_quantity,
       unit_price: price,
-      total: initial_total_stock_price,
-      product: self
+      total: initial_total_stock_price
     )
   end
 

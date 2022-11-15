@@ -12,6 +12,7 @@
 #
 class Item < ApplicationRecord
   after_create :create_movement
+  before_destroy :destroy_movement
 
   belongs_to :sale
   belongs_to :product
@@ -23,15 +24,18 @@ class Item < ApplicationRecord
   validates_with Stocks::ValidatesStock
 
   def create_movement
-    Movement.create(
+    self.product.movements.create(
       mov_type: "output",
       mov_sub_type: "sale",
       quantity: quantity,
       unit_price: unit_price,
       total: total_price,
-      user_id: sale.user.id,
-      product: product
     )
+  end
+
+  def destroy_movement
+    mov = self.product.movements.where('product_id = ?', product.id).last
+    mov.destroy
   end
 
   def total_price

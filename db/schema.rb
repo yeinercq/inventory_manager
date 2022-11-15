@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_182217) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_15_024323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,12 +49,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_182217) do
     t.integer "quantity", null: false
     t.decimal "unit_price", precision: 10, scale: 2, null: false
     t.decimal "total", precision: 10, scale: 2
-    t.bigint "user_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_movements_on_product_id"
-    t.index ["user_id"], name: "index_movements_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,7 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_182217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "initial_quantity"
-    t.integer "company_id"
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["provider_id"], name: "index_products_on_provider_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -99,10 +98,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_182217) do
     t.integer "quantity", null: false
     t.decimal "unit_price", precision: 10, scale: 2, null: false
     t.decimal "total", precision: 10, scale: 2, null: false
-    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_stocks_on_product_id"
+    t.bigint "movement_id", null: false
+    t.index ["movement_id"], name: "index_stocks_on_movement_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,12 +122,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_182217) do
   add_foreign_key "items", "products"
   add_foreign_key "items", "sales"
   add_foreign_key "movements", "products"
-  add_foreign_key "movements", "users"
+  add_foreign_key "products", "companies"
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
   add_foreign_key "providers", "companies"
   add_foreign_key "sales", "customers", column: "client_id"
   add_foreign_key "sales", "users"
-  add_foreign_key "stocks", "products"
+  add_foreign_key "stocks", "movements"
   add_foreign_key "users", "companies"
 end

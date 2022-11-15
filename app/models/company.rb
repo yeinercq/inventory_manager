@@ -10,7 +10,7 @@
 class Company < ApplicationRecord
   has_many :providers, dependent: :destroy
   has_many :users, dependent: :destroy
-  has_many :products
+  has_many :products, dependent: :destroy
   has_many :customers, dependent: :destroy
   has_many :sales, through: :users
 

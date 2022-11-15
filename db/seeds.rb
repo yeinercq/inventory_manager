@@ -42,8 +42,8 @@ user.products.create!(
 
 puts "Product has been created"
 
-user.sales.create!(
-    client: customer
-)
-
-puts "Sale has been created"
+# user.sales.create!(
+#     client: customer
+# )
+#
+# puts "Sale has been created"

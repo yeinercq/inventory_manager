@@ -8,7 +8,6 @@
 #  quantity     :integer          not null
 #  unit_price   :decimal(10, 2)   not null
 #  total        :decimal(10, 2)
-#  user_id      :bigint           not null
 #  product_id   :bigint           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -22,7 +21,6 @@ RSpec.describe Movement, type: :model do
   subject(:movement) { build(:movement, product: product, quantity: 15)}
 
   describe 'associations' do
-    it { should belong_to(:user) }
     it { should belong_to(:product) }
   end
 

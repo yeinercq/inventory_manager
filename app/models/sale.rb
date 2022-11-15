@@ -15,6 +15,7 @@ class Sale < ApplicationRecord
   belongs_to :client, class_name: 'Customer'
 
   has_many :items, dependent: :destroy
+  has_many :products, through: :items
 
   delegate :company, to: :user
 

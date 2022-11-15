@@ -21,6 +21,6 @@ class User < ApplicationRecord
   belongs_to :company
 
   has_many :products, dependent: :destroy
-  has_many :movements, dependent: :destroy
+  has_many :movements, through: :products # TODO: association with movments through products
   has_many :sales, dependent: :destroy
 end
