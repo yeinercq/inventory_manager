@@ -1,0 +1,26 @@
+<%= simple_form_for provider, html: { class: "form" } do |f| %>
+  <%= form_error_notification(provider) %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <%= f.input :name, label: "Name", input_html: { autofocus: true } %>
+      </div>
+      <div class="col-12 col-sm-4">
+        <%= f.input :email, label: "Email", class: "form-control" %>
+      </div>
+      <div class="col-12 col-sm-4">
+        <%= f.input :phone_number %>
+      </div>
+      <div class="form-actions mt-3">
+        <%= link_to providers_path do %>
+          <div class="btn btn-info">
+            <i class="bi bi-x-lg"></i>
+          </div>
+        <% end %>
+        <%= f.submit class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
