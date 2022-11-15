@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :providers, except: [:show]
   resources :customers
+  resources :products
 end

@@ -1,0 +1,46 @@
+<%= simple_form_for product, html: { class: "form" } do |f| %>
+  <%= form_error_notification(product) %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-12 col-sm-3">
+        <%= f.input :name, label: "Name", input_html: { autofocus: true } %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <%= f.input :brand, label: "Brand" %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <%= f.input :unit, as: :select, collection: Product.units, value_method: -> (r) { r[0] } %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <%= f.input :size, label: "Size" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-3">
+        <%= f.input :provider_id, label: "Provider", as: :select, collection: Provider.all, label_method: -> (u) { u.name } %>
+      </div>
+      <!-- If product is persisted don't show this -->
+      <% unless product.persisted? %>
+      <div class="col-12 col-sm-3">
+        <%= f.input :price, label: "Price" %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <%= f.input :initial_quantity, label: "Initial stock quantity" %>
+      </div>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= f.input :description %>
+    </div>
+  </div>
+
+  <div class="form-actions mt-3">
+    <%= link_to products_path do %>
+      <div class="btn btn-info">
+        <i class="bi bi-x-lg"></i>
+      </div>
+    <% end %>
+    <%= f.submit class: "btn btn-warning" %>
+  </div>
+<% end %>
