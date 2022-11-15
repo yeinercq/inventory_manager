@@ -1,0 +1,19 @@
+.invoice-total {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-large);
+
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

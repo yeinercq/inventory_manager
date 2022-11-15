@@ -1,2 +1,14 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+// Components
+@import 'components/form';
+@import 'components/navbar';
+@import 'components/flash';
+@import 'components/invoice_total';
+@import 'components/status_badge';
+
+// config
+@import 'config/variables';
+@import 'config/reset';
+@import 'config/animations';

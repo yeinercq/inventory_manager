@@ -1,0 +1,21 @@
+.invoice-status {
+  color: black;
+  padding: 5px 15px;
+  font-size: small;
+  border-radius: 15px;
+  margin-left: 5px;
+
+  &__recorded {
+    background: yellow;
+  }
+
+  &__confirmed {
+    background: blue;
+  }
+  &__paid {
+    background: green;
+  }
+  &__delivered {
+    background: red;
+  }
+}
