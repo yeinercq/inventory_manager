@@ -1,23 +1,40 @@
-<div class="mt-2">
-  <div class="card shadow-sm">
+<div class="col-md-3 mt-3">
+  <div class="card shadow">
+    <img src="https://www.ciamsa.com/es/wp-content/uploads/2017/10/11-52-0-208x300.png" class="card-img-top" alt="abono">
     <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-12 col-md-10">
-            <%= link_to product.name, product_path(product) %>
+      <h4 class="card-title"><%= link_to product.name, product_path(product) %></h4>
+      <p class="card-text">
+        <table>
+          <tr>
+            <td>Brand: <%= product.brand %></td>
+          </tr>
+          <tr>
+            <td>Unit: <%= product.unit %></td>
+          </tr>
+          <tr>
+            <td>Size: <%= product.size %></td>
+          </tr>
+          <tr>
+            <td>Stock: <%= product.current_stock %></td>
+          </tr>
+        </table>
+      </p>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-2">
+          <%= link_to edit_product_path(product) do %>
+          <div class="btn btn-info">
+            <i class="bi bi-pencil-square"></i>
           </div>
-          <div class="col-12 col-md-2">
-            <%= link_to edit_product_path(product) do %>
-            <div class="btn btn-info">
-              <i class="bi bi-pencil-square"></i>
-            </div>
-            <% end %>
-            <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-              <div class="btn btn-danger">
-                <i class="bi bi-trash"></i>
-              </div>
-            <% end %>
-          </div>
+          <% end %>
         </div>
+        <div class="col-2 ms-3">
+          <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <div class="btn btn-danger">
+            <i class="bi bi-trash"></i>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

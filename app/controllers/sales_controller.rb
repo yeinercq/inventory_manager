@@ -24,7 +24,7 @@ class SalesController < ApplicationController
   end
 
   def create
-    if current_user.sales.last.status == "recorded"
+    if !current_user.sales.empty? and current_user.sales.last.status == "recorded"
       redirect_to new_sale_path, notice: "There is a sale with recorded status."
     else
       @sale = current_user.sales.build(sale_params)

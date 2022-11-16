@@ -11,6 +11,7 @@ class MovementsController < ApplicationController
 
   def create
     @movement = @product.movements.build(movement_params)
+    @movement.total = @movement.total_price
     if @movement.save
       redirect_to product_path(@product), notice: "Movement was successfuly created."
     else

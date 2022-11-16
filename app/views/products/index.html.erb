@@ -3,5 +3,7 @@
     <h1>Products</h1>
     <%= link_to "New product", new_product_path, class: "btn btn-primary" %>
   </div>
-  <%= render @products %>
+  <div class="row row-cols-sm-2 row-cols-md-3 mb-4">
+    <%= render @products %>
+  </div>
 </div>
