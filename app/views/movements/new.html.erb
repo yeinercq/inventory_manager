@@ -1,0 +1,10 @@
+<div class="container">
+  <%= link_to sanitize("&larr; Back to product"), product_path(@product) %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+
+      <h1>New movement for product <%= @product.name %></h1>
+      <%= render "form", product: @product, movement: @movement %>
+    </div>
+  </div>
+</div>

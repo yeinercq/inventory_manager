@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :providers, except: [:show]
   resources :customers
   resources :products do
-    resources :movements, only: [:create, :index]
+    resources :movements, only: [:new, :create, :index]
   end
   resources :sales do
     patch :trigger, on: :member
