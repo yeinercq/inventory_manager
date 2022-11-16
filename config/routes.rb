@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :providers, except: [:show]
   resources :customers
-  resources :products
+  resources :products do
+    resources :movements, only: [:create, :index]
+  end
   resources :sales do
     patch :trigger, on: :member
     resources :items, except: [:show, :index]

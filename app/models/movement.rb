@@ -17,7 +17,7 @@ class Movement < ApplicationRecord
 
   belongs_to :product
 
-  has_many :stocks, dependent: :destroy
+  has_one :stock, dependent: :destroy
 
   enum mov_type: { input: 1, output: 2 }
   enum mov_sub_type: { initial_stock: 1, purchase: 2, client_refund: 3, sale: 4, provider_refund: 5 }
@@ -33,18 +33,22 @@ class Movement < ApplicationRecord
 
   def create_stock
     if mov_sub_type == "initial_stock"
-      self.stocks.create(
+      stock = Stock.new(
+        movement_id: id,
         quantity: quantity,
         unit_price: unit_price,
         total: total
       )
+      stock.save
     else
       data = product.calculate(mov_type, quantity, total_price)
-      self.stocks.create(
+      stock = Stock.new(
+        movement_id: id,
         quantity: data[0],
         unit_price: data[1],
         total: data[2]
       )
+      stock.save
     end
   end
 
