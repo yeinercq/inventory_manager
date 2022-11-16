@@ -64,6 +64,10 @@ class Sale < ApplicationRecord
     )
   end
 
+  def self.last_sale_has_recorded_satus?
+    Sale.last.status == "recorded"
+  end
+
   def self.available_states
     aasm.states.map(&:name)
   end

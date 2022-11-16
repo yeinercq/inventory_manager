@@ -24,11 +24,15 @@ class SalesController < ApplicationController
   end
 
   def create
-    @sale = current_user.sales.build(sale_params)
-    if @sale.save
-      redirect_to sales_path, notice: "Sale was successfully created."
+    if current_user.sales.last.status == "recorded"
+      redirect_to new_sale_path, notice: "There is a sale with recorded status."
     else
-      render :new, status: :unprocessable_entity
+      @sale = current_user.sales.build(sale_params)
+      if @sale.save
+        redirect_to sales_path, notice: "Sale was successfully created."
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
