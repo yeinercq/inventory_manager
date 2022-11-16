@@ -2,7 +2,18 @@ class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy, :trigger]
 
   def index
-    @sales = current_user.sales
+    # if params[:status].present?
+    #   @status = params[:status]
+    #   @sales = current_company.sales.status_value(@status)
+    # else
+    #   @sales = current_company.sales.ordered
+    # end
+
+    # It receives keys->values to filter sale index
+    @sales = Sale.where(nil).ordered
+    filtering_params(params).each do |key, value|
+      @sales = @sales.public_send("filter_by_#{key}", value).ordered if value.present?
+    end
   end
 
   def show
@@ -25,6 +36,11 @@ class SalesController < ApplicationController
   end
 
   def update
+    if @sale.update(sale_params)
+      redirect_to sales_path, notice: "Sale was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -41,6 +57,10 @@ class SalesController < ApplicationController
   end
 
   private
+
+  def filtering_params(params)
+    params.slice(:status, :client, :code)
+  end
 
   def set_sale
     @sale = current_user.sales.find(params[:id])

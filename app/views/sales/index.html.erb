@@ -3,5 +3,6 @@
     <h1>Sales</h1>
     <%= link_to "New sale", new_sale_path, class: "btn btn-primary" %>
   </div>
+  <%= render "sales/filter_options" %>
   <%= render @sales %>
 </div>

@@ -25,6 +25,11 @@ class Sale < ApplicationRecord
 
   before_create :generate_code
 
+  scope :ordered,-> { order(id: :desc) }
+  scope :filter_by_status, ->(status) { where("status = ?", status) }
+  scope :filter_by_client, ->(client) { where("client = ?", client) }
+  scope :filter_by_code, ->(code) { where("code = ?", code) }
+
   def total_price
     items.sum(&:total_price)
   end
@@ -59,7 +64,7 @@ class Sale < ApplicationRecord
     )
   end
 
-  def available_states
+  def self.available_states
     aasm.states.map(&:name)
   end
 

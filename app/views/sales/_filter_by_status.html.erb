@@ -1,0 +1,3 @@
+<% Sale.available_states.each do |state| %>
+  <%= link_to state, sales_path(status: state), class: 'dropdown-item' %>
+<% end %>
