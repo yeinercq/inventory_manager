@@ -1,0 +1,3 @@
+<% if sale.recorded? %>
+  <%= link_to "Add item", new_sale_item_path(sale), data: { turbo_frame: dom_id(Item.new) }, class: "btn btn-primary" %>
+<% end %>

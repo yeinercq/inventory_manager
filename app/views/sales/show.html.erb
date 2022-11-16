@@ -1,0 +1,56 @@
+<div class="container mb-5">
+  <%= link_to sanitize("&larr; Back to sales"), sales_path %>
+  <div class="card shadow mt-4">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-12 col-sm-8">
+          Sale: <%= @sale.code %>
+        </div>
+        <div id="sale-status" class="col-6 col-sm-2">
+          <%= render "sales/status_tag", sale: @sale %>
+        </div>
+        <div class="col-6 col-sm-2">
+          <div class="dropdown">
+            <a class="dropdown-toggle" id="sale-status" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-cloud-download-fill"></i>
+              Action
+            </a>
+            <div id="sale-action" aria-labelledby="saleStatus" class="dropdown-menu">
+              <%= render "sales/status", sale: @sale %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <h4>
+              Client: <%= @sale.client.name %>
+            </h4>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-4 bg-light">
+            <div class="col-12 col-sm-4"><b>Item</b></div>
+            <div class="col-12 d-none col-sm-2 d-sm-block"><b>Quantity</b></div>
+            <div class="col-12 d-none col-sm-2 d-sm-block"><b>Price</b></div>
+            <div class="col-12 d-none col-sm-2 d-sm-block"><b>Actions</b></div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <%= turbo_frame_tag "items" do %>
+            <%= render @sale.items, sale: @sale %>
+          <% end %>
+          <%= turbo_frame_tag Item.new %>
+        </div>
+      </div>
+    </div>
+    <div id="add-item" class="card-footer">
+        <%= render 'sales/add_item', sale: @sale %>
+    </div>
+  </div>
+</div>
+
+<%= turbo_frame_tag dom_id(@sale, :total) do %>
+  <%= render "sales/total", sale: @sale %>
+<% end %>

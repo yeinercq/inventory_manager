@@ -1,0 +1,3 @@
+<% available_events_for(sale).each do |event| %>
+  <%= link_to event, trigger_sale_path(sale, event: event), data: { turbo_method: :patch, turbo_confirm: "Are you sure?" }, class: 'dropdown-item' %>
+<% end %>

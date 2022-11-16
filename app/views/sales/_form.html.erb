@@ -1,0 +1,20 @@
+<%= simple_form_for sale, html: { class: "form" } do |f| %>
+  <%= form_error_notification(sale) %>
+
+  <div class="form-inputs">
+    <div class="row align-items-end">
+      <div class="col-12 col-sm-8">
+        <%= f.input :client_id, label: "Client", as: :select, collection: Customer.all, label_method: -> (u) { u.name } %>
+      </div>
+      <div class="form-actions col-12 col-sm-4">
+        <%= link_to sales_path do %>
+          <div class="btn btn-info">
+            <i class="bi bi-x-lg"></i>
+          </div>
+        <% end %>
+        <%= f.submit class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
