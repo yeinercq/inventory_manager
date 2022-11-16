@@ -2,7 +2,50 @@
   <%= link_to sanitize("&larr; Back to products"), products_path %>
   <div class="card mt-4">
     <div class="card-header">
-      <h1><%= @product.name %></h1>
+      <h2><%= @product.name %></h2>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Unit</th>
+          <th>Size</th>
+          <th>Provider</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @product.name %></td>
+            <td><%= @product.brand %></td>
+            <td><%= @product.unit %></td>
+            <td><%= @product.size %></td>
+            <td><%= @product.provider.name %></td>
+            <td><%= @product.price %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row mt-4">
+        Description:
+        <div class="col">
+          <div class="card card-body">
+            <td><%= simple_format @product.description %></td
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12 col-sm-4 d-grid mt-2">
+          <%= link_to "Edit", edit_product_path(@product), class: "btn btn-secondary" %>
+        </div>
+        <div class="col-12 col-sm-4 d-grid mt-2">
+          <%= link_to "Delete", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-warning" %>
+        </div>
+        <div class="col-12 col-sm-4 d-grid mt-2">
+          <%= link_to "Movement", "#", class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<%= render 'products/movements', product: @product %>

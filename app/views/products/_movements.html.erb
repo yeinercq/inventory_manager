@@ -1,0 +1,33 @@
+<div class="card shadow-sm mt-4">
+  <div class="card-header">
+    <h2>Movements </h2>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Class</th>
+          <th>Quantity</th>
+          <th>Unit price</th>
+          <th>Total</th>
+          <th>Stock</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.movements.each do |movement| %>
+          <tr>
+            <td><%= movement.mov_type %></td>
+            <td><%= movement.mov_sub_type %></td>
+            <td><%= movement.quantity %></td>
+            <td><%= movement.unit_price %></td>
+            <td><%= movement.total %></td>
+            <td><%= movement.stock.quantity %></td>
+            <td><%= l(movement.created_at, format: :long) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to products_path, notice: "Product was successfully updated."
+      redirect_to product_path, notice: "Product was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
