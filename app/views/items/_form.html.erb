@@ -1,0 +1,26 @@
+<%= simple_form_for [sale, item], html: { class: "form" } do |f| %>
+  <%= form_error_notification(item) %>
+
+  <div class="form-inputs">
+    <div class="row align-items-end">
+      <div class="col-12 col-sm-3">
+        <%= f.input :product_id, label: "Product", as: :select, collection: Product.all, label_method: -> (u) { u.name } %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <%= f.input :quantity, label: "Quantity" %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <%= f.input :unit_price, label: "Price" %>
+      </div>
+      <div class="col-12 col-sm-3 form-actions">
+        <%= link_to sale_path(sale) do %>
+          <div class="btn btn-info">
+            <i class="bi bi-x-lg"></i>
+          </div>
+        <% end %>
+        <%= f.submit class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
