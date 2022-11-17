@@ -1,14 +1,15 @@
-<div class="row justify-content-center align-items-center mt-2">
-  <div class="col-12 col-sm-4">
-    <%= item.product.name %>
-  </div>
-  <div class="col-4 col-sm-2">
-    <%= item.quantity %>
-  </div>
-  <div class="col-4 col-sm-2">
-    <%= number_to_currency item.unit_price %>
-  </div>
-  <% if sale.recorded? %>
+<%= turbo_frame_tag item do %>
+  <div class="row justify-content-center align-items-center mt-2">
+    <div class="col-12 col-sm-4">
+      <%= item.product.name %>
+    </div>
+    <div class="col-4 col-sm-2">
+      <%= item.quantity %>
+    </div>
+    <div class="col-4 col-sm-2">
+      <%= number_to_currency item.unit_price %>
+    </div>
+    <% if sale.recorded? %>
     <div class="col-4 col-sm-2">
       <%= link_to [:edit, sale, item] do %>
       <div class="btn btn-info">
@@ -21,5 +22,6 @@
       </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

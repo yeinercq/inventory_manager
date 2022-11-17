@@ -9,7 +9,10 @@ class ItemsController < ApplicationController
   def create
     @item = @sale.items.build(item_params)
     if @item.save
-      redirect_to sale_path(@sale), notice: "Item was successfully created."
+      respond_to do |format|
+        format.html { redirect_to sale_path(@sale), notice: "Item was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Item was successfully created." }
+      end
       # Updates total attribute to sale
       update_sale_total
     else
@@ -25,7 +28,10 @@ class ItemsController < ApplicationController
     update_sale_total
 
     if @item.update(item_params)
-      redirect_to sale_path(@sale), notice: "Item was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to sale_path(@sale), notice: "Item was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Item was successfully updated." }
+      end
       # Updates total attribute to sale
       update_sale_total
     else
@@ -35,7 +41,10 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-      redirect_to sale_path(@sale), notice: "Item was successfully destroyed."
+      respond_to do |format|
+        format.html { redirect_to sale_path(@sale), notice: "Item was successfully destroyed." }
+        format.turbo_stream { flash.now[:notice] = "Item was successfully destroyed." }
+      end
       # Updates total attribute to sale
       update_sale_total
     else

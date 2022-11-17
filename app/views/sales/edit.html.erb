@@ -4,7 +4,9 @@
     <div class="card-body">
 
       <h1>Edit sale</h1>
-      <%= render "form", sale: @sale %>
+      <%= turbo_frame_tag @sale do %>
+        <%= render "form", sale: @sale %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<%= turbo_stream.remove @item %>
+<%= turbo_stream.update dom_id(@sale, :total) do %>
+  <%= render 'sales/total', sale: @sale %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

@@ -4,7 +4,9 @@
     <div class="card-body">
 
       <h1>New item for sale <%= @sale.id %></h1>
-      <%= render "form", sale: @sale, item: @item %>
+      <%= turbo_frame_tag @item do %>
+        <%= render "form", sale: @sale, item: @item %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -30,6 +30,8 @@ class Sale < ApplicationRecord
   scope :filter_by_client, ->(client) { where("client = ?", client) }
   scope :filter_by_code, ->(code) { where("code = ?", code) }
 
+  broadcasts_to ->(sale) { [sale.company, "sales"] }, inserts_by: :prepend
+
   def total_price
     items.sum(&:total_price)
   end

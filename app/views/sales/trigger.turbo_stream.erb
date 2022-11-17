@@ -1,0 +1,13 @@
+<%= turbo_stream.update "sale-status" do %>
+  <%= render "sales/status_tag", sale: @sale %>
+<% end %>
+<%= turbo_stream.update "sale-action" do %>
+  <%= render "sales/status", sale: @sale %>
+<% end %>
+<%= turbo_stream.update "add-item" do %>
+  <%= render "sales/add_item", sale: @sale %>
+<% end %>
+<%= turbo_stream.update "items" do %>
+  <%= render @sale.items, sale: @sale %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

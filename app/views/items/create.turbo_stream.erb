@@ -1,0 +1,8 @@
+<%= turbo_stream.update Item.new, "" %>
+<%= turbo_stream.append "items" do %>
+  <%= render @item, sale: @sale %>
+<% end %>
+<%= turbo_stream.update dom_id(@sale, :total) do %>
+  <%= render 'sales/total', sale: @sale %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

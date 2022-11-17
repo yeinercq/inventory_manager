@@ -1,8 +1,13 @@
+<%= turbo_stream_from current_company, "sales" %>
 <div class="container">
   <div class="header">
     <h1>Sales</h1>
-    <%= link_to "New sale", new_sale_path, class: "btn btn-primary" %>
+    <%= link_to "New sale", new_sale_path, data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>
   </div>
+
   <%= render "sales/filter_options" %>
-  <%= render @sales %>
+  <%= turbo_frame_tag Sale.new %>
+  <%= turbo_frame_tag "sales" do %>
+    <%= render @sales %>
+  <% end %>
 </div>
