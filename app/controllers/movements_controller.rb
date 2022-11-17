@@ -13,7 +13,7 @@ class MovementsController < ApplicationController
     @movement = @product.movements.build(movement_params)
     @movement.total = @movement.total_price
     if @movement.save
-      redirect_to product_path(@product), notice: "Movement was successfuly created."
+      redirect_to product_path(@product), notice: "Movement was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

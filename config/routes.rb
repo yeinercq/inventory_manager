@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root to: 'pages#home'
+  get 'pages/home'
   devise_for :users
   resources :providers, except: [:show]
   resources :customers
