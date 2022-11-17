@@ -4,7 +4,9 @@
     <div class="card-body">
 
       <h1>Edit provider</h1>
-      <%= render "form", provider: @provider %>
+      <%= turbo_frame_tag @provider  do%>
+        <%= render "form", provider: @provider %>
+      <% end %>
     </div>
   </div>
 </div>

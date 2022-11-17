@@ -18,6 +18,10 @@ class Provider < ApplicationRecord
   validates :name, :email, uniqueness: {scope: :company_id,  message: "has already been taken", case_sensitive: false}
   validates :phone_number, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
+  scope :ordered, -> { order(id: :desc) }
+
+  broadcasts_to ->(provider) { [provider.company, "providers"] }, inserts_by: :prepend
+
   before_save :normalize_email
 
   def normalize_email

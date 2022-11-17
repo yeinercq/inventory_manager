@@ -2,7 +2,7 @@ class ProvidersController < ApplicationController
   before_action :set_provider, only: [:edit, :update, :destroy]
 
   def index
-    @providers = current_company.providers.all
+    @providers = current_company.providers.ordered
   end
 
   def new
@@ -14,6 +14,7 @@ class ProvidersController < ApplicationController
     if @provider.save
       respond_to do |format|
         format.html { redirect_to providers_path, notice: "Provider was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Provider was successfully created." }
       end
     else
     render :new, status: :unprocessable_entity
@@ -25,7 +26,10 @@ class ProvidersController < ApplicationController
 
   def update
     if @provider.update(provider_params)
-      redirect_to providers_path, notice: "Provider was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to providers_path, notice: "Provider was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Provider was successfully updated." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +37,10 @@ class ProvidersController < ApplicationController
 
   def destroy
     @provider.destroy
-    redirect_to providers_path, notice: "Provider was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to providers_path, notice: "Provider was successfully destroyed." }
+      format.turbo_stream { flash.now[:notice] = "Provider was successfully destroyed." }
+    end
   end
 
   private
