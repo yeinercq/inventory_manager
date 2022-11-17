@@ -67,7 +67,7 @@ class SalesController < ApplicationController
   end
 
   def set_sale
-    @sale = current_user.sales.find(params[:id])
+    @sale = current_company.sales.find(params[:id])
   end
 
   def sale_params

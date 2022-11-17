@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def set_sale
-    @sale = current_user.sales.find(params[:sale_id])
+    @sale = current_company.sales.find(params[:sale_id])
   end
 
   def item_params

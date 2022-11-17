@@ -8,7 +8,13 @@ user = company.users.create!(
   password_confirmation: "123456"
 )
 
-puts "User has been created"
+user2 = company.users.create!(
+  email: "cristina@cafekahawa.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+puts "Users has been created"
 
 provider = company.providers.create!(
   name: "Nitrosoil SAS",
