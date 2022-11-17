@@ -1,4 +1,5 @@
 company = Company.create!(name: "Coopkahawa")
+company2 = Company.create!(name: "Cadefihuila")
 
 puts "Company has been created"
 
@@ -10,6 +11,12 @@ user = company.users.create!(
 
 user2 = company.users.create!(
   email: "cristina@cafekahawa.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+user3 = company2.users.create!(
+  email: "gilberto@cadefihuila.com",
   password: "123456",
   password_confirmation: "123456"
 )

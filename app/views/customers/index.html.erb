@@ -1,7 +1,12 @@
+<%= turbo_stream_from current_company, "customers" %>
+
 <div class="container">
   <div class="header">
     <h1>Customers</h1>
-    <%= link_to "New customer", new_customer_path, class: "btn btn-primary" %>
+    <%= link_to "New customer", new_customer_path, data: { turbo_frame: dom_id(Customer.new) }, class: "btn btn-primary" %>
   </div>
-  <%= render @customers %>
+  <%= turbo_frame_tag Customer.new %>
+  <%= turbo_frame_tag 'customers' do %>
+    <%= render @customers %>
+  <% end %>
 </div>

@@ -21,6 +21,10 @@ class Customer < ApplicationRecord
   validates :name, :email, uniqueness: {scope: :company_id, message: "has already been taken", case_sensitive: false}
   validates :phone_number, numericality: { only_integer: true, greater_than: 0 }
 
+  scope :ordered, -> { order(id: :desc) }
+
+  broadcasts_to ->(customer) { [customer.company, "customers"] }, inserts_by: :prepend
+
   before_save :normalize_email
 
   def normalize_email

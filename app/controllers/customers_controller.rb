@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = current_company.customers.all
+    @customers = current_company.customers.ordered
   end
 
   def show
@@ -15,7 +15,10 @@ class CustomersController < ApplicationController
   def create
     @customer = current_company.customers.build(customer_params)
     if @customer.save
-      redirect_to customers_path, notice: "Customer was successfully created."
+      respond_to do |format|
+        format.html { redirect_to customers_path, notice: "Customer was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Customer was successfully created." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +29,10 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to customers_path, notice: "Customer was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to customers_path, notice: "Customer was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Customer was successfully updated." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +40,10 @@ class CustomersController < ApplicationController
 
   def destroy
     @customer.destroy
-    redirect_to customers_path, notice: "Customer was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to customers_path, notice: "Customer was successfully destroyed." }
+      format.turbo_stream { flash.now[:notice] = "Customer was successfully destroyed." }
+    end
   end
 
   private
