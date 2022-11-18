@@ -13,7 +13,10 @@ class MovementsController < ApplicationController
     @movement = @product.movements.build(movement_params)
     @movement.total = @movement.total_price
     if @movement.save
-      redirect_to product_path(@product), notice: "Movement was successfully created."
+      respond_to do |format|
+        format.html { redirect_to product_path(@product), notice: "Movement was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Movement was successfully created." }
+      end
     else
       render :new, status: :unprocessable_entity
     end

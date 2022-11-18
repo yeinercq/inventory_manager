@@ -1,0 +1,5 @@
+<%= turbo_stream.update "product-movements" do %>
+  <%= render 'products/movements', product: @product %>
+<% end %>
+<%= turbo_stream.update Movement.new, "" %>
+<%= render_turbo_stream_flash_messages %>

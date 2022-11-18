@@ -4,7 +4,9 @@
     <div class="card-body">
 
       <h1>New movement for product <%= @product.name %></h1>
-      <%= render "form", product: @product, movement: @movement %>
+      <%= turbo_frame_tag @movement do %>
+        <%= render "form", product: @product, movement: @movement %>
+      <% end %>
     </div>
   </div>
 </div>
