@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :products do
     resources :movements, only: [:new, :create, :index]
+    resources :sale_prices, only: [:new, :create, :edit, :update]
   end
   resources :sales do
     patch :trigger, on: :member

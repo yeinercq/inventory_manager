@@ -21,8 +21,8 @@
             <td><%= movement.mov_type %></td>
             <td><%= movement.mov_sub_type %></td>
             <td><%= movement.quantity %></td>
-            <td><%= movement.unit_price %></td>
-            <td><%= movement.total %></td>
+            <td><%= number_to_currency movement.unit_price %></td>
+            <td><%= number_to_currency movement.total %></td>
             <td><%= movement.stock.quantity %></td>
             <td><%= l(movement.created_at, format: :long) %></td>
           </tr>

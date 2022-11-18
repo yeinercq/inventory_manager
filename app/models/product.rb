@@ -27,6 +27,7 @@ class Product < ApplicationRecord
   has_many :stocks, through: :movements
   has_many :items, dependent: :destroy # TODO: ajust association with items-sales
   has_many :sales, through: :items
+  has_one :sale_price, dependent: :destroy
 
   enum unit: { bulto: 1, kilo: 2, unidad: 3 }
 

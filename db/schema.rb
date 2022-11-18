@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_003908) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_145946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -84,6 +84,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_003908) do
     t.index ["company_id"], name: "index_providers_on_company_id"
   end
 
+  create_table "sale_prices", force: :cascade do |t|
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sale_prices_on_product_id"
+  end
+
   create_table "sales", force: :cascade do |t|
     t.decimal "total", precision: 10, scale: 2
     t.bigint "user_id", null: false
@@ -129,6 +137,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_003908) do
   add_foreign_key "products", "providers"
   add_foreign_key "products", "users"
   add_foreign_key "providers", "companies"
+  add_foreign_key "sale_prices", "products"
   add_foreign_key "sales", "customers", column: "client_id"
   add_foreign_key "sales", "users"
   add_foreign_key "stocks", "movements"
