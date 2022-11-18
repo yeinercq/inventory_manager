@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = current_company.products.all
+    @products = current_company.products.ordered
   end
 
   def show
@@ -16,7 +16,10 @@ class ProductsController < ApplicationController
     @product = current_company.products.build(product_params)
     @product.user = current_user
     if @product.save
-      redirect_to products_path, notice: "Product was successfully created."
+      respond_to do |format|
+        format.html { redirect_to products_path, notice: "Product was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Product was successfully created." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +30,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path, notice: "Product was successfully updated."
+      redirect_to products_path, notice: "Product was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +38,10 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_path, notice: "Product was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to products_path, notice: "Product was successfully destroyed." }
+      format.turbo_stream { flash.now[:notice] = "Product was successfully destroyed." }
+    end
   end
 
   private

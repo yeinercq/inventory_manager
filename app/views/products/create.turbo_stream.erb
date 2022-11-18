@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "products", @product %>
+<%= turbo_stream.update Product.new, "" %>
+<%= render_turbo_stream_flash_messages %>

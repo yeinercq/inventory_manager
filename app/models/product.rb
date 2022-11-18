@@ -30,6 +30,8 @@ class Product < ApplicationRecord
 
   enum unit: { bulto: 1, kilo: 2, unidad: 3 }
 
+  scope :ordered, -> { order(id: :desc) }
+
   validates :name, :brand, :unit, :size, :price, :initial_quantity, presence: true
   validates :name, uniqueness: { scope: :company_id, message: "has already been taken", case_sensitive: false }
   validates :price, :initial_quantity, numericality: { greater_than: 0 }
