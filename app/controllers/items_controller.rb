@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = @sale.items.build(item_params)
+    @item.unit_price = @item.product.sale_price.price
     if @item.save
       respond_to do |format|
         format.html { redirect_to sale_path(@sale), notice: "Item was successfully created." }

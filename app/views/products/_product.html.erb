@@ -5,6 +5,11 @@
       <h4 class="card-title"><%= link_to product.name, product_path(product), data: { turbo_frame: '_top' } %></h4>
       <p class="card-text">
         <table>
+          <% if !product.sale_price.nil? %>
+            <tr>
+              <td>Sale price: <b><%= number_to_currency product.sale_price.price %></b></td>
+            </tr>
+          <% end %>
           <tr>
             <td>Brand: <%= product.brand %></td>
           </tr>
