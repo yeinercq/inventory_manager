@@ -1,24 +1,32 @@
-# README
+# Inventory Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a small project to manage a product inventory. You can save, delete and update providers, customers, products and save sales with different items (products) and something else.
 
-Things you may want to cover:
+## Technologies
 
-* Ruby version
+- Rails 7.0.4
+- Ruby 3.1.2
+- Bootstrap 5.0
+- Postgresql
+- Turbo Drive
+- CSS
 
-* System dependencies
+## Functions
 
-* Configuration
+### Save, edit and delete providers
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+### Save, edit and delete customers
 
-* Services (job queues, cache servers, search engines, etc.)
+### Save products with initial stock quantity
 
-* Deployment instructions
+### Save a movement from a product to stock
 
-* ...
+### Save and edit a sale price to a product
+
+### Save a sale and load items (products)
+
+### Change sale status
+
+### Filter sales per status
