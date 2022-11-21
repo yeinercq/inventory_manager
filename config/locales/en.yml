@@ -2,12 +2,27 @@
 en:
   activerecord:
     models:
+      customer:
+        one: Cliente
+        others: Clientes
       provider:
         one: Proveedor
         others: Proveedores
   common:
     are_you_sure: Are you sure
     back: Volver a
+  customers:
+    destroy_customer: Destroy customer
+    edit_customer: Edit customer
+    form:
+      address: Address
+      email: Email
+      id_number: Id number
+      name: Name
+      phone_number: Phone number
+    new_customer: New customer
+    plural: Plural
+    singular: Cliente
   errors:
     messages:
       not_saved: Not saved

@@ -12,7 +12,7 @@
               <i class="bi bi-pencil-square"></i>
             </div>
             <% end %>
-            <%= link_to customer_path(customer), data:{ turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <%= link_to customer_path(customer), data:{ turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } do %>
             <div class="btn btn-danger">
               <i class="bi bi-trash"></i>
             </div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back to customers"), customers_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('customers.plural')}"), customers_path %>
   <div class="card mt-4">
     <div class="card-header">
       <h1><%= @customer.name %></h1>
@@ -8,10 +8,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Identification number</th>
-            <th>e-mail</th>
-            <th>Phone number</th>
-            <th>Address</th>
+            <th><%= t('customers.form.id_number') %></th>
+            <th><%= t('customers.form.email') %></th>
+            <th><%= t('customers.form.phone_number') %></th>
+            <th><%= t('customers.form.address') %></th>
           </tr>
         </thead>
         <tbody>
@@ -26,10 +26,10 @@
 
       <div class="row">
         <div class="col-12 col-sm-6 d-grid mt-2">
-          <%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-secondary" %>
+          <%= link_to t('customers.edit_customer'), edit_customer_path(@customer), class: "btn btn-secondary" %>
         </div>
         <div class="col-12 col-sm-6 d-grid mt-2">
-          <%= link_to "Delete", customer_path(@customer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-warning" %>
+          <%= link_to t('customers.destroy_customer'), customer_path(@customer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-warning" %>
         </div>
       </div>
     </div>
