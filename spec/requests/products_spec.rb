@@ -42,7 +42,7 @@ RSpec.describe "Products", type: :request do
       expect(response).to redirect_to(assigns(:products))
       follow_redirect!
       expect(response).to render_template(:index)
-      expect(response.body).to include("Product was successfully created.")
+      expect(response.body).to include(I18n.t('products.created_success'))
     end
   end
 end

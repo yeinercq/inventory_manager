@@ -33,7 +33,9 @@ en:
     quantity: Quantity
     unit_price: Unit price
   customers:
+    created_success: Customer was successfully created.
     destroy_customer: Destroy customer
+    destroyed_success: Customer was successfully Destroyed.
     edit_customer: Edit customer
     form:
       address: Address
@@ -44,17 +46,22 @@ en:
     new_customer: New customer
     plural: Client
     singular: Clients
+    updated_success: Customer was successfully updated.
   errors:
     messages:
       not_saved: Not saved
   hello: Hello world
   items:
     add_item: Add item
+    created_success: Item was successfully created.
+    destroyed_success: Item was successfully destroyed.
     edit_item_for: Edit item for
     new_item_for: New item for
+    updated_success: Item was successfully updated.
   movements:
     Total: Total
     class: Class
+    created_success: Movement was successfully created.
     date: Date
     form:
       class: Class
@@ -70,7 +77,9 @@ en:
     unit_price: Unit price
   products:
     brand: Brand
+    created_success: Product was successfully created.
     description: Description
+    destroyed_success: Product was successfully destroyed.
     edit_product: Edit product
     edit_sale_price: Edit sale price
     form:
@@ -90,6 +99,7 @@ en:
     size: Size
     stock: Stock
     unit: Unit
+    updated_success: Product was successfully updated.
   providers:
     created_success: Provider was successfully created.
     destroyed_success: Provider was successfully destroyed.
@@ -103,12 +113,19 @@ en:
     singular: Provider
     updated_success: Provider was successfully updated.
   sale_prices:
+    created_success: Sale price was successfully created.
     edit_sale_price_to: Edit sale price to
     form:
       sale_price: Sale price
     new_sale_price_to: New sale price to
+    updated_success: Sale price was successfully updated.
   sales:
+    created_success: Sale was successfully created.
+    destroyed_success: Sale was successfully destroyed.
     edit_sale: Edit sale
     new_sale: New sale
     plural: Sales
     singular: Sale
+    status_updated: Sale status was successfully changed.
+    there_is_a_sale_recorded: There is a sale with recorded status.
+    updated_success: Sale was successfully updated.

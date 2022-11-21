@@ -16,8 +16,8 @@ class CustomersController < ApplicationController
     @customer = current_company.customers.build(customer_params)
     if @customer.save
       respond_to do |format|
-        format.html { redirect_to customers_path, notice: "Customer was successfully created." }
-        format.turbo_stream { flash.now[:notice] = "Customer was successfully created." }
+        format.html { redirect_to customers_path, notice: t('customers.created_success') }
+        format.turbo_stream { flash.now[:notice] = t('customers.created_success') }
       end
     else
       render :new, status: :unprocessable_entity
@@ -30,8 +30,8 @@ class CustomersController < ApplicationController
   def update
     if @customer.update(customer_params)
       respond_to do |format|
-        format.html { redirect_to customers_path, notice: "Customer was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "Customer was successfully updated." }
+        format.html { redirect_to customers_path, notice: t('customers.updated_success') }
+        format.turbo_stream { flash.now[:notice] = t('customers.updated_success') }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -41,8 +41,8 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_path, notice: "Customer was successfully destroyed." }
-      format.turbo_stream { flash.now[:notice] = "Customer was successfully destroyed." }
+      format.html { redirect_to customers_path, notice: t('customers.destroyed_success') }
+      format.turbo_stream { flash.now[:notice] = t('customers.destroyed_success') }
     end
   end
 

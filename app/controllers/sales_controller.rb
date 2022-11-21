@@ -24,17 +24,17 @@ class SalesController < ApplicationController
   end
 
   def create
-    if !current_user.sales.empty? and current_user.sales.last.status == "recorded"
+    if !current_company.sales.empty? and current_company.sales.last.status == "guardada"
       respond_to do |format|
-        format.html { redirect_to new_sale_path, notice: "There is a sale with recorded status." }
-        format.turbo_stream { flash.now[:nitice] = "There is a sale with recorded status." }
+        format.html { redirect_to new_sale_path, notice: t('sales.there_is_a_sale_recorded') }
+        format.turbo_stream { flash.now[:nitice] = t('sales.there_is_a_sale_recorded') }
       end
     else
       @sale = current_user.sales.build(sale_params)
       if @sale.save
         respond_to do |format|
-          format.html { redirect_to sales_path, notice: "Sale was successfully created." }
-          format.turbo_stream { flash.now[:notice] = "Sale was successfully created." }
+          format.html { redirect_to sales_path, notice: t('sales.created_success') }
+          format.turbo_stream { flash.now[:notice] = t("sales.created_success") }
         end
       else
         render :new, status: :unprocessable_entity
@@ -48,8 +48,8 @@ class SalesController < ApplicationController
   def update
     if @sale.update(sale_params)
       respond_to do |format|
-        format.html { redirect_to sales_path, notice: "Sale was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "Sale was successfully updated." }
+        format.html { redirect_to sales_path, notice: t('sales.updated_success') }
+        format.turbo_stream { flash.now[:notice] = t('sales.updated_success') }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -59,16 +59,16 @@ class SalesController < ApplicationController
   def destroy
     @sale.destroy
     respond_to do |format|
-      format.html { redirect_to sales_path, notice: "Sale was successfully destroyed." }
-      format.turbo_stream { flash.now[:notice] = "Sale was successfully destroyed." }
+      format.html { redirect_to sales_path, notice: t('sales.destroyed_success') }
+      format.turbo_stream { flash.now[:notice] = t('sales.destroyed_success') }
     end
   end
 
   def trigger
     respond_to do |format|
       if Sales::TriggerEvent.new.call(@sale, params[:event])
-        format.html { redirect_to sale_path(@sale), notice: "Invoice status was successfully changed." }
-        format.turbo_stream { flash.now[:notice] = "Invoice status was successfully changed." }
+        format.html { redirect_to sale_path(@sale), notice: t('sales.status_updated') }
+        format.turbo_stream { flash.now[:notice] = t('sales.status_updated') }
       else
         render sale_path(@sale), status: :unprocessable_entity
       end

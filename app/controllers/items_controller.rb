@@ -11,8 +11,8 @@ class ItemsController < ApplicationController
     @item.unit_price = @item.product.sale_price.price
     if @item.save
       respond_to do |format|
-        format.html { redirect_to sale_path(@sale), notice: "Item was successfully created." }
-        format.turbo_stream { flash.now[:notice] = "Item was successfully created." }
+        format.html { redirect_to sale_path(@sale), notice: t('items.created_success') }
+        format.turbo_stream { flash.now[:notice] = t('items.created_success') }
       end
       # Updates total attribute to sale
       update_sale_total
@@ -30,8 +30,8 @@ class ItemsController < ApplicationController
 
     if @item.update(item_params)
       respond_to do |format|
-        format.html { redirect_to sale_path(@sale), notice: "Item was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "Item was successfully updated." }
+        format.html { redirect_to sale_path(@sale), notice: t('items.updated_success') }
+        format.turbo_stream { flash.now[:notice] = t('items.updated_success') }
       end
       # Updates total attribute to sale
       update_sale_total
@@ -43,8 +43,8 @@ class ItemsController < ApplicationController
   def destroy
     if @item.destroy
       respond_to do |format|
-        format.html { redirect_to sale_path(@sale), notice: "Item was successfully destroyed." }
-        format.turbo_stream { flash.now[:notice] = "Item was successfully destroyed." }
+        format.html { redirect_to sale_path(@sale), notice: t('items.destroyed_success') }
+        format.turbo_stream { flash.now[:notice] = t('items.destroyed_success') }
       end
       # Updates total attribute to sale
       update_sale_total

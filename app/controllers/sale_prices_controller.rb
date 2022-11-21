@@ -11,7 +11,7 @@ class SalePricesController < ApplicationController
     @sale_price.product = @product
 
     if @sale_price.save
-      redirect_to product_path(@product), notice: "Sale price was successfully created."
+      redirect_to product_path(@product), notice: t('sale_prices.created_success')
     else
      render :new, stutus: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class SalePricesController < ApplicationController
 
   def update
     if @sale_price.update(sale_price_params)
-      redirect_to product_path(@product), notice: "Sale price was successfully created."
+      redirect_to product_path(@product), notice: t('sale_prices.updated_success')
     else
       render :edit, status: :unprocessable_entity
     end
