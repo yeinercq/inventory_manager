@@ -3,31 +3,32 @@ en:
   activerecord:
     models:
       customer:
-        one: Cliente
-        others: Clientes
+        one: Client
+        others: Clients
       item:
         one: Item
         others: Items
       movement:
-        ohers: Movimientos
-        one: Movimiento
+        ohers: Movements
+        one: Movement
       product:
-        one: Producto
-        other: Productos
+        one: Product
+        other: Products
       provider:
-        one: Proveedor
-        others: Proveedores
+        one: Provider
+        others: Providers
       sale:
-        one: Venta
-        others: Ventas
+        one: Sale
+        others: Sales
       sale_price:
-        one: Precio de venta
-        others: Precio de venta
+        one: Sale price
+        others: Sale prices
   common:
     action: Action
     actions: Actions
+    all: All
     are_you_sure: Are you sure
-    back: Volver a
+    back: back to
     filter: Filter
     quantity: Quantity
     unit_price: Unit price
@@ -41,8 +42,8 @@ en:
       name: Name
       phone_number: Phone number
     new_customer: New customer
-    plural: Plural
-    singular: Cliente
+    plural: Client
+    singular: Clients
   errors:
     messages:
       not_saved: Not saved
@@ -61,9 +62,9 @@ en:
       price: Price
       quantity: Quantity
     new_movement_to: New movement to
-    plural: Plural
+    plural: Movements
     quantity: Quantity
-    singular: Singular
+    singular: Movement
     stock: Stock
     type: Type
     unit_price: Unit price
@@ -83,24 +84,24 @@ en:
     name: Name
     new_product: New product
     new_sale_price: New sale price
-    plural: Plural
+    plural: Products
     sale_price: Sale price
-    singular: Producto
+    singular: Product
     size: Size
     stock: Stock
     unit: Unit
   providers:
-    created_success: Created success
-    destroyed_success: Destroyed success
+    created_success: Provider was successfully created.
+    destroyed_success: Provider was successfully destroyed.
     edit_provider: Edit provider
     form:
       email: Email
       name: Name
       phone_number: Phone number
-    new_provider: Nuevo provedor
-    plural: Proveedores
-    singular: Proveedor
-    updated_success: Updated success
+    new_provider: New provider
+    plural: Providers
+    singular: Provider
+    updated_success: Provider was successfully updated.
   sale_prices:
     edit_sale_price_to: Edit sale price to
     form:
@@ -109,5 +110,5 @@ en:
   sales:
     edit_sale: Edit sale
     new_sale: New sale
-    plural: Plural
-    singular: Singular
+    plural: Sales
+    singular: Sale

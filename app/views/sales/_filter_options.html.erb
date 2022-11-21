@@ -6,7 +6,7 @@
         <%= t('common.filter') %>
       </a>
       <div id="filter-show-action" aria-labelledby="saleStatus" class="dropdown-menu">
-        <%= link_to "all", sales_path, class: 'dropdown-item'%>
+        <%= link_to t('common.all'), sales_path, class: 'dropdown-item'%>
         <%= render "sales/filter_by_status" %>
       </div>
     </div>

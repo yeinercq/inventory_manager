@@ -9,7 +9,7 @@
     <div class="col-4 col-sm-2">
       <%= number_to_currency item.unit_price %>
     </div>
-    <% if sale.recorded? %>
+    <% if sale.guardada? %>
     <div class="col-4 col-sm-2">
       <%= link_to [:edit, sale, item] do %>
       <div class="btn btn-info">

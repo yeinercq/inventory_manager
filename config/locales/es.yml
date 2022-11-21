@@ -26,6 +26,7 @@ es:
   common:
     action: Accion
     actions: Acciones
+    all: Todos
     are_you_sure: Esta seguro?
     back: Volver a
     filter: Filtrar

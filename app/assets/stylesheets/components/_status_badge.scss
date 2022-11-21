@@ -5,17 +5,17 @@
   border-radius: 15px;
   margin-left: 5px;
 
-  &__recorded {
+  &__guardada {
     background: yellow;
   }
 
-  &__confirmed {
+  &__confirmada {
     background: blue;
   }
-  &__paid {
+  &__pagada {
     background: green;
   }
-  &__delivered {
+  &__entregada {
     background: red;
   }
 }

@@ -36,7 +36,7 @@ RSpec.describe "Providers", type: :request do
       expect(response).to redirect_to(assigns(:providers))
       follow_redirect!
       expect(response).to render_template(:index)
-      expect(response.body).to include("Provider was successfully created.")
+      expect(response.body).to include(I18n.t('providers.created_success'))
     end
   end
 end

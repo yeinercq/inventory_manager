@@ -37,21 +37,21 @@ class Sale < ApplicationRecord
   end
 
   aasm column: :status do
-    state :recorded, initial: true
-    state :confirmed, :paid, :delivered
+    state :guardada, initial: true
+    state :confirmada, :pagada, :entregada
 
     after_all_transitions :log_status_change
 
-    event :confirm do
-      transitions from: :recorded, to: :confirmed
+    event :confirmar do
+      transitions from: :guardada, to: :confirmada
     end
 
-    event :pay do
-      transitions from: :confirmed, to: :paid
+    event :pagar do
+      transitions from: :confirmada, to: :pagada
     end
 
-    event :deliver do
-      transitions from: :paid, to: :delivered
+    event :engregar do
+      transitions from: :pagada, to: :entregada
     end
   end
 
