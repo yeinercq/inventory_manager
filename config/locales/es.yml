@@ -5,12 +5,18 @@ es:
       customer:
         one: Cliente
         others: Clientes
+      movement:
+        ohers: Movimientos
+        one: Movimiento
       product:
         one: Producto
         other: Productos
       provider:
         one: Proveedor
         others: Proveedores
+      sale_price:
+        one: Precio de venta
+        others: Precio de venta
   common:
     are_you_sure: Esta seguro?
     back: Volver a
@@ -31,7 +37,21 @@ es:
       not_saved: No guardado
   hello: Hello world
   movements:
+    Total: Total
+    class: Clase
+    date: Fecha
+    form:
+      class: Clase
+      movement: Movimiento
+      price: Precio
+      quantity: Cantidad
+    new_movement_to: Nuevo movimiento para
+    plural: Movimientos
+    quantity: Cantidad
     singular: Movimiento
+    stock: Existencias
+    type: Tipo
+    unit_price: Precio unitario
   products:
     brand: Marca
     description: Descripcion
@@ -66,3 +86,8 @@ es:
     plural: Proveedores
     singular: Proveedor
     updated_success: Proveedor actualizado exitosamente.
+  sale_prices:
+    edit_sale_price_to: Editar precio de venta para
+    form:
+      sale_price: Precion de venta
+    new_sale_price_to: Nuevo precio de venta para

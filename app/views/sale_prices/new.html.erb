@@ -1,9 +1,9 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back to product"), product_path(@product) %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('products.singular')}"), product_path(@product) %>
   <div class="card shadow mt-4">
     <div class="card-body">
 
-      <h1>New sale price for product <%= @product.name %></h1>
+      <h1><%= t('sale_prices.new_sale_price_to') %> <%= @product.name %></h1>
       <%= render "form", product: @product, sale_price: @sale_price %>
     </div>
   </div>
