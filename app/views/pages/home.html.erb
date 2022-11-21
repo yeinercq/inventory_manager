@@ -1,9 +1,9 @@
 <div class="container">
   <h1>CoopKahawa</h1>
-  <p>The best place to sell your awesome coffee!</p>
+  <p>El mejor lugar para vender tu maravilloso cafe !</p>
 
   <% if user_signed_in? %>
-    <%= link_to "View sales", sales_path, class: "btn btn-dark" %>
+    <%= link_to t('sales.view_sales'), sales_path, class: "btn btn-dark" %>
   <% else %>
     <%= link_to "Sign in", new_user_session_path, class: "btn btn-dark" %>
   <% end %>

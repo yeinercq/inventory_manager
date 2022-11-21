@@ -30,6 +30,7 @@ en:
     are_you_sure: Are you sure
     back: back to
     filter: Filter
+    home: Home
     quantity: Quantity
     unit_price: Unit price
   customers:
@@ -129,3 +130,4 @@ en:
     status_updated: Sale status was successfully changed.
     there_is_a_sale_recorded: There is a sale with recorded status.
     updated_success: Sale was successfully updated.
+    view_sales: View sales

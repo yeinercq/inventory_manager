@@ -30,6 +30,7 @@ es:
     are_you_sure: Está seguro?
     back: Volver a
     filter: Filtrar
+    home: Inicio
     quantity: Cantidad
     unit_price: Precio unitario
   customers:
@@ -129,3 +130,4 @@ es:
     status_updated: Estado de venta exitosamente actualizado.
     there_is_a_sale_recorded: Hay una venta guardada
     updated_success: Venta fue exitosamente actualizada.
+    view_sales: Ver ventas
