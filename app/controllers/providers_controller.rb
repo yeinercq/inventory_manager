@@ -13,8 +13,8 @@ class ProvidersController < ApplicationController
     @provider = current_company.providers.build(provider_params)
     if @provider.save
       respond_to do |format|
-        format.html { redirect_to providers_path, notice: "Provider was successfully created." }
-        format.turbo_stream { flash.now[:notice] = "Provider was successfully created." }
+        format.html { redirect_to providers_path, notice: t('providers.created_success') }
+        format.turbo_stream { flash.now[:notice] = t('providers.created_success') }
       end
     else
     render :new, status: :unprocessable_entity
@@ -27,8 +27,8 @@ class ProvidersController < ApplicationController
   def update
     if @provider.update(provider_params)
       respond_to do |format|
-        format.html { redirect_to providers_path, notice: "Provider was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "Provider was successfully updated." }
+        format.html { redirect_to providers_path, notice: t('providers.updated_success') }
+        format.turbo_stream { flash.now[:notice] = t('providers.updated_success') }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -38,8 +38,8 @@ class ProvidersController < ApplicationController
   def destroy
     @provider.destroy
     respond_to do |format|
-      format.html { redirect_to providers_path, notice: "Provider was successfully destroyed." }
-      format.turbo_stream { flash.now[:notice] = "Provider was successfully destroyed." }
+      format.html { redirect_to providers_path, notice: t('providers.destroyed_success') }
+      format.turbo_stream { flash.now[:notice] = t('providers.destroyed_success') }
     end
   end
 

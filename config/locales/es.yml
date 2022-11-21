@@ -1,0 +1,26 @@
+---
+es:
+  activerecord:
+    models:
+      provider:
+        one: Proveedor
+        others: Proveedores
+  common:
+    are_you_sure: Esta seguro?
+    back: Volver a
+  errors:
+    messages:
+      not_saved: No guardado
+  hello: Hello world
+  providers:
+    created_success: Proveedor creado exitosamente.
+    destroyed_success: Proveedor eliminado exitosamente.
+    edit_provider: Editar proveedor
+    form:
+      email: Correo electronico
+      name: Nombre
+      phone_number: Numero telefonico
+    new_provider: Nuevo provedor
+    plural: Proveedores
+    singular: Proveedor
+    updated_success: Proveedor actualizado exitosamente.

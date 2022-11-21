@@ -1,9 +1,9 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back to providers"), providers_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('providers.plural')}"), providers_path %>
   <div class="card shadow mt-4">
     <div class="card-body">
 
-      <h1>Edit provider</h1>
+      <h1><%= t('providers.edit_provider') %></h1>
       <%= turbo_frame_tag @provider  do%>
         <%= render "form", provider: @provider %>
       <% end %>
