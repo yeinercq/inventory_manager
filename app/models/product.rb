@@ -38,6 +38,8 @@ class Product < ApplicationRecord
   validates :name, uniqueness: { scope: :company_id, message: "has already been taken", case_sensitive: false }
   validates :price, :initial_quantity, numericality: { greater_than: 0 }
 
+  broadcasts_to ->(product) { [product.company, "products"] }, inserts_by: :prepend
+
   def current_stock
     stocks.last.quantity
   end
