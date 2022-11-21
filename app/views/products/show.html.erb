@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back to products"), products_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('products.plural')}"), products_path %>
   <div class="card mt-4">
     <div class="card-header">
       <div class="row align-items-center">
@@ -8,14 +8,14 @@
         </div>
         <% if !@product.sale_price.nil? %>
           <div class="col-12 col-md-2">
-            <h4>Sale price: <%= number_to_currency @product.sale_price.price %></h4>
+            <h4><%= t('products.sale_price') %>: <%= number_to_currency @product.sale_price.price %></h4>
           </div>
           <div class="col-12 col-md-2">
-            <%= link_to "Edit sale price", edit_product_sale_price_path(@product), class: "btn btn-primary" %>
+            <%= link_to t('products.edit_sale_price'), edit_product_sale_price_path(@product), class: "btn btn-primary" %>
           </div>
         <% else %>
           <div class="col-12 col-md-4">
-            <%= link_to "New sale price", new_product_sale_price_path(@product), class: "btn btn-primary" %>
+            <%= link_to t('products.new_sale_price'), new_product_sale_price_path(@product), class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
@@ -23,11 +23,11 @@
     <div class="card-body">
       <table class="table">
         <thead>
-          <th>Name</th>
-          <th>Brand</th>
-          <th>Unit</th>
-          <th>Size</th>
-          <th>Provider</th>
+          <th><%= t('products.name') %></th>
+          <th><%= t('products.brand') %></th>
+          <th><%= t('products.unit') %></th>
+          <th><%= t('products.size') %></th>
+          <th><%= t('providers.singular') %></th>
         </thead>
         <tbody>
           <tr>
@@ -40,7 +40,7 @@
         </tbody>
       </table>
       <div class="row mt-4">
-        Description:
+        <%= t('products.description') %>:
         <div class="col">
           <div class="card card-body">
             <td><%= simple_format @product.description %></td
@@ -49,10 +49,10 @@
       </div>
       <div class="row justify-content-center mt-2">
         <div class="col-12 col-sm-4 d-grid mt-2">
-          <%= link_to "Edit", edit_product_path(@product), class: "btn btn-secondary" %>
+          <%= link_to t('products.edit_product'), edit_product_path(@product), class: "btn btn-secondary" %>
         </div>
         <div class="col-12 col-sm-4 d-grid mt-2">
-          <%= link_to "Movement", new_product_movement_path(@product), data: { turbo_frame: dom_id(Movement.new) }, class: "btn btn-primary" %>
+          <%= link_to t('movements.singular'), new_product_movement_path(@product), data: { turbo_frame: dom_id(Movement.new) }, class: "btn btn-primary" %>
         </div>
       </div>
     </div>

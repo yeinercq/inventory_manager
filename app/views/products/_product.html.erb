@@ -7,20 +7,20 @@
         <table>
           <% if !product.sale_price.nil? %>
             <tr>
-              <td>Sale price: <b><%= number_to_currency product.sale_price.price %></b></td>
+              <td><%= t('products.sale_price') %>: <b><%= number_to_currency product.sale_price.price %></b></td>
             </tr>
           <% end %>
           <tr>
-            <td>Brand: <%= product.brand %></td>
+            <td><%= t('products.brand') %>: <%= product.brand %></td>
           </tr>
           <tr>
-            <td>Unit: <%= product.unit %></td>
+            <td><%= t('products.unit') %>: <%= product.unit %></td>
           </tr>
           <tr>
-            <td>Size: <%= product.size %></td>
+            <td><%= t('products.size') %>: <%= product.size %></td>
           </tr>
           <tr>
-            <td>Stock: <%= product.current_stock %></td>
+            <td><%= t('products.stock') %>: <%= product.current_stock %></td>
           </tr>
         </table>
       </p>

@@ -5,6 +5,9 @@ en:
       customer:
         one: Cliente
         others: Clientes
+      product:
+        one: Producto
+        other: Productos
       provider:
         one: Proveedor
         others: Proveedores
@@ -27,6 +30,30 @@ en:
     messages:
       not_saved: Not saved
   hello: Hello world
+  movements:
+    singular: Singular
+  products:
+    brand: Brand
+    description: Description
+    edit_product: Edit product
+    edit_sale_price: Edit sale price
+    form:
+      brand: Brand
+      description: Description
+      initial_stock_quantity: Initial stock quantity
+      name: Name
+      size: Size
+      stock_price: Stock price
+      unit: Unit
+    name: Name
+    new_product: New product
+    new_sale_price: New sale price
+    plural: Plural
+    sale_price: Sale price
+    singular: Producto
+    size: Size
+    stock: Stock
+    unit: Unit
   providers:
     created_success: Created success
     destroyed_success: Destroyed success

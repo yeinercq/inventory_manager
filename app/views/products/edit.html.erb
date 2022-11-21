@@ -1,9 +1,9 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back to products"), products_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('products.plural')}"), products_path %>
   <div class="card shadow mt-4">
     <div class="card-body">
 
-      <h1>Edit product</h1>
+      <h1><%= t('products.edit_product') %></h1>
 
       <%= render "form", product: @product %>
     </div>

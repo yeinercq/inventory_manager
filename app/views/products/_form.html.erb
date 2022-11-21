@@ -4,34 +4,34 @@
   <div class="form-inputs">
     <div class="row">
       <div class="col-12 col-sm-3">
-        <%= f.input :name, label: "Name", input_html: { autofocus: true } %>
+        <%= f.input :name, label: t('.name'), input_html: { autofocus: true } %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :brand, label: "Brand" %>
+        <%= f.input :brand, label: t('.brand') %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :unit, as: :select, collection: Product.units, value_method: -> (r) { r[0] } %>
+        <%= f.input :unit, label: t('.unit'),as: :select, collection: Product.units, value_method: -> (r) { r[0] } %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :size, label: "Size" %>
+        <%= f.input :size, label: t('.size') %>
       </div>
     </div>
     <div class="row">
       <div class="col-12 col-sm-3">
-        <%= f.input :provider_id, label: "Provider", as: :select, collection: Provider.all, label_method: -> (u) { u.name } %>
+        <%= f.input :provider_id, label: t('providers.singular'), as: :select, collection: Provider.all, label_method: -> (u) { u.name } %>
       </div>
       <!-- If product is persisted don't show this -->
       <% unless product.persisted? %>
       <div class="col-12 col-sm-3">
-        <%= f.input :price, label: "Price" %>
+        <%= f.input :price, label: t('.stock_price') %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :initial_quantity, label: "Initial stock quantity" %>
+        <%= f.input :initial_quantity, label: t('.initial_stock_quantity') %>
       </div>
       <% end %>
     </div>
     <div class="col">
-      <%= f.input :description %>
+      <%= f.input :description, label: t('.description') %>
     </div>
   </div>
 

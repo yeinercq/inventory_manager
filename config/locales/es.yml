@@ -5,6 +5,9 @@ es:
       customer:
         one: Cliente
         others: Clientes
+      product:
+        one: Producto
+        other: Productos
       provider:
         one: Proveedor
         others: Proveedores
@@ -27,6 +30,30 @@ es:
     messages:
       not_saved: No guardado
   hello: Hello world
+  movements:
+    singular: Movimiento
+  products:
+    brand: Marca
+    description: Descripcion
+    edit_product: Editar producto
+    edit_sale_price: Editar precio de venta
+    form:
+      brand: Marca
+      description: Descripcion
+      initial_stock_quantity: Cantidad inicial de inventario
+      name: Nombre
+      size: Tamanio
+      stock_price: Precio de entrada a inventario
+      unit: Unidad
+    name: Nombre
+    new_product: Nuevo producto
+    new_sale_price: Nuevo precio de venta
+    plural: Productos
+    sale_price: Precio de venta
+    singular: Producto
+    size: Tamanio
+    stock: Existencias
+    unit: Unidad
   providers:
     created_success: Proveedor creado exitosamente.
     destroyed_success: Proveedor eliminado exitosamente.
