@@ -1,10 +1,8 @@
-<div class="container">
-  <h1>CoopKahawa</h1>
-  <p>El mejor lugar para vender tu maravilloso cafe !</p>
-
-  <% if user_signed_in? %>
-    <%= link_to t('sales.view_sales'), sales_path, class: "btn btn-dark" %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-dark" %>
-  <% end %>
-</div>
+<!--
+<% if user_signed_in? %>
+  <%= link_to t('sales.view_sales'), sales_path, class: "btn btn-dark" %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path, class: "btn btn-dark" %>
+<% end %>
+-->
+<%= render 'pages/carousel' %>
