@@ -6,8 +6,8 @@ es:
         one: Cliente
         others: Clientes
       item:
-        one: Item
-        others: Items
+        one: Ítem
+        others: Ítems
       movement:
         ohers: Movimientos
         one: Movimiento
@@ -24,44 +24,44 @@ es:
         one: Precio de venta
         others: Precio de venta
   common:
-    action: Accion
+    action: Acción
     actions: Acciones
     all: Todos
-    are_you_sure: Esta seguro?
+    are_you_sure: Está seguro?
     back: Volver a
     filter: Filtrar
     quantity: Cantidad
     unit_price: Precio unitario
   customers:
-    created_success: Customer was successfully created.
+    created_success: Cliente fue exitosamente creado.
     destroy_customer: Eliminar cliente
-    destroyed_success: Customer was successfully destroyed.
+    destroyed_success: Cliente fue exitosamente eliminado.
     edit_customer: Editar cliente
     form:
-      address: Direccion
-      email: Correo eletronico
-      id_number: Numero de identificacion
+      address: Dirección
+      email: Correo eletrónico
+      id_number: Número de identificación
       name: Nombre
-      phone_number: Numero telefonico
+      phone_number: Número telefónico
     new_customer: Nuevo cliente
     plural: Clientes
     singular: Cliente
-    updated_success: Customer was successfully updated.
+    updated_success: Cliente fue exitosamente actualizado.
   errors:
     messages:
       not_saved: No guardado
   hello: Hello world
   items:
-    add_item: Agregar item
-    created_success: Item was successfully created.
-    destroyed_success: Destroyed success
-    edit_item_for: Editar item para
-    new_item_for: Nuevo item para
-    updated_success: Updated success
+    add_item: Agregar ítem
+    created_success: Ítem fue exitosamente creado.
+    destroyed_success: Ítem fue exitosamente eliminado.
+    edit_item_for: Editar ítem para
+    new_item_for: Nuevo ítem para
+    updated_success: Ítem fue exitosamente actualizado.
   movements:
     Total: Total
     class: Clase
-    created_success: Created success
+    created_success: Movimiento fue exitosamente creado.
     date: Fecha
     form:
       class: Clase
@@ -77,17 +77,17 @@ es:
     unit_price: Precio unitario
   products:
     brand: Marca
-    created_success: Created success
-    description: Descripcion
-    destroyed_success: Destroyed success
+    created_success: Producto fue exitosamente creado.
+    description: Descripción
+    destroyed_success: Producto fue exitosamente eliminado.
     edit_product: Editar producto
     edit_sale_price: Editar precio de venta
     form:
       brand: Marca
-      description: Descripcion
+      description: Descripción
       initial_stock_quantity: Cantidad inicial de inventario
       name: Nombre
-      size: Tamanio
+      size: Tamaño
       stock_price: Precio de entrada a inventario
       unit: Unidad
     name: Nombre
@@ -96,36 +96,36 @@ es:
     plural: Productos
     sale_price: Precio de venta
     singular: Producto
-    size: Tamanio
+    size: Tamaño
     stock: Existencias
     unit: Unidad
-    updated_success: Updated success
+    updated_success: Producto fue exitosamente actualizado.
   providers:
     created_success: Proveedor creado exitosamente.
     destroyed_success: Proveedor eliminado exitosamente.
     edit_provider: Editar proveedor
     form:
-      email: Correo electronico
+      email: Correo electrónico
       name: Nombre
-      phone_number: Numero telefonico
+      phone_number: Número telefónico
     new_provider: Nuevo provedor
     plural: Proveedores
     singular: Proveedor
     updated_success: Proveedor actualizado exitosamente.
   sale_prices:
-    created_success: Created success
+    created_success: Precio de venta fue exitosamente creado.
     edit_sale_price_to: Editar precio de venta para
     form:
       sale_price: Precion de venta
     new_sale_price_to: Nuevo precio de venta para
-    updated_success: Updated success
+    updated_success: Precio de venta fue exitosamente actualizado.
   sales:
-    created_success: Created success
-    destroyed_success: Destroyed success
+    created_success: Venta fue exitosamente creada.
+    destroyed_success: Venta fue exitosamente eliminada.
     edit_sale: Editar venta
     new_sale: Nueva venta
     plural: Ventas
     singular: Venta
-    status_updated: Status updated
-    there_is_a_sale_recorded: There is a sale recorded
-    updated_success: Updated success
+    status_updated: Estado de venta exitosamente actualizado.
+    there_is_a_sale_recorded: Hay una venta guardada
+    updated_success: Venta fue exitosamente actualizada.
