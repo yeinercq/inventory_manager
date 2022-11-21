@@ -1,9 +1,9 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back to sale"), sales_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('sales.plural')}"), sales_path %>
   <div class="card shadow mt-4">
     <div class="card-body">
 
-      <h1>Edit sale</h1>
+      <h1><%= t('sales.edit_sale') %></h1>
       <%= turbo_frame_tag @sale do %>
         <%= render "form", sale: @sale %>
       <% end %>

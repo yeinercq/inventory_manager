@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="col-12 col-md-3">
-            Client: <%= sale.client.name %>
+            <%= t('customers.singular')%>: <%= sale.client.name %>
           </div>
           <div class="col-12 col-md-3">
             <% if sale.total.present? %>

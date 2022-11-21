@@ -5,6 +5,9 @@ es:
       customer:
         one: Cliente
         others: Clientes
+      item:
+        one: Item
+        others: Items
       movement:
         ohers: Movimientos
         one: Movimiento
@@ -14,12 +17,20 @@ es:
       provider:
         one: Proveedor
         others: Proveedores
+      sale:
+        one: Venta
+        others: Ventas
       sale_price:
         one: Precio de venta
         others: Precio de venta
   common:
+    action: Accion
+    actions: Acciones
     are_you_sure: Esta seguro?
     back: Volver a
+    filter: Filtrar
+    quantity: Cantidad
+    unit_price: Precio unitario
   customers:
     destroy_customer: Eliminar cliente
     edit_customer: Editar cliente
@@ -36,6 +47,10 @@ es:
     messages:
       not_saved: No guardado
   hello: Hello world
+  items:
+    add_item: Agregar item
+    edit_item_for: Editar item para
+    new_item_for: Nuevo item para
   movements:
     Total: Total
     class: Clase
@@ -91,3 +106,8 @@ es:
     form:
       sale_price: Precion de venta
     new_sale_price_to: Nuevo precio de venta para
+  sales:
+    edit_sale: Editar venta
+    new_sale: Nueva venta
+    plural: Ventas
+    singular: Venta
