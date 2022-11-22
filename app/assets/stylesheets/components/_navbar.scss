@@ -10,6 +10,9 @@
     font-weight: bold;
     font-size: var(--font-size-xl);
     color: var(--color-text-header);
+    img {
+      height: 40px;
+    }
   }
 
   &__name {

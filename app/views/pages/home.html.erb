@@ -5,4 +5,17 @@
   <%= link_to "Sign in", new_user_session_path, class: "btn btn-dark" %>
 <% end %>
 -->
+
 <%= render 'pages/carousel' %>
+<div id="fertilizantes"class="container mt-4">
+  <div class="row">
+    <div class="col text-center text-uppercase">
+      <small>Conoce nuestros</small>
+      <h2>Fertilizantes</h2>
+      <small>Disponibles</small>
+    </div>
+  </div>
+  <div class="row row-cols-sm-2 row-cols-md-3 mb-4">
+    <%= render @products %>
+  </div>
+</div>
