@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   get 'pages/home'
-  get '/admin', to: redirect('users/sign_up')
+  get '/admin', to: redirect('users/sign_in')
   devise_for :users
   resources :providers, except: [:show]
   resources :customers

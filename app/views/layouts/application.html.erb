@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body data-bs-offset="56">
+  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="56" class="scrollspy-example" tabindex="0">
     <%= render 'layouts/navbar' %>
     <div id="flash" class="flash">
       <%= render 'layouts/messages' %>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-nav-scroll navbar-expand-lg navbar-light bg-light sticky-top">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <% if user_signed_in? %>
     <div class="container-fluid">
       <div class="navbar__brand">
@@ -8,7 +8,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <%= link_to t('common.home'), root_path, class: "nav-link" %>
           </li>
@@ -40,14 +40,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to t('common.home'), root_path, class: "nav-link" %>
+          <%= link_to t('common.home'), '#carousel', class: "nav-link" %>
         </li>
-      </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Fertilizantes", "#fertilizantes", class: "nav-link" %>
+          <%= link_to "Fertilizantes", "#fertilizers", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Nos ubicamos", "#ubication", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Contáctanos", "#contact", class: "nav-link" %>
         </li>
       </ul>
     </div>
