@@ -1,11 +1,3 @@
-<!--
-<% if user_signed_in? %>
-  <%= link_to t('sales.view_sales'), sales_path, class: "btn btn-dark" %>
-<% else %>
-  <%= link_to "Sign in", new_user_session_path, class: "btn btn-dark" %>
-<% end %>
--->
-
 <!-- Image carousel -->
 <div id="carousel">
   <%= render 'pages/carousel' %>
@@ -21,7 +13,11 @@
     </div>
   </div>
   <div class="row row-cols-sm-2 row-cols-md-3 mb-4">
-    <%= render @products %>
+    <% @home_page_products.each do |product| %>
+      <div class="container mt-2 mb-2">
+        <%= render 'pages/home_page_product', product: product %>
+      </div>
+    <% end %>
   </div>
 </section>
 

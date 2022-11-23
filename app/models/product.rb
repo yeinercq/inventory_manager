@@ -17,8 +17,6 @@
 #  company_id       :bigint           not null
 #
 class Product < ApplicationRecord
-  after_create :create_initial_stock
-
   belongs_to :user
   belongs_to :provider
   belongs_to :company
@@ -39,6 +37,7 @@ class Product < ApplicationRecord
   validates :price, :initial_quantity, numericality: { greater_than: 0 }
 
   broadcasts_to ->(product) { [product.company, "products"] }, inserts_by: :prepend
+  after_create :create_initial_stock
 
   def current_stock
     stocks.last.quantity

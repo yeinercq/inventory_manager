@@ -9,12 +9,12 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = current_company.products.build
+    @product = current_user.products.build
   end
 
   def create
-    @product = current_company.products.build(product_params)
-    @product.user = current_user
+    @product = current_user.products.build(product_params)
+    @product.company = current_company
     if @product.save
       respond_to do |format|
         format.html { redirect_to products_path, notice: t('products.created_success') }
