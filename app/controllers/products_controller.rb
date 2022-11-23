@@ -59,7 +59,8 @@ class ProductsController < ApplicationController
       :size,
       :price,
       :provider_id,
-      :initial_quantity
+      :initial_quantity,
+      :picture
     )
   end
 end

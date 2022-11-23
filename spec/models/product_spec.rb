@@ -15,6 +15,7 @@
 #  updated_at       :datetime         not null
 #  initial_quantity :integer
 #  company_id       :bigint           not null
+#  picture          :string
 #
 require 'rails_helper'
 

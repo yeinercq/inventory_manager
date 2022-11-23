@@ -33,6 +33,10 @@
     <div class="col">
       <%= f.input :description, label: t('.description') %>
     </div>
+    <div class="col mt-1">
+      Imagen
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-actions mt-3">

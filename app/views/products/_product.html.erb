@@ -1,6 +1,6 @@
 <%= turbo_frame_tag product, class: "col-md-3 mt-3" do %>
   <div class="card shadow">
-    <img src="https://www.ciamsa.com/es/wp-content/uploads/2017/10/11-52-0-208x300.png" class="card-img-top" alt="abono">
+    <%= image_tag product.picture.url if product.picture? %>
     <div class="card-body">
       <h4 class="card-title">
           <%= link_to product.name, product_path(product), data: { turbo_frame: '_top' } %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_145946) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_174514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_145946) do
     t.datetime "updated_at", null: false
     t.integer "initial_quantity"
     t.bigint "company_id", null: false
+    t.string "picture"
     t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["provider_id"], name: "index_products_on_provider_id"
     t.index ["user_id"], name: "index_products_on_user_id"

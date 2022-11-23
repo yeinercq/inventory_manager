@@ -15,6 +15,7 @@
 #  updated_at       :datetime         not null
 #  initial_quantity :integer
 #  company_id       :bigint           not null
+#  picture          :string
 #
 class Product < ApplicationRecord
   belongs_to :user
@@ -32,9 +33,12 @@ class Product < ApplicationRecord
   scope :ordered, -> { order(id: :desc) }
   scope :sale_priced, -> { joins(:sale_price) }
 
+  mount_uploader :picture, PictureUploader
+
   validates :name, :brand, :unit, :size, :price, :initial_quantity, presence: true
   validates :name, uniqueness: { scope: :company_id, message: "has already been taken", case_sensitive: false }
   validates :price, :initial_quantity, numericality: { greater_than: 0 }
+  validate :picture_size
 
   broadcasts_to ->(product) { [product.company, "products"] }, inserts_by: :prepend
   after_create :create_initial_stock
@@ -76,6 +80,14 @@ class Product < ApplicationRecord
   end
 
   private
+
+  # Validates the size of an uploaded picture.
+  def picture_size
+    if picture.size > 3.megabytes
+      errors.add(:picture, "should be less than 3MB")
+    end
+  end
+
 
   def create_initial_stock
     self.movements.create(

@@ -49,6 +49,7 @@ gem "simple_form"
 gem "aasm"
 gem 'i18n-tasks', '~> 1.0.12'
 gem 'rails-i18n'
+gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
