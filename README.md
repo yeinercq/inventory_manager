@@ -29,6 +29,10 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ![movement_products](https://user-images.githubusercontent.com/19921941/202859262-5dcdf20f-831b-48aa-acb6-33c439305b04.gif)
 
+### Load a product picture from files
+
+![load_product_picture](https://user-images.githubusercontent.com/19921941/203639597-f3dacb12-63c4-4dc7-bf02-69a65df9f32b.gif)
+
 ### Save and edit a sale price to a product
 
 ![create_edit_sale_price](https://user-images.githubusercontent.com/19921941/202859282-aae3499d-baa8-49ed-8c4a-4afee5ba9d5e.gif)
