@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <div class="row justify-content-center align-items-end">
       <div class="col-12 col-sm-3">
-        <%= f.input :product_id, label: t('products.singular'), as: :select, collection: Product.sale_priced, label_method: -> (u) { u.name } %>
+        <%= f.input :product_id, label: t('products.singular'), as: :select, collection: current_company.products.sale_priced, label_method: -> (u) { u.name } %>
       </div>
       <div class="col-12 col-sm-3">
         <%= f.input :quantity, label: t('common.quantity') %>
