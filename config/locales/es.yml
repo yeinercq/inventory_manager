@@ -14,6 +14,9 @@ es:
       product:
         one: Producto
         other: Productos
+      profile:
+        one: Perfil
+        others: Perfiles
       provider:
         one: Proveedor
         others: Proveedores
@@ -29,6 +32,8 @@ es:
     all: Todos
     are_you_sure: Está seguro?
     back: Volver a
+    description: Descripción
+    email: Correo electrónico
     filter: Filtrar
     home: Inicio
     quantity: Cantidad
@@ -101,6 +106,15 @@ es:
     stock: Existencias
     unit: Unidad
     updated_success: Producto fue exitosamente actualizado.
+  profiles:
+    edit_profile: Editar perfil
+    form:
+      description: Descripción
+      name: Nombre
+      title: Rol
+    name: Nombre
+    new_profile: Nuevo perfil
+    title: Rol
   providers:
     created_success: Proveedor creado exitosamente.
     destroyed_success: Proveedor eliminado exitosamente.

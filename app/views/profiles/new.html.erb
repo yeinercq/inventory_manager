@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; Back to home"), root_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h1><%= t('profiles.new_profile') %></h1>
+      <%= render "form", profile: @profile %>
+    </div>
+  </div>
+</div>

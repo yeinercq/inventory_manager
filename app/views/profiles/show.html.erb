@@ -1,0 +1,46 @@
+<div class="container profile shadow mb-4 pb-2">
+  <%= link_to sanitize("&larr; Back to home"), root_path %>
+  <div class="card mt-4">
+    <div class="card-header">
+      <h1><%= @profile.name %></h1>
+    </div>
+    <div class="profile__picture align-self-center mt-4 mb-4">
+      <%= image_tag(@profile.picture.url, class: "img-fluid rounded-circle mb-3 img-thumbnail shadow-sm") if @profile.picture? %>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t('profiles.name') %></th>
+            <th><%= t('profiles.title') %></th>
+            <th><%= t('common.email') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @profile.name %></td>
+            <td><%= @profile.title %></td>
+            <td><%= current_user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-12">
+          <%= t('common.description') %>:
+        </div>
+        <div class="col profile__description">
+          <p>
+            <%= @profile.description %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-12 d-grid mt-2">
+          <%= link_to t('profiles.edit_profile'), edit_profile_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

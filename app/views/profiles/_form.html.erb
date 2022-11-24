@@ -1,0 +1,25 @@
+<%= simple_form_for profile, html: { class: "form" } do |f| %>
+  <%= form_error_notification(profile) %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <%= f.input :name, label: t('.name'), input_html: { autofocus: true } %>
+      </div>
+      <div class="col-12 col-sm-6">
+        <%= f.input :title, label: t('.title') %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.input :description, label: t('.description') %>
+      <div class="col mt-1">
+        Imagen
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions mt-3">
+    <%= f.submit class: "btn btn-warning" %>
+  </div>
+<% end %>

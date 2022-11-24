@@ -14,6 +14,9 @@ en:
       product:
         one: Product
         other: Products
+      profile:
+        one: Perfil
+        others: Perfiles
       provider:
         one: Provider
         others: Providers
@@ -29,6 +32,8 @@ en:
     all: All
     are_you_sure: Are you sure
     back: back to
+    description: Description
+    email: Email
     filter: Filter
     home: Home
     quantity: Quantity
@@ -101,6 +106,15 @@ en:
     stock: Stock
     unit: Unit
     updated_success: Product was successfully updated.
+  profiles:
+    edit_profile: Edit profile
+    form:
+      description: Description
+      name: Name
+      title: Title
+    name: Name
+    new_profile: New profile
+    title: Title
   providers:
     created_success: Provider was successfully created.
     destroyed_success: Provider was successfully destroyed.

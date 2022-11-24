@@ -23,8 +23,13 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :movements, through: :products # TODO: association with movments through products
   has_many :sales, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
   def name
-    email.split('@').first.capitalize
+    if profile.nil?
+      email.split('@').first.capitalize
+    else
+      profile.name.split(' ').first.capitalize
+    end
   end
 end

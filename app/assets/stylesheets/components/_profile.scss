@@ -1,0 +1,11 @@
+.profile {
+  &__picture {
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  &__description {
+    padding: 2rem;
+  }
+}
