@@ -34,7 +34,7 @@
             </div>
             <hr class="dropdown-divider">
             <% if current_user.profile.nil? %>
-              <%= link_to profile_new_path, class: 'dropdown-item' do %>
+              <%= link_to new_profile_path, class: 'dropdown-item' do %>
               Profile
               <% end %>
             <% else %>

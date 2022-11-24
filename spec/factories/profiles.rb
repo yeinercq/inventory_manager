@@ -13,10 +13,10 @@
 #
 FactoryBot.define do
   factory :profile do
-    name { "MyString" }
-    title { "MyString" }
-    description { "MyText" }
-    picture { "MyString" }
-    user { nil }
+    name { "Name" }
+    title { "Title" }
+    description { "Description" }
+    picture { "picture_url" }
+    user
   end
 end
