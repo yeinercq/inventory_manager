@@ -1,0 +1,10 @@
+<div class="col-md-6 col-lg-3">
+  <div class="img-block mb-5">
+    <%= image_tag(user.profile.picture.url, class: "img-fluid rounded-circle mb-3 img-thumbnail shadow") if user.profile.picture? %>
+    <div class="content mt-2">
+      <h4><%= user.name %></h4>
+      <p class="text-muted"><%= user.profile.title %></p>
+      <p class="text-muted"><%= user.profile.description %></p>
+    </div>
+  </div>
+ </div>

@@ -1,0 +1,11 @@
+ <div class="container">
+   <div class="header my-5 text-uppercase">
+     <h1>Conoce a nuestro equipo </h1>
+     <p class="text-muted">Estamos listos para ayudarte</p>
+   </div>
+   <div class="row justify-content-center">
+     <% @team_users.each do |user| %>
+      <%= render 'pages/team_profile', user: user %>
+     <% end %>
+   </div>
+ </div>

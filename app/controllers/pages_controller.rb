@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @home_page_products = Product.sale_priced.ordered
+    @team_users = User.has_profile
   end
 end

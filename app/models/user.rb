@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :sales, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  scope :has_profile, -> { joins(:profile) }
+
   def name
     if profile.nil?
       email.split('@').first.capitalize
