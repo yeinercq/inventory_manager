@@ -9,7 +9,7 @@
         <table>
           <% if !product.sale_price.nil? %>
             <tr>
-              <td><%= t('products.sale_price') %>: <b><%= number_to_currency product.sale_price.price %></b></td>
+              <td><%= t('products.sale_price') %>: <b><%= number_to_currency( product.sale_price.price, unit: "$", format: "%u %n") %></b></td>
             </tr>
           <% end %>
           <tr>
