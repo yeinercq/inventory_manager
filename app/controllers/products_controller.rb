@@ -60,6 +60,7 @@ class ProductsController < ApplicationController
       :price,
       :provider_id,
       :initial_quantity,
+      :category_id,
       :picture
     )
   end

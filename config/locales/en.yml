@@ -96,6 +96,7 @@ en:
     type: Type
     unit_price: Unit price
   products:
+    available: Available
     brand: Brand
     created_success: Product was successfully created.
     description: Description
@@ -104,6 +105,7 @@ en:
     edit_sale_price: Edit sale price
     form:
       brand: Brand
+      category: Category
       description: Description
       initial_stock_quantity: Initial stock quantity
       name: Name

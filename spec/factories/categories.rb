@@ -7,7 +7,7 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  category_id :bigint           not null
+#  company_id  :bigint           not null
 #
 FactoryBot.define do
   factory :category do

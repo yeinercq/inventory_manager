@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <div class="col-12 col-sm-3">
-        <%= f.input :provider_id, label: t('providers.singular'), as: :select, collection: Provider.all, label_method: -> (u) { u.name } %>
+        <%= f.input :provider_id, label: t('providers.singular'), as: :select, collection: current_company.providers.all, label_method: -> (u) { u.name } %>
       </div>
       <!-- If product is persisted don't show this -->
       <% unless product.persisted? %>
@@ -29,6 +29,9 @@
         <%= f.input :initial_quantity, label: t('.initial_stock_quantity') %>
       </div>
       <% end %>
+      <div class="col-12 col-sm-3">
+        <%= f.input :category_id, label: t('.category'), as: :select, collection: current_company.categories.all, label_method: -> (u) { u.name } %>
+      </div>
     </div>
     <div class="col">
       <%= f.input :description, label: t('.description') %>

@@ -1,16 +1,14 @@
 <div class="container">
   <%= link_to sanitize("&larr; #{t('common.back')} #{t('products.plural')}"), products_path %>
+  <h2><%= @product.name %></h2>
   <div class="card mt-4">
     <div class="card-header">
       <div class="row align-items-center">
-        <div class="col-12 col-md-8">
-          <h2><%= @product.name %></h2>
-        </div>
         <% if !@product.sale_price.nil? %>
-          <div class="col-12 col-md-2">
+          <div class="col-12 col-md-9">
             <h4><%= t('products.sale_price') %>: <%= number_to_currency( @product.sale_price.price,unit: "$", format: "%u %n") %></h4>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-12 col-md-3">
             <%= link_to t('products.edit_sale_price'), edit_product_sale_price_path(@product), class: "btn btn-primary" %>
           </div>
         <% else %>

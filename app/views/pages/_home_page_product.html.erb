@@ -5,8 +5,12 @@
           <%= product.name %>
       </h4>
       <div class="product__badges">
-        <span class="badge bg-warning text-dark">Categoria</span>
-        <span class="badge bg-info">Disponible</span>
+        <span class="badge bg-warning text-dark">
+          <%= product.category.name %>
+        </span>
+        <% if is_available?(product) %>
+        <span class="badge bg-info text-dark"><%= t('products.available') %></span>
+        <% end %>
       </div>
       <p class="card-text">
         <table>

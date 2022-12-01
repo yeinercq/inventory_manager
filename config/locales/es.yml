@@ -96,6 +96,7 @@ es:
     type: Tipo
     unit_price: Precio unitario
   products:
+    available: Disponible
     brand: Marca
     created_success: Producto fue exitosamente creado.
     description: Descripción
@@ -104,6 +105,7 @@ es:
     edit_sale_price: Editar precio de venta
     form:
       brand: Marca
+      category: Categoría
       description: Descripción
       initial_stock_quantity: Cantidad inicial de inventario
       name: Nombre
