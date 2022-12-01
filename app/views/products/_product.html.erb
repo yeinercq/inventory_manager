@@ -1,10 +1,14 @@
 <%= turbo_frame_tag product, class: "col-md-3 mt-3" do %>
-  <div class="card shadow">
+  <div class="product card shadow">
     <%= image_tag product.picture.url if product.picture? %>
     <div class="card-body">
       <h4 class="card-title">
           <%= link_to product.name, product_path(product), data: { turbo_frame: '_top' } %>
       </h4>
+      <div class="product__badges">
+        <span class="badge bg-warning text-dark">Categoria</span>
+        <span class="badge bg-info">Disponible</span>
+      </div>
       <p class="card-text">
         <table>
           <% if !product.sale_price.nil? %>

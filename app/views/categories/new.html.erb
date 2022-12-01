@@ -1,0 +1,9 @@
+<div class="container">
+  <h2><%= t('categories.new_category') %></h2>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('categories.plural')}"), categories_path %>
+  <div class="card mt-4">
+    <div class="card-body">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

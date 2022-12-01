@@ -26,6 +26,18 @@ en:
       sale_price:
         one: Sale price
         others: Sale prices
+  categories:
+    created_success: Created success
+    description: Description
+    destroyed_success: Destroyed success
+    edit_category: Edit category
+    form:
+      description: Description
+      name: Name
+    name: Name
+    new_category: New category
+    plural: Plural
+    updated_success: Updated success
   common:
     action: Action
     actions: Actions
@@ -33,6 +45,8 @@ en:
     are_you_sure: Are you sure
     back: back to
     description: Description
+    destroy: Destroy
+    edit: Edit
     email: Email
     filter: Filter
     home: Home

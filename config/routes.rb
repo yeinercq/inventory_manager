@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     patch :trigger, on: :member
     resources :items, except: [:show, :index]
   end
+  resources :categories, except: [:show]
 end

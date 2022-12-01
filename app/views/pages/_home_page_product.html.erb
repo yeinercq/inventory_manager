@@ -1,9 +1,13 @@
-  <div class="card shadow">
+  <div class="product card shadow">
     <%= image_tag product.picture.url if product.picture? %>
     <div class="card-body">
       <h4 class="card-title">
           <%= product.name %>
       </h4>
+      <div class="product__badges">
+        <span class="badge bg-warning text-dark">Categoria</span>
+        <span class="badge bg-info">Disponible</span>
+      </div>
       <p class="card-text">
         <table>
           <% if !product.sale_price.nil? %>

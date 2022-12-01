@@ -69,6 +69,15 @@ customer = company.customers.create!(
 
 puts "Customers has been created"
 
+for n in 1..5
+  company.categories.create!(
+    name: "Category #{n}",
+    description: "Description"
+  )
+end
+
+puts "Categories has been created"
+
 user.products.create!(
   name: "15-15-15",
   brand: "Nitrosil",
@@ -78,7 +87,8 @@ user.products.create!(
   price: 980,
   provider: provider,
   initial_quantity: 100,
-  company: user.company
+  company: user.company,
+  category: Category.find(1)
 )
 
 user.products.create!(
@@ -90,7 +100,8 @@ user.products.create!(
   price: 980,
   provider: provider,
   initial_quantity: 100,
-  company: user.company
+  company: user.company,
+  category: Category.find(1)
 )
 
 user.products.create!(
@@ -102,13 +113,8 @@ user.products.create!(
   price: 980,
   provider: provider,
   initial_quantity: 100,
-  company: user.company
+  company: user.company,
+  category: Category.find(2)
 )
 
 puts "Product has been created"
-
-# user.sales.create!(
-#     client: customer
-# )
-#
-# puts "Sale has been created"

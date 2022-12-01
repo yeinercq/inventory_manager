@@ -1,0 +1,31 @@
+<div class="categories index-page container">
+  <h1><%= t('categories.plural') %></h1>
+  <div class="text-right">
+    <%= link_to t('categories.new_category'), new_category_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="card mt-2">
+    <div class="card-body">
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th><%= t('categories.name') %></th>
+            <th><%= t('categories.description') %></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td><%= category.description %></td>
+              <td><%= link_to t('common.edit'), edit_category_path(category) %></td>
+              <td><%= link_to t('common.destroy'), category, data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <br>
+      </table>
+    </div>
+  </div>
+</div>

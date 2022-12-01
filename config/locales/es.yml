@@ -26,6 +26,18 @@ es:
       sale_price:
         one: Precio de venta
         others: Precio de venta
+  categories:
+    created_success: Categoría fue exitosamente creada.
+    description: Descripción
+    destroyed_success: Categoría fue exitosamente eliminada.
+    edit_category: Editar categoría
+    form:
+      description: Descripción
+      name: Nombre
+    name: Nombre
+    new_category: Nueva categoría
+    plural: Categorías
+    updated_success: Categoría fue exitosamente actualizada.
   common:
     action: Acción
     actions: Acciones
@@ -33,6 +45,8 @@ es:
     are_you_sure: Está seguro?
     back: Volver a
     description: Descripción
+    destroy: Eliminar
+    edit: Editar
     email: Correo electrónico
     filter: Filtrar
     home: Inicio

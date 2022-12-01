@@ -16,6 +16,7 @@
 #  initial_quantity :integer
 #  company_id       :bigint           not null
 #  picture          :string
+#  category_id      :bigint
 #
 require 'rails_helper'
 
