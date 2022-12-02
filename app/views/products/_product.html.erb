@@ -6,9 +6,11 @@
           <%= link_to product.name, product_path(product), data: { turbo_frame: '_top' } %>
       </h4>
       <div class="product__badges">
+        <% if has_category?(product) %>
         <span class="badge bg-warning text-dark">
           <%= product.category.name %>
         </span>
+        <% end %>
         <% if is_available?(product) %>
         <span class="badge bg-info text-dark"><%= t('products.available') %></span>
         <% end %>
