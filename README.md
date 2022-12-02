@@ -41,7 +41,7 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ### Save and edit a sale price to a product
 
-![create_edit_sale_price](https://user-images.githubusercontent.com/19921941/202859282-aae3499d-baa8-49ed-8c4a-4afee5ba9d5e.gif)
+![create_edit_sale_price](https://user-images.githubusercontent.com/19921941/205391933-e02277f5-0dc9-4bed-9c9d-63bc5c711d8d.gif)
 
 ## Sales
 
@@ -59,7 +59,7 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ## Users
 
-### Create a user profil and upload a picture
+### Create a user profile and upload a picture
 
 ![create_user_profile](https://user-images.githubusercontent.com/19921941/203878805-660cc6df-cd2f-4265-ac23-ce7b76426cb3.gif)
 
@@ -67,4 +67,6 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ### A home single page
 
-![home_page](https://user-images.githubusercontent.com/19921941/203878858-7a51a7d0-6492-4fab-b528-21e2f776a2a6.gif)
+![home_page](https://user-images.githubusercontent.com/19921941/205393134-c0f746e9-99bb-4f6d-8f76-a394f243822f.gif)
+
+
