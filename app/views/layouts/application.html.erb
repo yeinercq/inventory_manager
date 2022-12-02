@@ -15,5 +15,6 @@
       <%= render 'layouts/messages' %>
     </div>
     <%= yield %>
+    <%= turbo_frame_tag "remote_modal", target: "_top" %>
   </body>
 </html>

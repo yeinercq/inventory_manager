@@ -9,11 +9,11 @@
             <h4><%= t('products.sale_price') %>: <%= number_to_currency( @product.sale_price.price,unit: "$", format: "%u %n") %></h4>
           </div>
           <div class="col-12 col-md-3">
-            <%= link_to t('products.edit_sale_price'), edit_product_sale_price_path(@product), class: "btn btn-primary" %>
+            <%= link_to t('products.edit_sale_price'), edit_product_sale_price_path(@product), data: { turbo_frame: 'remote_modal' }, class: "btn btn-primary" %>
           </div>
         <% else %>
           <div class="col-12 col-md-4">
-            <%= link_to t('products.new_sale_price'), new_product_sale_price_path(@product), class: "btn btn-primary" %>
+            <%= link_to t('products.new_sale_price'), new_product_sale_price_path(@product), data: { turbo_frame: 'remote_modal' }, class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

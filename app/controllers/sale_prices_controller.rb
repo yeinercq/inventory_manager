@@ -10,10 +10,13 @@ class SalePricesController < ApplicationController
     @sale_price = SalePrice.new(sale_price_params)
     @sale_price.product = @product
 
-    if @sale_price.save
-      redirect_to product_path(@product), notice: t('sale_prices.created_success')
-    else
-     render :new, stutus: :unprocessable_entity
+    respond_to do |format|
+      if @sale_price.save
+        format.html { redirect_to product_path(@product), notice: t('sale_prices.created_success') }
+      else
+        format.html { render :new, stutus: :unprocessable_entity }
+        format.turbo_stream { render :form_update, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -21,10 +24,13 @@ class SalePricesController < ApplicationController
   end
 
   def update
-    if @sale_price.update(sale_price_params)
-      redirect_to product_path(@product), notice: t('sale_prices.updated_success')
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @sale_price.update(sale_price_params)
+        format.html { redirect_to product_path(@product), notice: t('sale_prices.updated_success') }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render :form_update, status: :unprocessable_entity }
+      end
     end
   end
 
