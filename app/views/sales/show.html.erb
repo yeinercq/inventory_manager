@@ -2,9 +2,11 @@
   <%= link_to sanitize("&larr; #{t('common.back')} #{t('sales.plural')}"), sales_path %>
   <div class="card shadow mt-4">
     <div class="card-header">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-12 col-sm-8">
-          <%= t('sales.singular') %>: <%= @sale.code %>
+          <%= t('sales.singular') %>: <%= @sale.code %> <br>
+          <%= t('user.name') %>: <%= @sale.user.name %> <br>
+          <%= t('sales.date') %>: <%= l(@sale.created_at, format: :long) %>
         </div>
         <div id="sale-status" class="col-6 col-sm-2">
           <%= render "sales/status_tag", sale: @sale %>

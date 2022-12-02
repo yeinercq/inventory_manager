@@ -152,6 +152,7 @@ en:
     updated_success: Sale price was successfully updated.
   sales:
     created_success: Sale was successfully created.
+    date: Date
     destroyed_success: Sale was successfully destroyed.
     edit_sale: Edit sale
     new_sale: New sale
@@ -161,3 +162,5 @@ en:
     there_is_a_sale_recorded: There is a sale with recorded status.
     updated_success: Sale was successfully updated.
     view_sales: View sales
+  user:
+    name: Seller

@@ -152,6 +152,7 @@ es:
     updated_success: Precio de venta fue exitosamente actualizado.
   sales:
     created_success: Venta fue exitosamente creada.
+    date: Fecha
     destroyed_success: Venta fue exitosamente eliminada.
     edit_sale: Editar venta
     new_sale: Nueva venta
@@ -161,3 +162,5 @@ es:
     there_is_a_sale_recorded: Hay una venta guardada
     updated_success: Venta fue exitosamente actualizada.
     view_sales: Ver ventas
+  user:
+    name: Vendedor
