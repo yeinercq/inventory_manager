@@ -10,11 +10,27 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="56" class="scrollspy-example" tabindex="0">
-    <%= render 'layouts/navbar' %>
     <div id="flash" class="flash">
       <%= render 'layouts/messages' %>
     </div>
-    <%= yield %>
+    <% if user_signed_in? %>
+    <%= render "layouts/sidebar" %>
+    <% else %>
+    <%= render 'layouts/navbar' %>
+    <% end %>
+    <div class="container-fluid p-0">
+      <div class="row">
+        <main class="main-container col min-vh-100">
+          <!-- Sidebar toggler -->
+          <% if user_signed_in? %>
+            <button class="sidebar-toggle btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+                <i class="bi bi-list" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">Menu</i>
+            </button>
+          <% end %>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
     <%= turbo_frame_tag "remote_modal", target: "_top" %>
   </body>
 </html>

@@ -1,0 +1,52 @@
+.sidebar-toggle {
+  margin: 1rem;
+  z-index: 999;
+  position: fixed;
+  top: -4px;
+  right: 4px;
+  background: var(--color-text-header);
+}
+
+#offcanvas {
+  width: 22%;
+  background: var(--color-text-header);
+  display: flex;
+  color: white;
+
+  .offcanvas-header {
+    button {
+      background-color: white;
+    }
+  }
+
+  .offcanvas-body {
+    ul.nav {
+      list-style: none;
+      padding: 2rem 2rem;
+      li {
+        margin-top: 4px;
+        a {
+          color: white;
+          &:hover {
+            color: var(--color-text-header);
+            background: white;
+          }
+        }
+      }
+    }
+  }
+
+  .offcanvas-footer {
+    position: fixed;
+    bottom: 1rem;
+
+    &__user-photo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    .btn {
+      margin-left: 1rem;
+    }
+  }
+}
