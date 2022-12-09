@@ -13,14 +13,14 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  # let!(:product) { create(:product) }
+  let!(:product) { create(:product) }
   # let!(:sale) { create(:sale) }
-  # subject(:item) { build(:item, product: product, sale: sale) }
-  #
-  # describe 'associations' do
-  #   it { should belong_to(:sale) }
-  #   it { should belong_to(:product) }
-  # end
+  subject(:item) { create(:item, product: product) }
+
+  describe 'associations' do
+    it { should belong_to(:sale) }
+    it { should belong_to(:product) }
+  end
   #
   # describe 'validations' do
   #   it { should validate_presence_of(:quantity) }

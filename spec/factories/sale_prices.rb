@@ -11,7 +11,7 @@
 #
 FactoryBot.define do
   factory :sale_price do
-    price { "9.99" }
-    product { nil }
+    price { 1020 }
+    product
   end
 end

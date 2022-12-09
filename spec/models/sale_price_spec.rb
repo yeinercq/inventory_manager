@@ -12,5 +12,25 @@
 require 'rails_helper'
 
 RSpec.describe SalePrice, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:sale_price) { build(:sale_price) }
+
+  describe 'associations' do
+    it { should belong_to(:product) }
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of(:price) }
+  end
+
+  it 'is persisted' do
+    expect(sale_price.save).to eq true
+  end
+
+  context 'after save' do
+    before(:each) { sale_price.save }
+
+    it 'has a transition record' do
+      expect(sale_price.transitions.count).to eq 1
+    end
+  end
 end

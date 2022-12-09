@@ -21,21 +21,21 @@ RSpec.describe Sale, type: :model do
   end
 
   context "with params from scratch" do
-    let!(:company) { create :company }
+    let!(:company_1) { create :company }
     let!(:client) { create :customer }
     let!(:user) { create :user }
-    let(:product_1) { create :product, company: company, unit: :bulto }
-    let(:product_2) { create :product, company: company, unit: :bulto }
-    let(:item_1) { create( :item, product: product_1) }
-    let(:item_2) { create( :item, product: product_2) }
+    let(:product_1) { create :product, company: company_1, unit: :bulto }
+    let(:product_2) { create :product, company: company_1, unit: :bulto }
 
     subject(:sale) do
       described_class.new(
         user: user,
-        client: client,
-        items: [item_1, item_2]
+        client: client
       )
     end
+
+    let(:item_1) { create( :item, sale_id: sale.id, product: product_1) }
+    let(:item_2) { create( :item, sale_id: sale.id, product: product_2) }
 
     it { is_expected.to be_valid }
 
@@ -50,8 +50,7 @@ RSpec.describe Sale, type: :model do
   end
 
   context "with params from factory bot" do
-    let!(:items_count) { 5 }
-    subject(:sale) { create(:sale_with_items, items_count: items_count) }
+    subject(:sale) { build(:sale_with_items) }
 
     it 'is persisted' do
       expect(sale.save).to eq true
@@ -61,7 +60,7 @@ RSpec.describe Sale, type: :model do
       before(:each) { sale.save }
 
       it 'has items added' do
-        expect(sale.items.count).to eq items_count
+        expect(sale.items.count).to eq 1
       end
     end
   end

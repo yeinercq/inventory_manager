@@ -22,6 +22,9 @@ class Item < ApplicationRecord
   validates :unit_price, numericality: { greater_than: 0 }
   validates :product_id, uniqueness: { scope: :sale_id, message: "has already been taken" }
   validates_with Stocks::ValidatesStock
+  # validate do |item|
+  #   Stocks::ValidatesStock.new(item).validate
+  # end
 
   def create_movement
     self.product.movements.create(
@@ -41,5 +44,4 @@ class Item < ApplicationRecord
   def total_price
     quantity * unit_price
   end
-
 end

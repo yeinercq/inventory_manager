@@ -13,9 +13,9 @@
 #
 FactoryBot.define do
   factory :profile do
-    name { "Name" }
-    title { "Title" }
-    description { "Description" }
+    name { Faker::Name.name }
+    title { Faker::Company.profession }
+    description { Faker::Company.profession }
     picture { "picture_url" }
     user
   end

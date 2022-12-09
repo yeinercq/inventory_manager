@@ -16,23 +16,10 @@ FactoryBot.define do
   factory :sale do
     user
     association :client, factory: :customer
-    # invoice_with_items will create items data after the invoice has been created
-    factory :sale_with_items do
-      # items_count is declared as a transient attribute available in the
-      # callback via the evaluator
-      transient do
-        items_count { 3 }
-      end
-      # the after(:create) yields two values; the innvoice instance itself and the
-      # evaluator, which stores all values from the factory, including transient
-      # attributes; `create_list`'s second argument is the number of records
-      # to create and we make sure the invoice is associated properly to the item
-      after(:build) do |sale, evaluator|
-        create_list(:item, evaluator.items_count, sale: sale)
 
-        # You may need to reload the record here, depending on your application
-        sale.reload
-      end
+    # user_with_posts will create post data after the user has been created
+    factory :sale_with_items do
+      items { [association(:item)] }
     end
   end
 end

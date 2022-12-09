@@ -25,10 +25,11 @@ FactoryBot.define do
     description { Faker::Commerce.material }
     size { "50Kg" }
     price { Faker::Commerce.price }
-    initial_quantity { 100 }
+    initial_quantity { 10 }
     user
-    provider
     company
+    provider
+    category
 
     trait :kilo do
       unit { 1 }

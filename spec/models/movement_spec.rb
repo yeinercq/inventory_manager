@@ -15,10 +15,7 @@
 require 'rails_helper'
 
 RSpec.describe Movement, type: :model do
-  let(:initial_quantity) { 10 }
-  let(:price) { 100 }
-  let(:product) { create(:product, initial_quantity: initial_quantity, price: price) }
-  subject(:movement) { build(:movement, product: product, quantity: 15)}
+  subject(:movement) { build(:movement, quantity: 15)}
 
   describe 'associations' do
     it { should belong_to(:product) }
