@@ -27,6 +27,10 @@ class Movement < ApplicationRecord
   validates :unit_price, numericality: { greater_than: 0 }
   validates_with Stocks::ValidatesStock, if: :is_output?
 
+  # validate do |item|
+  #   Stocks::ValidatesStock.new(item).validate
+  # end
+
   def total_price
     quantity * unit_price
   end

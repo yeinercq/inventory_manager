@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Products", type: :request do
   let(:company) { create :company }
-  let(:user) { create( :user, company: company ) }
+  let(:user) { create( :user_with_profile, company: company ) }
+
 
   before(:each) { sign_in user }
 
@@ -22,6 +23,7 @@ RSpec.describe "Products", type: :request do
 
   describe "POST /products" do
     let(:provider) { create :provider }
+    let(:category) { create :category }
     let(:params) do
       {
         "product" => {
@@ -32,7 +34,8 @@ RSpec.describe "Products", type: :request do
           "provider_id" => provider.id.to_s,
           "price" => "150000",
           "initial_quantity" => "100",
-          "description" => "description"
+          "description" => "description",
+          "category_id" => category.id
         }
       }
     end

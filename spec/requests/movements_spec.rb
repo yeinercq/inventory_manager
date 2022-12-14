@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Movements", type: :request do
   let(:company) { create :company }
-  let(:user) { create( :user, company: company ) }
   let(:product) { create( :product, user: user, company: company) }
+  let(:user) { create( :user_with_profile, company: company ) }
   before(:each) { sign_in user }
+
 
   describe "GET /products/id/movements/new" do
     it "render new template" do

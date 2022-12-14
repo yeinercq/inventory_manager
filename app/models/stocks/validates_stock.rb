@@ -1,7 +1,6 @@
 class Stocks::ValidatesStock < ActiveModel::Validator
   def validate(record)
-    product = Product.find(record.product.id)
-    current_stock = product.current_stock
+    current_stock = record.product.current_stock
     # binding.pry
     if current_stock < record.quantity
       record.errors.add :base, "There's not enough stock. Max.: #{current_stock}"

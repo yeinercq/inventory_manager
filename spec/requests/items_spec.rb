@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "Items", type: :request do
   let(:company) { create :company }
   let(:sale) { create :sale, user: user }
-  let(:user) { create( :user, company: company ) }
-
+  let(:user) { create( :user_with_profile, company: company ) }
+  
   before(:each) { sign_in user }
 
-  describe "GET /sales/:id/imtes/new" do
+  describe "GET /sales/:id/items/new" do
     it "render new template" do
       get new_sale_item_path(sale)
       expect(response).to render_template(:new)

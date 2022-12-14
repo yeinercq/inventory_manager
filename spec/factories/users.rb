@@ -18,5 +18,9 @@ FactoryBot.define do
     password { "123456" }
     password_confirmation { "123456" }
     company
+
+    factory :user_with_profile do
+      profile { association(:profile) }
+    end
   end
 end

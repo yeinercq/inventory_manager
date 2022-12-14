@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Customers", type: :request do
   let(:company) { create :company }
-  let(:user) { create( :user, company: company ) }
+  let(:user) { create( :user_with_profile, company: company ) }
 
   before(:each) { sign_in user }
 

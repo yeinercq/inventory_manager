@@ -16,7 +16,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     title { Faker::Company.profession }
     description { Faker::Company.profession }
-    picture { "picture_url" }
+    picture { "imagen.png" }
     user
   end
 end
