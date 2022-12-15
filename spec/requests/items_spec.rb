@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Items", type: :request do
   let(:company) { create :company }
-  let(:sale) { create :sale, user: user }
   let(:user) { create( :user_with_profile, company: company ) }
-  
+  let(:sale) { create :sale, user: user }
+
   before(:each) { sign_in user }
 
   describe "GET /sales/:id/items/new" do
@@ -20,8 +20,7 @@ RSpec.describe "Items", type: :request do
       {
         "item" => {
           "product_id" => product.id.to_s,
-          "quantity" => "1",
-          "unit_price" => "12"
+          "quantity" => "1"
         }
       }
     end
