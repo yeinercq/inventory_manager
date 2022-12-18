@@ -50,7 +50,7 @@ class Sale < ApplicationRecord
       transitions from: :confirmada, to: :pagada
     end
 
-    event :engregar do
+    event :entregar do
       transitions from: :pagada, to: :entregada
     end
   end
