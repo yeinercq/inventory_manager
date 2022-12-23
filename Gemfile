@@ -51,6 +51,10 @@ gem 'i18n-tasks', '~> 1.0.12'
 gem 'rails-i18n'
 gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
 gem 'mini_magick'
+gem 'sucker_punch', '~> 3.0'
+gem 'vcr'
+gem 'webmock'
+gem 'aws-sdk-s3'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

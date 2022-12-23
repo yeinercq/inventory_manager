@@ -15,7 +15,7 @@ RSpec.describe "Items", type: :request do
   end
 
   describe "POST /sales/:id/items" do
-    let(:product) { create :product }
+    let(:product) { create :product_with_sale_price }
     let(:params) do
       {
         "item" => {
@@ -30,7 +30,7 @@ RSpec.describe "Items", type: :request do
       expect(response).to redirect_to(assigns(:sale))
       follow_redirect!
       expect(response).to render_template(:show)
-      expect(response.body).to include("Item was successfully created.")
+      expect(response.body).to include(I18n.t('items.created_success'))
     end
   end
 end

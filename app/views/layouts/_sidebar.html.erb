@@ -38,7 +38,9 @@
     <div class="offcanvas-footer">
       <div class="dropdown">
         <a href="#" class="btn btn-light dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= image_tag (current_user.profile.picture.url), class: "offcanvas-footer__user-photo" if current_user.profile.picture? %>
+          <% unless current_user.profile.nil? %>
+            <%= image_tag (current_user.profile.picture.url), class: "offcanvas-footer__user-photo" if current_user.profile.picture? %>
+          <% end %>
           <strong class="d-none d-md-inline"><%= current_user.name %></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">

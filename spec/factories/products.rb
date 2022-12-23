@@ -45,5 +45,9 @@ FactoryBot.define do
       product.unit = "bulto"
       product.save
     end
+
+    factory :product_with_sale_price do
+      sale_price { association(:sale_price) }
+    end
   end
 end

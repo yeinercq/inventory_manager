@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'factory_bot_rails'
 require 'database_cleaner-active_record'
 require 'capybara/rails'
+require 'vcr'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 Shoulda::Matchers.configure do |config|
@@ -16,6 +17,13 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = "spec/vcr"
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.debug_logger = $stderr
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
