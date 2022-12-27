@@ -7,11 +7,12 @@
 #  file_path  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  key        :string
 #
 FactoryBot.define do
   factory :export do
     status { :initialized }
     file_path { "report_path" }
-    initialize_with { Export.new(key: 'some_report') }
+    key { 'some_report' }
   end
 end

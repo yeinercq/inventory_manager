@@ -4,11 +4,12 @@ RSpec.describe Reports::CsvReportGeneratorService do
   describe '#generate', :vcr do
     let(:export) { create(:export) }
     subject(:csv_generator) { described_class.new(export: export) }
-    # let(:client) { Aws::S3::Client.new }
-    let(:client) { AMAZON_S3_CLIENT }
-    let(:report_file) { client.get_object export.file_path }
+    let(:bucket) { Rails.application.credentials.dig(:aws, :bucket) }
+    let(:s3_resource) { AMAZON_S3_RESOURCE }
+    let(:s3_obj) { s3_resource.bucket(bucket).object(export.file_path) }
+    let(:report_file) { s3_obj.get.body.string }
     let(:csv_file_data) { CSV.parse report_file }
-    let(:csv_expected_data) { [] } # Here we may define expected data
+    let(:csv_expected_data) { [['headers'], ['report_body']] } # Here we may define expected data
 
     context 'with a valid export' do
       # before(:each) { csv_generator.generate }

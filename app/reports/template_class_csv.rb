@@ -1,4 +1,6 @@
 class TemplateClassCsv
+  require 'csv'
+  
   def initialize(csv)
     @csv = csv
   end

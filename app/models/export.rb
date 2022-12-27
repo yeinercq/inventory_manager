@@ -7,11 +7,7 @@
 #  file_path  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  key        :string
 #
 class Export < ApplicationRecord
-  attr_accessor :key
-  #
-  # def initialize(hash)
-  #   self.key = hash[:key]
-  # end
 end

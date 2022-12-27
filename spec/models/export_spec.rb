@@ -7,6 +7,7 @@
 #  file_path  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  key        :string
 #
 require 'rails_helper'
 

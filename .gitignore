@@ -37,3 +37,6 @@
 
 # Ignore uploaded test images.
 /public/uploads
+
+# Ignore vcr test
+/spec/vcr/*
