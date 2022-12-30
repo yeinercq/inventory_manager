@@ -2,7 +2,13 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = current_company.customers.ordered
+    # @customers = current_company.customers.ordered
+    # @customers = current_company.customers.where("id_number LIKE ?", "%#{params[:search]}%")
+    if params[:query].present?
+      @customers = current_company.customers.where("id_number LIKE ?", "#{params[:query]}%")
+    else
+      @customers = current_company.customers.ordered
+    end
   end
 
   def show
