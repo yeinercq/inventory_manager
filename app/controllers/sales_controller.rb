@@ -76,7 +76,8 @@ class SalesController < ApplicationController
   end
 
   private
-
+  
+  # A list of the param names that can be used for filtering the Product list
   def filtering_params(params)
     params.slice(:status, :client, :code)
   end

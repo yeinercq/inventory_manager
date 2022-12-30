@@ -13,15 +13,17 @@
 #  company_id   :bigint           not null
 #
 class Customer < ApplicationRecord
-  belongs_to :company
+  include Filterable
 
-  # has_many :purchases, class_name: 'Sale', dependent: :destroy
+  belongs_to :company
 
   validates :name, :email, :phone_number, :id_number, :address, presence: true
   validates :name, :email, uniqueness: {scope: :company_id, message: "has already been taken", case_sensitive: false}
   validates :phone_number, numericality: { only_integer: true, greater_than: 0 }
 
   scope :ordered, -> { order(id: :desc) }
+  scope :filter_by_id_number, -> (id_number) { where('id_number LIKE ?', "#{id_number}%") }
+  scope :filter_by_company_id, -> (company_id) { where('company_id = ?', company_id) }
 
   broadcasts_to ->(customer) { [customer.company, "customers"] }, inserts_by: :prepend
 

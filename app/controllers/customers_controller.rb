@@ -4,11 +4,15 @@ class CustomersController < ApplicationController
   def index
     # @customers = current_company.customers.ordered
     # @customers = current_company.customers.where("id_number LIKE ?", "%#{params[:search]}%")
-    if params[:query].present?
-      @customers = current_company.customers.where("id_number LIKE ?", "#{params[:query]}%")
-    else
-      @customers = current_company.customers.ordered
-    end
+
+    # if params[:id_number].present?
+    #   @customers = current_company.customers.filter_by_id_number(params[:id_number])
+    # else
+    #   @customers = current_company.customers.ordered
+    # end
+
+    # .filter() receives keys->values to filter sale index
+    @customers = Customer.filter(filtering_params(params)).filter_by_company_id(current_company.id).ordered
   end
 
   def show
@@ -53,6 +57,10 @@ class CustomersController < ApplicationController
   end
 
   private
+  # A list of the param names that can be used for filtering the Product list
+  def filtering_params(params)
+    params.slice(:id_number)
+  end
 
   def set_customer
     @customer = current_company.customers.find(params[:id])
