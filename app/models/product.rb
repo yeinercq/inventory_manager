@@ -19,6 +19,8 @@
 #  category_id      :bigint
 #
 class Product < ApplicationRecord
+  include Filterable
+
   belongs_to :user
   belongs_to :provider
   belongs_to :company
@@ -34,6 +36,9 @@ class Product < ApplicationRecord
 
   scope :ordered, -> { order(id: :desc) }
   scope :sale_priced, -> { joins(:sale_price) }
+  scope :filter_by_name, -> (name) { where('name LIKE ?', "%#{name}%") }
+  scope :filter_by_company_id, -> (company_id) { where('company_id = ?', company_id) }
+
 
   mount_uploader :picture, PictureUploader
 

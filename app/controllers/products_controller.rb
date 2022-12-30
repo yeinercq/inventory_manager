@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = current_company.products.ordered
+    # @products = current_company.products.ordered
+    @products = Product.filter(filtering_params(params)).filter_by_company_id(current_company.id).ordered
   end
 
   def show
@@ -45,6 +46,11 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  # A list of the param names that can be used for filtering the Product list
+  def filtering_params(params)
+    params.slice(:name)
+  end
 
   def set_product
     @product = current_company.products.find(params[:id])

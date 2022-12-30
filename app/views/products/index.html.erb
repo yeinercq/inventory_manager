@@ -3,7 +3,18 @@
 <div class="container">
   <div class="header">
     <h1><%= t('products.plural') %></h1>
-    <%= link_to t('products.new_product'), new_product_path, data: {turbo_frame: dom_id(Product.new)}, class: "btn btn-primary" %>
+    <div class="row">
+      <div class="col-12 col-sm-4 col-md-6">
+        <%= link_to t('products.new_product'), new_product_path, data: {turbo_frame: dom_id(Product.new)}, class: "btn btn-primary mb-2" %>
+      </div>
+      <!-- Search form to filter customers by id_number -->
+      <div class="col-12 col-sm-8 col-md-6 container-fluid">
+        <%= form_with( url: products_path, method: :get, data: {turbo_frame: 'products'}, class: 'd-flex' ) do |form| %>
+          <%= form.text_field :name, placeholder: "Search by product name", class: 'form-control me-2' %>
+          <%= form.submit "Search", class: "btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <%= turbo_frame_tag Product.new %>
   <%= turbo_frame_tag "products", class: "row row-cols-sm-2 row-cols-md-3 mb-4" do %>
