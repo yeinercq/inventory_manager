@@ -2,7 +2,8 @@ class ProvidersController < ApplicationController
   before_action :set_provider, only: [:edit, :update, :destroy]
 
   def index
-    @providers = current_company.providers.ordered
+    # @providers = current_company.providers.ordered
+    @providers = Provider.filter(filtering_params(params)).filter_by_company_id(current_company.id).ordered
   end
 
   def new
@@ -44,6 +45,10 @@ class ProvidersController < ApplicationController
   end
 
   private
+
+  def filtering_params(params)
+    params.slice(:name)
+  end
 
   def set_provider
     @provider = current_company.providers.find(params[:id])

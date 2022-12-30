@@ -11,6 +11,8 @@
 #  company_id   :bigint           not null
 #
 class Provider < ApplicationRecord
+  include Filterable
+  
   belongs_to :company
   has_many :products, dependent: :destroy
 
@@ -19,6 +21,8 @@ class Provider < ApplicationRecord
   validates :phone_number, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   scope :ordered, -> { order(id: :desc) }
+  scope :filter_by_name, -> (name) { where('name LIKE ?', "%#{name}%") }
+  scope :filter_by_company_id, -> (company_id) { where('company_id = ?', company_id) }
 
   broadcasts_to ->(provider) { [provider.company, "providers"] }, inserts_by: :prepend
 

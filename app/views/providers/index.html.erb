@@ -3,8 +3,20 @@
 <div class="container">
   <div class="header">
     <h1><%= t('providers.plural') %></h1>
-    <%= link_to t('providers.new_provider'), new_provider_path, data: {turbo_frame: dom_id(Provider.new)}, class: "btn btn-primary" %>
+    <div class="row">
+      <div class="col-12 col-sm-4 col-md-6">
+        <%= link_to t('providers.new_provider'), new_provider_path, data: {turbo_frame: dom_id(Provider.new)}, class: "btn btn-primary mb-2" %>
+      </div>
+      <!-- Search form to filter customers by id_number -->
+      <div class="col-12 col-sm-8 col-md-6 container-fluid">
+        <%= form_with( url: providers_path, method: :get, data: {turbo_frame: 'providers'}, class: 'd-flex' ) do |form| %>
+          <%= form.text_field :name, placeholder: "Search by provider name", class: 'form-control me-2' %>
+          <%= form.submit "Search", class: "btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
   </div>
+
   <%= turbo_frame_tag Provider.new %>
   <%= turbo_frame_tag "providers" do %>
     <%= render @providers %>
