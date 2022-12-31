@@ -5,9 +5,42 @@
     <%= link_to t('sales.new_sale'), new_sale_path, data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>
   </div>
 
-  <%= render "sales/filter_options" %>
   <%= turbo_frame_tag Sale.new %>
-  <%= turbo_frame_tag "sales" do %>
-    <%= render @sales %>
-  <% end %>
+  <div class="row">
+    <!-- Search form to filter customers by id_number -->
+    <div class="container col-12 col-md-4 mt-2">
+      <div class="card shadow-sm">
+        <div class="card-body row row-cols-1">
+          <h4>Sales filters</h4>
+          <hr>
+          <div class="col">
+            <%= form_with( url: sales_path, method: :get, data: {turbo_frame: 'sales', turbo_action: 'advance'} ) do |form| %>
+            <%= form.text_field :client_id_number, placeholder: "Search by sale client identification", class: 'form-control mb-2' %>
+            <%= form.text_field :status, placeholder: "Search by sale status", class: 'form-control mb-2' %>
+            <%= form.text_field :code, placeholder: "Search by sale code", class: 'form-control mb-2' %>
+
+            <div class="row">
+              <div class="col">
+                <%= form.label :start_date %>
+                <%= form.date_field :start_date, class: 'form-control' %>
+              </div>
+              <div class="col">
+                <%= form.label :end_date %>
+                <%= form.date_field :end_date, class: 'form-control' %>
+              </div>
+            </div>
+
+            <%= form.submit "Search", class: "btn btn-warning my-2" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <%= turbo_frame_tag "sales" do %>
+        <%= render @sales %>
+      <% end %>
+    </div>
+  </div>
 </div>

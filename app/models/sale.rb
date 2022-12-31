@@ -14,6 +14,7 @@
 #
 class Sale < ApplicationRecord
   include AASM
+  # include Filterable
 
   belongs_to :user
   belongs_to :client, class_name: 'Customer'
@@ -27,8 +28,10 @@ class Sale < ApplicationRecord
 
   scope :ordered,-> { order(id: :desc) }
   scope :filter_by_status, ->(status) { where("status = ?", status) }
-  scope :filter_by_client, ->(client) { where("client = ?", client) }
   scope :filter_by_code, ->(code) { where("code = ?", code) }
+  scope :filter_by_client_id_number, ->(client_id_number) { joins(:client).where("id_number = ?", client_id_number) }
+  scope :filter_by_date, ->(start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date) }
+  scope :filter_by_company_id, -> (company_id) { joins(:user).joins(:company).where('company_id = ?', company_id) }
 
   broadcasts_to ->(sale) { [sale.company, "sales"] }, inserts_by: :prepend
 
