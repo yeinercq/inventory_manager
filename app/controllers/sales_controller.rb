@@ -14,6 +14,9 @@ class SalesController < ApplicationController
     filtering_params(params).each do |key, value|
       @sales = current_company.sales.public_send("filter_by_#{key}", value).ordered if value.present?
     end
+    if params[:start_date].present? and params[:end_date].present?
+      @sales =  @sales.filter_by_date(params[:start_date], params[:end_date])
+    end
 
     # @sales = Sale.filter(filtering_params(params))
   end
@@ -81,7 +84,7 @@ class SalesController < ApplicationController
 
   # A list of the param names that can be used for filtering the Product list
   def filtering_params(params)
-    params.slice(:status, :client_id_number, :code, :date)
+    params.slice(:status, :client_id_number, :code)
   end
 
   def set_sale
