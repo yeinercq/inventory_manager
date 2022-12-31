@@ -55,7 +55,7 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ### Filter sales per status
 
-![filter_sales](https://user-images.githubusercontent.com/19921941/202859325-f311ff60-1d75-427e-9c4d-3ad0d2b31cd4.gif)
+![filter_sales](https://user-images.githubusercontent.com/19921941/210157784-f658afd6-687c-44f1-a01d-9a45ce66f0e1.gif)
 
 ## Users
 
