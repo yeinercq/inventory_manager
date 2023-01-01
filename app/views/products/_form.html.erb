@@ -10,7 +10,7 @@
         <%= f.input :brand, label: t('.brand') %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :unit, label: t('.unit'),as: :select, collection: Product.units, value_method: -> (r) { r[0] } %>
+        <%= f.input :unit, label: t('.unit'),as: :select, collection: Product.units, value_method: -> (r) { r[0] }, input_html: { class: 'form-select' } %>
       </div>
       <div class="col-12 col-sm-3">
         <%= f.input :size, label: t('.size') %>
@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <div class="col-12 col-sm-3">
-        <%= f.input :provider_id, label: t('providers.singular'), as: :select, collection: current_company.providers.all, label_method: -> (u) { u.name } %>
+        <%= f.input :provider_id, label: t('providers.singular'), as: :select, collection: current_company.providers.all, label_method: -> (u) { u.name }, input_html: { class: 'form-select' } %>
       </div>
       <!-- If product is persisted don't show this -->
       <% unless product.persisted? %>
@@ -30,7 +30,7 @@
       </div>
       <% end %>
       <div class="col-12 col-sm-3">
-        <%= f.input :category_id, label: t('.category'), as: :select, collection: current_company.categories.all, label_method: -> (u) { u.name } %>
+        <%= f.input :category_id, label: t('.category'), as: :select, collection: current_company.categories.all, label_method: -> (u) { u.name }, input_html: { class: 'form-select' } %>
       </div>
     </div>
     <div class="col">

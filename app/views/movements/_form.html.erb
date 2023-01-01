@@ -4,10 +4,10 @@
   <div class="form-inputs">
     <div class="row align-movements-end">
       <div class="col-12 col-sm-3">
-        <%= f.input :mov_type, label: t('.movement'), as: :select, collection: Movement.mov_types, value_method: -> (r) { r[0] } %>
+        <%= f.input :mov_type, label: t('.movement'), as: :select, collection: Movement.mov_types, value_method: -> (r) { r[0] },input_html: { class: 'form-select' } %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :mov_sub_type, label: t('.class'), as: :select, collection: Movement.mov_sub_types, value_method: -> (r) { r[0] } %>
+        <%= f.input :mov_sub_type, label: t('.class'), as: :select, collection: Movement.mov_sub_types, value_method: -> (r) { r[0] }, input_html: { class: 'form-select' } %>
       </div>
       <div class="col-12 col-sm-3">
         <%= f.input :quantity, label: t('.quantity') %>
