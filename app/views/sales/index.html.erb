@@ -1,94 +1,17 @@
 <%= turbo_stream_from current_company, "sales" %>
 <div class="container">
-  <div class="row">
-
-      <!-- Sales (Monthly) -->
-    <div class="col-xl-3 col-md-6 mb-3">
-      <div class="card balance-card shadow py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                Sales (Monthly)
-              </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">
-                $40,000
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="bi bi-coin"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sales (Annualy) -->
-    <div class="col-xl-3 col-md-6 mb-3">
-      <div class="card balance-card shadow py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                Sales (Annualy)
-              </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">
-                $4'000,000
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="bi bi-cash-coin"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Earings (Monthly) -->
-    <div class="col-xl-3 col-md-6 mb-3">
-      <div class="card balance-card shadow py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                Earnings (Monthly)
-              </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">
-                $4'000,000
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="bi bi-cash-coin"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Earings (Annualy) -->
-    <div class="col-xl-3 col-md-6 mb-3">
-      <div class="card balance-card shadow py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                Earnings (Annualy)
-              </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">
-                $4'000,000
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="bi bi-cash-coin"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
   <div class="header">
     <h1><%= t('sales.plural') %></h1>
+      <div id="sale-balance" class="row">
+        <!-- Sales (last month) -->
+        <%= show_balance_card('Sales (last month)', Sale.total_sales_last_month) %>
+
+        <!-- Sales (this month) -->
+        <%= show_balance_card('Sales (this month)', Sale.total_sales_this_month) %>
+
+        <!-- Sales (this year) -->
+        <%= show_balance_card('Sales (this year)', Sale.total_sales_this_year) %>
+      </div>
     <div class="row d-flex">
       <div class="col">
         <%= link_to t('sales.new_sale'), new_sale_path, data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>

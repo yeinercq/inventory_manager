@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <div class="row align-items-end">
       <div class="col-12 col-sm-8">
-        <%= f.input :client_id, label: t('customers.singular'), as: :select, collection: current_company.customers.all, label_method: -> (u) { u.name } %>
+        <%= f.input :client_id, label: t('customers.singular'), as: :select, collection: current_company.customers.all, label_method: -> (u) { u.name }, input_html: {class: 'form-select'} %>
       </div>
       <div class="form-actions col-12 col-sm-4 mt-2">
         <%= link_to sales_path do %>

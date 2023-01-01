@@ -3,26 +3,29 @@
     <div class="card shadow-sm">
       <div class="card-body">
         <div class="row align-items-center">
+          <div class="col-12 col-md-3">
+              <%= link_to sale.code, sale_path(sale), data: { turbo_frame: '_top' } %>
+          </div>
+          <div class="col-12 col-md-2 d-flex justify-content-center">
+            <span class="sale-status sale-status__<%= sale.status %>"><%= sale.status %></span>
+          </div>
           <div class="col-12 col-md-4">
             <div class="col">
-              <%= link_to sale.code, sale_path(sale), data: { turbo_frame: '_top' } %>
+              <%= t('customers.singular')%>: <%= sale.client.name %>
             </div>
             <div class="col">
-              <span class="sale-status sale-status__<%= sale.status %>"><%= sale.status %></span>
+              <%= t('sales.date') %>: <%= l(sale.created_at, format: :long) %>
+            </div>
+            <div class="col">
+              <% if sale.total.present? %>
+              Total: <%= number_to_currency sale.total %>
+              <% end %>
             </div>
           </div>
-          <div class="col-12 col-md-3">
-            <%= t('customers.singular')%>: <%= sale.client.name %>
-          </div>
-          <div class="col-12 col-md-3">
-            <% if sale.total.present? %>
-            Total: <%= number_to_currency sale.total %>
-            <% end %>
-          </div>
           <% if sale.guardada? %>
-          <div class="col-12 col-md-2">
+          <div class="col-12 col-md-3 d-flex justify-content-end">
             <%= link_to edit_sale_path(sale) do %>
-            <div class="btn btn-info">
+            <div class="btn btn-info me-2">
               <i class="bi bi-pencil-square"></i>
             </div>
             <% end %>
