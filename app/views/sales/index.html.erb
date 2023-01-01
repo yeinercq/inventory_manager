@@ -2,6 +2,16 @@
 <div class="container">
   <div class="header">
     <h1><%= t('sales.plural') %></h1>
+      <div id="sale-balance" class="row">
+        <!-- Sales (last month) -->
+        <%= show_balance_card('Sales (last month)', Sale.total_sales_last_month) %>
+
+        <!-- Sales (this month) -->
+        <%= show_balance_card('Sales (this month)', Sale.total_sales_this_month) %>
+
+        <!-- Sales (this year) -->
+        <%= show_balance_card('Sales (this year)', Sale.total_sales_this_year) %>
+      </div>
     <div class="row d-flex">
       <div class="col">
         <%= link_to t('sales.new_sale'), new_sale_path, data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>

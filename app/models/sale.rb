@@ -39,6 +39,31 @@ class Sale < ApplicationRecord
     items.sum(&:total_price)
   end
 
+  def self.total_sales
+    all.sum(&:total_price)
+  end
+
+  def self.total_sales_this_month
+    first_of_month = Date.current.beginning_of_month.beginning_of_day
+    last_of_month = Date.current.end_of_month.end_of_day
+    where('created_at BETWEEN ? AND ?', first_of_month, last_of_month).where('status != ? AND status !=
+ ?', 'guardada', 'confirmada').sum(&:total_price)
+  end
+
+  def self.total_sales_last_month
+    first_of_month = (Date.current - 1.months).beginning_of_month.beginning_of_day
+    last_of_month = (Date.current - 1.months).end_of_month.end_of_day
+    where('created_at BETWEEN ? AND ?', first_of_month, last_of_month).where('status != ? AND status !=
+ ?', 'guardada', 'confirmada').sum(&:total_price)
+  end
+
+  def self.total_sales_this_year
+    first_of_year = Date.current.beginning_of_year.beginning_of_day
+    last_of_year = Date.current.end_of_month.end_of_year
+    where('created_at BETWEEN ? AND ?', first_of_year, last_of_year).where('status != ? AND status !=
+ ?', 'guardada', 'confirmada').sum(&:total_price)
+  end
+
   aasm column: :status do
     state :guardada, initial: true
     state :confirmada, :pagada, :entregada
