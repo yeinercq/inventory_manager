@@ -41,7 +41,7 @@ class Movement < ApplicationRecord
     amount = filter_by_date(
       (Date.current - 1.months).beginning_of_month.beginning_of_day,
       (Date.current - 1.months).end_of_month.end_of_day
-    ).joins(:stock).sum(&:unit_price)
+    ).where(mov_sub_type: 4).joins(:stock).sum(&:unit_price)
 
     total_arnings = Sale.total_last_month - amount
   end
@@ -50,18 +50,18 @@ class Movement < ApplicationRecord
     amount = filter_by_date(
       Date.current.beginning_of_month.beginning_of_day,
       Date.current.end_of_month.end_of_day
-    ).joins(:stock).sum(&:unit_price)
+    ).where(mov_sub_type: 4).joins(:stock).sum(&:unit_price)
 
-    total_arnings = Sale.total_last_month - amount
+    total_arnings = Sale.total_this_month - amount
   end
 
   def self.total_earnings_this_year
     amount = filter_by_date(
       Date.current.beginning_of_year.beginning_of_day,
       Date.current.end_of_month.end_of_year
-    ).joins(:stock).sum(&:unit_price)
+    ).where(mov_sub_type: 4).joins(:stock).sum(&:unit_price)
 
-    total_arnings = Sale.total_last_month - amount
+    total_arnings = Sale.total_this_year - amount
   end
 
   def create_stock

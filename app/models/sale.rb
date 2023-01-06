@@ -46,7 +46,7 @@ class Sale < ApplicationRecord
   def self.available_states
     aasm.states.map(&:name)
   end
-  
+
   aasm column: :status do
     state :guardada, initial: true
     state :confirmada, :pagada, :entregada
