@@ -2,16 +2,48 @@
 <div class="container">
   <div class="header">
     <h1><%= t('sales.plural') %></h1>
-      <div id="sale-balance" class="row">
+    <section class="balance">
+      <div class="row">
+        <h3>Quick Balance</h3>
         <!-- Sales (last month) -->
-        <%= show_balance_card('Sales (last month)', Sale.total_sales_last_month) %>
+        <%= show_balance_card('Sales (last month)', Sale.total_last_month) %>
 
         <!-- Sales (this month) -->
-        <%= show_balance_card('Sales (this month)', Sale.total_sales_this_month) %>
+        <%= show_balance_card('Sales (this month)', Sale.total_this_month) %>
 
         <!-- Sales (this year) -->
-        <%= show_balance_card('Sales (this year)', Sale.total_sales_this_year) %>
+        <%= show_balance_card('Sales (this year)', Sale.total_this_year) %>
+        <!-- Sales (this year) -->
       </div>
+      <div class="row shadow mb-3">
+        <div class="col">
+          <table class="table table-striped table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Last month</th>
+                <th scope="col">This month</th>
+                <th scope="col">This year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Sales</th>
+                <td><%= number_to_currency(Sale.total_last_month, unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Sale.total_this_month,unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Sale.total_this_year, unit: "$", format: "%u %n") %></td>
+              </tr>
+              <tr>
+                <th scope="row">Raw earnings</th>
+                <td><%= number_to_currency(Movement.total_earnings_last_month, unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Movement.total_earnings_this_month, unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Movement.total_earnings_this_year, unit: "$", format: "%u %n") %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
     <div class="row d-flex">
       <div class="col">
         <%= link_to t('sales.new_sale'), new_sale_path, data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>

@@ -23,6 +23,9 @@
             </tr>
           <% end %>
           <tr>
+            <td><%= t('products.stock_price') %>: <b><%= number_to_currency( product.current_unit_price, unit: "$", format: "%u %n") %></b></td>
+          </tr>
+          <tr>
             <td><%= t('products.brand') %>: <%= product.brand %></td>
           </tr>
           <tr>

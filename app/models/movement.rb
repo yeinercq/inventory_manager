@@ -27,12 +27,41 @@ class Movement < ApplicationRecord
   validates :unit_price, numericality: { greater_than: 0 }
   validates_with Stocks::ValidatesStock, if: :is_output?
 
+  scope :filter_by_date, ->(start_date, end_date) { where("movements.created_at >= ? AND movements.created_at <= ?", start_date, end_date) }
+
   # validate do |item|
   #   Stocks::ValidatesStock.new(item).validate
   # end
 
   def total_price
     quantity * unit_price
+  end
+
+  def self.total_earnings_last_month
+    amount = filter_by_date(
+      (Date.current - 1.months).beginning_of_month.beginning_of_day,
+      (Date.current - 1.months).end_of_month.end_of_day
+    ).joins(:stock).sum(&:unit_price)
+
+    total_arnings = Sale.total_last_month - amount
+  end
+
+  def self.total_earnings_this_month
+    amount = filter_by_date(
+      Date.current.beginning_of_month.beginning_of_day,
+      Date.current.end_of_month.end_of_day
+    ).joins(:stock).sum(&:unit_price)
+
+    total_arnings = Sale.total_last_month - amount
+  end
+
+  def self.total_earnings_this_year
+    amount = filter_by_date(
+      Date.current.beginning_of_year.beginning_of_day,
+      Date.current.end_of_month.end_of_year
+    ).joins(:stock).sum(&:unit_price)
+
+    total_arnings = Sale.total_last_month - amount
   end
 
   def create_stock
@@ -55,6 +84,8 @@ class Movement < ApplicationRecord
       stock.save
     end
   end
+
+  private
 
   def is_output?
     mov_type == "output"

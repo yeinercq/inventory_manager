@@ -14,7 +14,7 @@
 #
 class Sale < ApplicationRecord
   include AASM
-  # include Filterable
+  include Sales::TotalPerDateRange
 
   belongs_to :user
   belongs_to :client, class_name: 'Customer'
@@ -30,8 +30,8 @@ class Sale < ApplicationRecord
   scope :filter_by_status, ->(status) { where("status = ?", status) }
   scope :filter_by_code, ->(code) { where("code = ?", code) }
   scope :filter_by_client_id_number, ->(client_id_number) { joins(:client).where("id_number = ?", client_id_number) }
-  scope :filter_by_date, ->(start_date, end_date) { where("sales.created_at >= ? AND sales.created_at <= ?", start_date, end_date) }
   scope :filter_by_company_id, -> (company_id) { joins(:user).joins(:company).where('company_id = ?', company_id) }
+  scope :filter_by_date, ->(start_date, end_date) { where("sales.created_at >= ? AND sales.created_at <= ?", start_date, end_date) }
 
   broadcasts_to ->(sale) { [sale.company, "sales"] }, inserts_by: :prepend
 
@@ -43,27 +43,10 @@ class Sale < ApplicationRecord
     all.sum(&:total_price)
   end
 
-  def self.total_sales_this_month
-    first_of_month = Date.current.beginning_of_month.beginning_of_day
-    last_of_month = Date.current.end_of_month.end_of_day
-    where('created_at BETWEEN ? AND ?', first_of_month, last_of_month).where('status != ? AND status !=
- ?', 'guardada', 'confirmada').sum(&:total_price)
+  def self.available_states
+    aasm.states.map(&:name)
   end
-
-  def self.total_sales_last_month
-    first_of_month = (Date.current - 1.months).beginning_of_month.beginning_of_day
-    last_of_month = (Date.current - 1.months).end_of_month.end_of_day
-    where('created_at BETWEEN ? AND ?', first_of_month, last_of_month).where('status != ? AND status !=
- ?', 'guardada', 'confirmada').sum(&:total_price)
-  end
-
-  def self.total_sales_this_year
-    first_of_year = Date.current.beginning_of_year.beginning_of_day
-    last_of_year = Date.current.end_of_month.end_of_year
-    where('created_at BETWEEN ? AND ?', first_of_year, last_of_year).where('status != ? AND status !=
- ?', 'guardada', 'confirmada').sum(&:total_price)
-  end
-
+  
   aasm column: :status do
     state :guardada, initial: true
     state :confirmada, :pagada, :entregada
@@ -94,9 +77,7 @@ class Sale < ApplicationRecord
     )
   end
 
-  def self.available_states
-    aasm.states.map(&:name)
-  end
+  private
 
   def generate_code
     Sales::GenerateCode.new.call(self)

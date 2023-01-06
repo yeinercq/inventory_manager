@@ -6,8 +6,9 @@
       <div class="row align-items-center">
         <% if !@product.sale_price.nil? %>
           <div class="col-12 col-md-9">
-            <h4><%= t('products.sale_price') %>: <%= number_to_currency( @product.sale_price.price,unit: "$", format: "%u %n") %></h4>
-            <h4><%= t('products.stock') %>: <%= @product.current_stock %></h4>
+            <h5><%= t('products.sale_price') %>: <%= number_to_currency( @product.sale_price.price,unit: "$", format: "%u %n") %></h5>
+            <h5><%= t('products.stock_price') %>: <%= number_to_currency( @product.current_unit_price,unit: "$", format: "%u %n") %></h5>
+            <h5><%= t('products.stock') %>: <%= @product.current_stock %></h5>
           </div>
           <div class="col-12 col-md-3">
             <%= link_to t('products.edit_sale_price'), edit_product_sale_price_path(@product), data: { turbo_frame: 'remote_modal' }, class: "btn btn-primary" %>
