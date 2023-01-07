@@ -27,6 +27,10 @@ class Sale < ApplicationRecord
   before_create :generate_code
 
   scope :ordered,-> { order(id: :desc) }
+  scope :valid_countable, -> { where('status != ? AND status != ?', 'guardada', 'confirmada') }
+  scope :last_month, -> { filter_by_date((Date.current - 1.months).beginning_of_month.beginning_of_day, (Date.current - 1.months).end_of_month.end_of_day) }
+  scope :this_month, -> { filter_by_date(Date.current.beginning_of_month.beginning_of_day, Date.current.end_of_month.end_of_day) }
+  scope :this_year, -> { filter_by_date(Date.current.beginning_of_year.beginning_of_day, Date.current.end_of_year.end_of_day) }
   scope :filter_by_status, ->(status) { where("status = ?", status) }
   scope :filter_by_code, ->(code) { where("code = ?", code) }
   scope :filter_by_client_id_number, ->(client_id_number) { joins(:client).where("id_number = ?", client_id_number) }
@@ -37,6 +41,12 @@ class Sale < ApplicationRecord
 
   def total_price
     items.sum(&:total_price)
+  end
+
+  def total_earning
+    earning = []
+    items.each { |i| earning << i.movement.earning_amount }
+    earning.sum
   end
 
   def self.total_sales

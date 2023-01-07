@@ -35,9 +35,9 @@
               </tr>
               <tr>
                 <th scope="row">Raw earnings</th>
-                <td><%= number_to_currency(Movement.total_earnings_last_month, unit: "$", format: "%u %n") %></td>
-                <td><%= number_to_currency(Movement.total_earnings_this_month, unit: "$", format: "%u %n") %></td>
-                <td><%= number_to_currency(Movement.total_earnings_this_year, unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Sale.total_earnings_last_month, unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Sale.total_earnings_this_month,unit: "$", format: "%u %n") %></td>
+                <td><%= number_to_currency(Sale.total_earnings_this_year, unit: "$", format: "%u %n") %></td>
               </tr>
             </tbody>
           </table>

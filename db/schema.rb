@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_23_233944) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_215045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_233944) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_movements_on_item_id"
     t.index ["product_id"], name: "index_movements_on_product_id"
   end
 
@@ -165,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_233944) do
   add_foreign_key "customers", "companies"
   add_foreign_key "items", "products"
   add_foreign_key "items", "sales"
+  add_foreign_key "movements", "items"
   add_foreign_key "movements", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "companies"

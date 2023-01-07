@@ -16,6 +16,7 @@ class Item < ApplicationRecord
 
   belongs_to :sale
   belongs_to :product
+  has_one :movement, dependent: :destroy
 
   validates :quantity, :unit_price, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
@@ -27,18 +28,19 @@ class Item < ApplicationRecord
   # end
 
   def create_movement
-    self.product.movements.create(
+    Movement.create(
       mov_type: "output",
       mov_sub_type: "sale",
       quantity: quantity,
       unit_price: unit_price,
       total: total_price,
+      product_id: product_id,
+      item_id: id
     )
   end
 
   def destroy_movement
-    mov = self.product.movements.where('product_id = ?', product.id).last
-    mov.destroy
+    movement.destroy
   end
 
   def total_price

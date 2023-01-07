@@ -11,11 +11,13 @@
 #  product_id   :bigint           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  item_id      :bigint
 #
 class Movement < ApplicationRecord
   after_create :create_stock
 
   belongs_to :product
+  belongs_to :item, optional: true
 
   has_one :stock, dependent: :destroy
 
@@ -28,6 +30,7 @@ class Movement < ApplicationRecord
   validates_with Stocks::ValidatesStock, if: :is_output?
 
   scope :filter_by_date, ->(start_date, end_date) { where("movements.created_at >= ? AND movements.created_at <= ?", start_date, end_date) }
+  scope :filter_by_sale, ->(sale_id) { joins(:item).where("sale_id = ?", sale_id) }
 
   # validate do |item|
   #   Stocks::ValidatesStock.new(item).validate
@@ -37,31 +40,8 @@ class Movement < ApplicationRecord
     quantity * unit_price
   end
 
-  def self.total_earnings_last_month
-    amount = filter_by_date(
-      (Date.current - 1.months).beginning_of_month.beginning_of_day,
-      (Date.current - 1.months).end_of_month.end_of_day
-    ).where(mov_sub_type: 4).joins(:stock).sum(&:unit_price)
-
-    total_arnings = Sale.total_last_month - amount
-  end
-
-  def self.total_earnings_this_month
-    amount = filter_by_date(
-      Date.current.beginning_of_month.beginning_of_day,
-      Date.current.end_of_month.end_of_day
-    ).where(mov_sub_type: 4).joins(:stock).sum(&:unit_price)
-
-    total_arnings = Sale.total_this_month - amount
-  end
-
-  def self.total_earnings_this_year
-    amount = filter_by_date(
-      Date.current.beginning_of_year.beginning_of_day,
-      Date.current.end_of_month.end_of_year
-    ).where(mov_sub_type: 4).joins(:stock).sum(&:unit_price)
-
-    total_arnings = Sale.total_this_year - amount
+  def earning_amount
+    total - (stock.unit_price * quantity)
   end
 
   def create_stock
