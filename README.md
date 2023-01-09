@@ -57,6 +57,10 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ![filter_sales](https://user-images.githubusercontent.com/19921941/210157784-f658afd6-687c-44f1-a01d-9a45ce66f0e1.gif)
 
+### Quick balance
+
+![quick_saleP_balance](https://user-images.githubusercontent.com/19921941/211398977-61a98c15-13e8-4432-b599-8c288c92ff19.png)
+
 ## Users
 
 ### Create a user profile and upload a picture
