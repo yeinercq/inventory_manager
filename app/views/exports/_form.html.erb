@@ -1,0 +1,16 @@
+<%= simple_form_for export do |f| %>
+  <%= form_error_notification(export) %>
+
+  <%= f.input :key, label: "Model", input_html: { autofocus: true } %>
+
+  <%= f.fields_for :data_filters do |ff| %>
+
+    <%= ff.label :start_date %>
+    <%= ff.date_field :start_date, class: 'form-control' %>
+
+    <%= ff.label :end_date %>
+    <%= ff.date_field :end_date, class: 'form-control' %>
+  <% end %>
+
+  <%= f.submit "Generate", class: "btn btn-warning my-2"%>
+<% end %>

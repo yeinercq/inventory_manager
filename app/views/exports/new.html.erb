@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; Back"), exports_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h1>Report</h1>
+      <%= render "form", export: @export %>
+    </div>
+  </div>
+</div>

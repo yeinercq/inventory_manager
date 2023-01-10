@@ -17,4 +17,5 @@ Rails.application.routes.draw do
     resources :items, except: [:show, :index]
   end
   resources :categories, except: [:show]
+  resources :exports, only: [:new, :create, :index]
 end

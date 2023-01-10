@@ -118,3 +118,21 @@ user.products.create!(
 )
 
 puts "Product has been created"
+
+for i in 1..3
+  sale = user.sales.create!(
+    client_id: Customer.find(i).id
+  )
+end
+
+puts "sales has been created"
+
+for i in 1..3
+  user.exports.create!(
+    status: "recordered",
+    key: "sale_report",
+    data_filters: {model: "Sale", start_date: (Date.current.beginning_of_day - (i * 3).days), end_date: Date.current.end_of_day}
+  )
+end
+
+puts "Exports has been created"
