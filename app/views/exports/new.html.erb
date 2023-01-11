@@ -1,8 +1,8 @@
 <div class="container">
-  <%= link_to sanitize("&larr; Back"), exports_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('exports.plural')}"), exports_path %>
   <div class="card shadow mt-4">
     <div class="card-body">
-      <h1>Report</h1>
+      <h1><%= t('exports.singular') %></h1>
       <%= render "form", export: @export %>
     </div>
   </div>

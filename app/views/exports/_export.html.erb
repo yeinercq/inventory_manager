@@ -10,10 +10,10 @@
             <%= export.created_at %>
           </div>
           <div class="col">
-            Status: <%= export.status %>
+            <%= t('common.status') %>: <%= export.status %>
           </div>
           <div class="col">
-            File: <%= link_to "Download", export.file_path %>
+            <%= t('common.file') %>: <%= link_to t('common.download'), export.file_path %>
           </div>
         </div>
 

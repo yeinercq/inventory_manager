@@ -46,11 +46,26 @@ en:
     back: back to
     description: Description
     destroy: Destroy
+    download: Download
     edit: Edit
     email: Email
+    end_date: End date
+    file: File
     filter: Filter
+    generate: Generate
     home: Home
+    last_month: Last month
     quantity: Quantity
+    quick_balance: Quick balance
+    raw_earnings: Raw earnings
+    search:
+      client_identification: Client identification
+      code: Code
+      status: Status
+    start_date: Start date
+    status: Status
+    this_month: This month
+    this_year: This year
     unit_price: Unit price
   customers:
     created_success: Customer was successfully created.
@@ -70,6 +85,11 @@ en:
   errors:
     messages:
       not_saved: Not saved
+  exports:
+    model: Model
+    new_export: New export
+    plural: Plural
+    singular: Singular
   hello: Hello world
   items:
     add_item: Add item
@@ -77,6 +97,7 @@ en:
     destroyed_success: Item was successfully destroyed.
     edit_item_for: Edit item for
     new_item_for: New item for
+    singular: Singular
     updated_success: Item was successfully updated.
   movements:
     Total: Total
@@ -120,6 +141,7 @@ en:
     singular: Product
     size: Size
     stock: Stock
+    stock_price: Stock price
     unit: Unit
     updated_success: Product was successfully updated.
   profiles:
