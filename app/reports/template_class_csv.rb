@@ -1,8 +1,9 @@
 class TemplateClassCsv
   require 'csv'
-  
-  def initialize(csv)
+
+  def initialize(csv, data_filters)
     @csv = csv
+    @data_filters = data_filters
   end
 
   def generate_report
@@ -12,7 +13,7 @@ class TemplateClassCsv
 
   private
 
-  attr_accessor :csv
+  attr_accessor :csv, :data_filters
 
   def add_headers
     raise NotImplementedError

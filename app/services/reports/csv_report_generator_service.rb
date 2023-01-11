@@ -21,7 +21,7 @@ class Reports::CsvReportGeneratorService
 
   def write_to_csv_file
     @csv = CSV.generate do |csv|
-      report_generator_class = CsvReportFactory.for(export.key).new(csv)
+      report_generator_class = CsvReportFactory.for(export.key).new(csv, export.data_filters)
       report_generator_class.generate_report
     end
   end

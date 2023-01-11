@@ -16,7 +16,8 @@ class Reports::S3Uploader
       acl: 'public-read',
       content_disposition: 'attachment'
     )
-    return file_full_path
+    # return file_full_path
+    return obj.public_url
   rescue StandardError => e
     puts "Error uploading object: #{e.message}"
   end

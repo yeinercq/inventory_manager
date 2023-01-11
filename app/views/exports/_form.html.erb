@@ -1,7 +1,7 @@
 <%= simple_form_for export do |f| %>
   <%= form_error_notification(export) %>
 
-  <%= f.input :key, label: "Model", input_html: { autofocus: true } %>
+  <%= f.input :key, label: "Model", as: :select, collection: Export.valid_keys, input_html: { autofocus: true, class: 'form-select' } %>
 
   <%= f.fields_for :data_filters do |ff| %>
 
@@ -10,6 +10,7 @@
 
     <%= ff.label :end_date %>
     <%= ff.date_field :end_date, class: 'form-control' %>
+
   <% end %>
 
   <%= f.submit "Generate", class: "btn btn-warning my-2"%>

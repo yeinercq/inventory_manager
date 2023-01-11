@@ -10,7 +10,7 @@ class ExportsController < ApplicationController
   def create
     @export = current_user.exports.build(export_params)
     if @export.save
-      redirect_to exports_path, notice: "Successful"
+      redirect_to exports_path, notice: "Successful created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,4 +21,5 @@ class ExportsController < ApplicationController
   def export_params
     params.require(:export).permit(:key, data_filters: [:start_date, :end_date])
   end
+
 end

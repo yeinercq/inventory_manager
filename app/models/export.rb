@@ -14,9 +14,16 @@
 class Export < ApplicationRecord
   belongs_to :user
 
-  defore_create :generate_report
+  after_create :generate_report
+
+  VALID_KEYS = [ "sales_report" ]
+  validates :key, inclusion: { in: VALID_KEYS }
 
   def generate_report
     CsvReportGeneratorJob.new.perform(id)
+  end
+
+  def self.valid_keys
+    VALID_KEYS
   end
 end
