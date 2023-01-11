@@ -1,5 +1,5 @@
 class SalesReport < TemplateClassCsv
-  require 'pry'
+  # require 'pry'
 
   private
 
