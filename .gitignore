@@ -40,3 +40,5 @@
 
 # Ignore vcr test
 /spec/vcr/*
+
+dump.rdb

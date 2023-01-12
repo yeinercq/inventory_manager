@@ -86,6 +86,7 @@ en:
     messages:
       not_saved: Not saved
   exports:
+    created_success: Created success
     model: Model
     new_export: New export
     plural: Plural

@@ -3,20 +3,27 @@
     <div class="card-body">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col">
-            <%= export.key %>
+          <div class="col-12 col-sm-3">
+            Tipo de reporte: <b><%= export.key.gsub!("_report", "") %></b>
           </div>
-          <div class="col">
-            <%= export.created_at %>
+          <div class="col-12 col-sm-3">
+            Fecha de reporte: <%= export.created_at %>
           </div>
-          <div class="col">
+          <div class="col-12 col-sm-3">
             <%= t('common.status') %>: <%= export.status %>
           </div>
-          <div class="col">
+          <div class="col-12 col-sm-3">
+            <div class="col">
+              Fecha de inicio: <%= export.data_filters["start_date"] %>
+            </div>
+            <div class="col">
+              Fecha de finalización: <%= export.data_filters["end_date"] %>
+            </div>
+          </div>
+          <div class="col-12 col-sm-3">
             <%= t('common.file') %>: <%= link_to t('common.download'), export.file_path %>
           </div>
         </div>
-
       </div>
     </div>
   </div>

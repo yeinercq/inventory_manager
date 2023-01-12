@@ -10,7 +10,7 @@ class ExportsController < ApplicationController
   def create
     @export = current_user.exports.build(export_params)
     if @export.save
-      redirect_to exports_path, notice: "Successful created"
+      redirect_to exports_path, notice: t('exports.created_success')
     else
       render :new, status: :unprocessable_entity
     end

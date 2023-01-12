@@ -1,4 +1,4 @@
-class SalesReport < TemplateClassCsv
+class VentasReport < TemplateClassCsv
   # require 'pry'
 
   private

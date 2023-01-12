@@ -16,7 +16,7 @@ class Export < ApplicationRecord
 
   after_create :generate_report
 
-  VALID_KEYS = [ "sales_report" ]
+  VALID_KEYS = [ "ventas_report" ]
   validates :key, inclusion: { in: VALID_KEYS }
 
   def generate_report

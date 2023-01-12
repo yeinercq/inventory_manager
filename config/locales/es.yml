@@ -56,16 +56,16 @@ es:
     home: Inicio
     last_month: Mes pasado
     quantity: Cantidad
-    quick_balance: Balance rapido
+    quick_balance: Balance rápido
     raw_earnings: Ganancias brutas
     search:
       client_identification: Buscar por identificación cliente
-      code: Buscar por codigo de factura
+      code: Buscar por código de factura
       status: Buscar por estado de factura
     start_date: Fecha de inicio
     status: Estado
     this_month: Este mes
-    this_year: Esta ano
+    this_year: Esta año
     unit_price: Precio unitario
   customers:
     created_success: Cliente fue exitosamente creado.
@@ -86,6 +86,7 @@ es:
     messages:
       not_saved: No guardado
   exports:
+    created_success: Reporte fue exitosamente creado.
     model: Modelo
     new_export: Nuevo reporte
     plural: Reportes
@@ -141,7 +142,7 @@ es:
     singular: Producto
     size: Tamaño
     stock: Existencias
-    stock_price: Stock price
+    stock_price: Precio de inventario
     unit: Unidad
     updated_success: Producto fue exitosamente actualizado.
   profiles:
