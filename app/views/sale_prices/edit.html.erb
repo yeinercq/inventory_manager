@@ -11,6 +11,6 @@
 </div>
 -->
 
-<%= render 'remote_modal', title: t('sale_prices.edit_sale_price_to') do %>
+<%= render 'layouts/remote_modal', title: t('sale_prices.edit_sale_price_to') do %>
   <%= render 'form', product: @product, sale_price: @sale_price %>
 <% end %>

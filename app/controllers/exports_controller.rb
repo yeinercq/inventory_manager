@@ -9,10 +9,13 @@ class ExportsController < ApplicationController
 
   def create
     @export = current_user.exports.build(export_params)
-    if @export.save
-      redirect_to exports_path, notice: t('exports.created_success')
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @export.save
+        format.html { redirect_to exports_path, notice: t('exports.created_success') }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :form_update, status: :unprocessable_entity }
+      end
     end
   end
 
