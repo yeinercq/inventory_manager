@@ -61,6 +61,12 @@ This is a small project to manage a product inventory. You can save, delete and 
 
 ![quick_saleP_balance](https://user-images.githubusercontent.com/19921941/211398977-61a98c15-13e8-4432-b599-8c288c92ff19.png)
 
+## Reports
+
+You can make reports about sales in a time range
+
+![reports-generate](https://user-images.githubusercontent.com/19921941/212223782-4d35c9ee-b5f5-4b0a-a689-f01cba218d74.gif)
+
 ## Users
 
 ### Create a user profile and upload a picture
