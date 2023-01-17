@@ -14,6 +14,7 @@ class Company < ApplicationRecord
   has_many :customers, dependent: :destroy
   has_many :sales, through: :users
   has_many :categories, dependent: :destroy
+  has_many :wallets, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 end

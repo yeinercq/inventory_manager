@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_230103) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_003536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -152,6 +152,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_230103) do
     t.index ["movement_id"], name: "index_stocks_on_movement_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer "transaction_type"
+    t.decimal "amount", precision: 10, scale: 2
+    t.bigint "wallet_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["wallet_id"], name: "index_transactions_on_wallet_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -164,6 +175,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_230103) do
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "company_id", null: false
+    t.index ["company_id"], name: "index_wallets_on_company_id"
   end
 
   add_foreign_key "categories", "companies"
@@ -183,5 +202,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_230103) do
   add_foreign_key "sales", "customers", column: "client_id"
   add_foreign_key "sales", "users"
   add_foreign_key "stocks", "movements"
+  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions", "wallets"
   add_foreign_key "users", "companies"
+  add_foreign_key "wallets", "companies"
 end
