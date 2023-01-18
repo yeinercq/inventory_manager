@@ -9,6 +9,7 @@
 #  user_id          :bigint           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  options          :hstore
 #
 FactoryBot.define do
   factory :transaction do

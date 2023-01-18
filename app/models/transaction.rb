@@ -9,6 +9,7 @@
 #  user_id          :bigint           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  options          :hstore
 #
 class Transaction < ApplicationRecord
   belongs_to :wallet
@@ -19,20 +20,28 @@ class Transaction < ApplicationRecord
   validates :transaction_type, presence: true
   validates :amount, numericality: { greater_than: 0 }
   validates_with Transactions::GreaterThanWalletAmount, if: :is_output_transaction
+  validates_with Transactions::MatchIds, if: :is_transfer_transaction
 
   after_create :update_wallet
 
   def update_wallet
-    new_amount = 0
-    case transaction_type
-    when "deposit"
-      new_amount = wallet.current_amount + amount
-    when "withdraw"
-      new_amount = wallet.current_amount - amount
-    when "transfer"
-      new_amount = wallet.current_amount - amount
-    end
-    wallet.update(amount: new_amount)
+    wallet.update(
+      amount: wallet.new_amount(transaction_type, amount)
+    )
+    generate_transfer if is_transfer_transaction
+  end
+
+  private
+
+  def generate_transfer
+    target_wallet = Wallet.find(options["target_wallet"].to_i)
+    target_wallet.update(
+      amount: target_wallet.new_amount("deposit", amount)
+    )
+  end
+
+  def is_transfer_transaction
+    transaction_type == "transfer"
   end
 
   def is_output_transaction
