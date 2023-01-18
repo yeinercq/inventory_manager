@@ -1,0 +1,21 @@
+<div class="col-md-3 mt-2">
+  <div class="wallet card shadow">
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= link_to wallet.name, wallet_path(wallet) %>
+      </h4>
+      <p class="card-text">
+        Saldo: <%= number_to_currency(wallet.current_amount, unit: "$", format: "%u %n") %>
+      </p>
+      <div class="row align-items-center justify-content-center">
+        <div class="col">
+          <%= link_to edit_wallet_path(wallet) do %>
+          <div class="btn btn-info">
+            <i class="bi bi-pencil-square"></i>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

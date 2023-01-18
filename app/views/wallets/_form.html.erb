@@ -1,0 +1,6 @@
+<%= simple_form_for wallet do |f|%>
+  <%= form_error_notification(wallet) %>
+
+  <%= f.input :name, label: t('.name'), input_html: { autofocus: true, class: 'form-control' } %>
+  <%= f.submit class: "btn btn-warning my-2"%>
+<% end %>

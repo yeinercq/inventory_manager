@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
   resources :categories, except: [:show]
   resources :exports, only: [:new, :create, :index]
+  resources :wallets, except: [:destroy]
 end

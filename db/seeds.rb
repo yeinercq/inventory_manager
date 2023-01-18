@@ -136,3 +136,12 @@ for i in 1..3
 end
 
 puts "Exports has been created"
+
+for i in 1..2
+  company.wallets.create!(
+    name: "Wallet #{i}",
+    amount: 0
+  )
+end
+
+puts "Wallets has been created"

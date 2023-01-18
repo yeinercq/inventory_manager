@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('wallets.plural')}"), wallets_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h1><%= t('wallets.edit_wallet') %></h1>
+      <%= render "form", wallet: @wallet %>
+    </div>
+  </div>
+</div>

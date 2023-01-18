@@ -26,6 +26,9 @@ en:
       sale_price:
         one: Sale price
         others: Sale prices
+      wallet:
+        one: Billetera
+        others: Billeteras
   categories:
     created_success: Created success
     description: Description
@@ -44,6 +47,7 @@ en:
     all: All
     are_you_sure: Are you sure
     back: back to
+    create: Create
     description: Description
     destroy: Destroy
     download: Download
@@ -55,6 +59,7 @@ en:
     generate: Generate
     home: Home
     last_month: Last month
+    name: Name
     quantity: Quantity
     quick_balance: Quick balance
     raw_earnings: Raw earnings
@@ -187,3 +192,11 @@ en:
     view_sales: View sales
   user:
     name: Seller
+  wallets:
+    created_success: Created success
+    created_updated: Created updated
+    edit_wallet: Edit wallet
+    form:
+      name: Name
+    new_wallet: New wallet
+    plural: Plural

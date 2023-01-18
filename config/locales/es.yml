@@ -26,6 +26,9 @@ es:
       sale_price:
         one: Precio de venta
         others: Precio de venta
+      wallet:
+        one: Billetera
+        others: Billeteras
   categories:
     created_success: Categoría fue exitosamente creada.
     description: Descripción
@@ -44,6 +47,7 @@ es:
     all: Todos
     are_you_sure: Está seguro?
     back: Volver a
+    create: Crear
     description: Descripción
     destroy: Eliminar
     download: Descargar
@@ -55,6 +59,7 @@ es:
     generate: Generar
     home: Inicio
     last_month: Mes pasado
+    name: Nombre
     quantity: Cantidad
     quick_balance: Balance rápido
     raw_earnings: Ganancias brutas
@@ -65,7 +70,7 @@ es:
     start_date: Fecha de inicio
     status: Estado
     this_month: Este mes
-    this_year: Esta año
+    this_year: Este año
     unit_price: Precio unitario
   customers:
     created_success: Cliente fue exitosamente creado.
@@ -187,3 +192,11 @@ es:
     view_sales: Ver ventas
   user:
     name: Vendedor
+  wallets:
+    created_success: Billetera fue exitosamente creada.
+    created_updated: Billetera fue exitosamente actualizada.
+    edit_wallet: Editar Billetera
+    form:
+      name: Nombre
+    new_wallet: Nueva Billetera
+    plural: Billeteras

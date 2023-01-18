@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #  company_id :bigint           not null
 #  code       :string
+#  name       :string           not null
 #
 FactoryBot.define do
   factory :wallet do
