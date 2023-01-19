@@ -15,7 +15,7 @@ class Wallet < ApplicationRecord
 
   has_many :transactions
 
-  validates :amount, presence: true
+  validates :amount, :name, presence: true
   # validates :amount, numericality: { greater_than: 0 }
 
   after_create :generate_code

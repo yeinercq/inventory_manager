@@ -2,11 +2,11 @@
   <%= form_error_notification(transaction) %>
 
   <%= f.hidden_field :transaction_type, value: "transfer" %>
-  <%= f.input :amount, label: "Cantidad" %>
+  <%= f.input :amount, label: "Cantidad", input_html: { autofocus: true, class: 'form-control' } %>
   <%= f.fields_for :options do |ff| %>
-    <%= ff.input :target_wallet, as: :select, collection: current_company.wallets - [wallet] %>
+    <%= ff.input :target_wallet, as: :select, collection: current_company.wallets - [wallet], input_html: { class: 'form-select' } %>
   <% end %>
 
-  <%= f.submit class: "btn btn-warning" %>
+  <%= f.submit class: "btn btn-warning my-2" %>
 
 <% end %>

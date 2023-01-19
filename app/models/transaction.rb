@@ -21,7 +21,7 @@ class Transaction < ApplicationRecord
   validates :amount, numericality: { greater_than: 0 }
   validates_with Transactions::GreaterThanWalletAmount, if: :is_output_transaction
   validates_with Transactions::MatchIds, if: :is_transfer_transaction # TODO: see error when amount is nil
-
+  # TODO: see options validation when is blank
   after_create :update_wallet
 
   def update_wallet

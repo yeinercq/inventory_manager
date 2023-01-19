@@ -16,10 +16,13 @@ class WalletsController < ApplicationController
   def create
     @wallet = current_company.wallets.build(wallet_params)
     @wallet.amount = 0.0
-    if @wallet.save
-      redirect_to wallets_path, notice: t('wallets.created_success')
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @wallet.save
+        format.html { redirect_to wallets_path, notice: t('wallets.created_success') }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :form_update, status: :unprocessable_entity }
+      end
     end
   end
 

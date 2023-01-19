@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <%= link_to sanitize("&larr; #{t('common.back')} #{t('wallets.singular')}"), wallet_path(@wallet) %>
   <div class="card shadow mt-4">
     <div class="card-body">
@@ -7,4 +7,8 @@
       <%= render "deposit_form", wallet: @wallet, transaction: @transaction %>
     </div>
   </div>
-</div>
+</div> -->
+
+<%= render "layouts/remote_modal", title: t('transactions.deposit_transaction') do %>
+  <%= render "deposit_form", wallet: @wallet, transaction: @transaction %>
+<% end %>

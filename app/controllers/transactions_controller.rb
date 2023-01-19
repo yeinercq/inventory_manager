@@ -14,13 +14,15 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @from_method = params[:transaction_type]
     @transaction = current_user.transactions.build(transaction_params)
     @transaction.wallet_id = @wallet.id
-    if @transaction.save
-      redirect_to wallet_path(@wallet), notice: t('transactions.created_success')
-    else
-      render @transaction.transaction_type.to_sym, status: :unprocessable_entity
+    respond_to do |format|
+      if @transaction.save
+        format.html { redirect_to wallet_path(@wallet), notice: t('transactions.created_success') }
+      else
+        format.html { render @transaction.transaction_type.to_sym, status: :unprocessable_entity }
+        format.turbo_stream { render "#{@transaction.transaction_type}_form_update", status: :unprocessable_entity }
+      end
     end
   end
 
