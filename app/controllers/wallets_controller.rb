@@ -6,6 +6,7 @@ class WalletsController < ApplicationController
   end
 
   def show
+    @transactions = @wallet.transactions.limit(10)
   end
 
   def new

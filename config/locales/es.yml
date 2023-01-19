@@ -190,13 +190,24 @@ es:
     there_is_a_sale_recorded: Hay una venta guardada
     updated_success: Venta fue exitosamente actualizada.
     view_sales: Ver ventas
+  transactions:
+    created_success: Transacción fue exitosamente creada.
+    deposit: Depósito
+    deposit_transaction: Depósito
+    transfer: Transferencia
+    transfer_transaction: Transferencia
+    withdraw: Retiro
+    withdraw_transaction: Retiro
   user:
     name: Vendedor
   wallets:
     created_success: Billetera fue exitosamente creada.
     created_updated: Billetera fue exitosamente actualizada.
+    disponible_amount: Saldo disponible
     edit_wallet: Editar Billetera
     form:
       name: Nombre
     new_wallet: Nueva Billetera
     plural: Billeteras
+    recent_transactions: Transacciones recientes
+    singular: Billetera

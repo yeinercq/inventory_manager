@@ -10,4 +10,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def  formated_currency(number)
+    number_to_currency(number, unit: "$", format: "%u %n")
+  end
 end

@@ -39,7 +39,8 @@ class Transaction < ApplicationRecord
       transaction_type: "deposit",
       amount: amount,
       wallet_id: target_wallet.id,
-      user_id: user_id
+      user_id: user_id,
+      options: {"from_wallet" => wallet.id}
     )
   end
 

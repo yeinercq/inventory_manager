@@ -1,17 +1,48 @@
 <div class="container">
   <%= link_to sanitize("&larr; #{t('common.back')} #{t('wallets.plural')}"), wallets_path %>
-  <h2><%= @wallet.name %></h2>
-  <div class="row">
-    <div class="col">
-      Disponible amount: <%= number_to_currency(@wallet.current_amount, unit: "$", format: "%u %n") %>
+  <div class="card shadow my-4">
+    <div class="card-header bg-dark">
+      <div class="row d-flex align-items-center">
+        <div class="col">
+          <h2 class="text-light"><%= @wallet.name %></h2>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <%= link_to t('transactions.deposit'), deposit_wallet_transaction_path(@wallet), class: "btn btn-warning" %>
+          <%= link_to t('transactions.withdraw'), withdraw_wallet_transaction_path(@wallet), class: "btn btn-light ms-2" %>
+          <%= link_to t('transactions.transfer'), transfer_wallet_transaction_path(@wallet), class: "btn btn-light ms-2" %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <h2>Actions </h2>
-      <%= link_to "Deposit", deposit_wallet_transaction_path(@wallet) %>
-      <%= link_to "Withdraw", withdraw_wallet_transaction_path(@wallet) %>
-      <%= link_to "Transfer", transfer_wallet_transaction_path(@wallet) %>
+    <div class="card-body">
+      <h5><%= t('wallets.disponible_amount') %></h5>
+      <h2 class="card-title"><%= formated_currency(@wallet.current_amount) %></h2>
+      <div class="row">
+        <div class="col">
+          <h5 class="text-secondary"><%= t('wallets.recent_transactions') %></h5>
+          <table class="table table-light">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Target wallet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @transactions.each_with_index do |transaction, index| %>
+                <tr>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td><%= transaction.created_at %></td>
+                  <td><%= transaction.transaction_type %></td>
+                  <td><%= formated_currency(transaction.amount) %></td>
+                  <td><%= transaction.options["target_wallet"] unless transaction.options.nil? %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
