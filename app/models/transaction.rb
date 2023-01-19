@@ -17,10 +17,10 @@ class Transaction < ApplicationRecord
 
   enum transaction_type: { deposit: 1, withdraw: 2, transfer: 3 }
 
-  validates :transaction_type, presence: true
+  validates :transaction_type, :amount, presence: true
   validates :amount, numericality: { greater_than: 0 }
   validates_with Transactions::GreaterThanWalletAmount, if: :is_output_transaction
-  validates_with Transactions::MatchIds, if: :is_transfer_transaction
+  validates_with Transactions::MatchIds, if: :is_transfer_transaction # TODO: see error when amount is nil
 
   after_create :update_wallet
 
@@ -35,8 +35,11 @@ class Transaction < ApplicationRecord
 
   def generate_transfer
     target_wallet = Wallet.find(options["target_wallet"].to_i)
-    target_wallet.update(
-      amount: target_wallet.new_amount("deposit", amount)
+    target_wallet.transactions.create(
+      transaction_type: "deposit",
+      amount: amount,
+      wallet_id: target_wallet.id,
+      user_id: user_id
     )
   end
 

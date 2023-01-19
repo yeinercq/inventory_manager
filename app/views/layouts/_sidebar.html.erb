@@ -9,6 +9,11 @@
   <div class="offcanvas-body px-0">
     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
       <li class="nav-item">
+        <%= link_to wallets_path, class: "nav-link text-truncate" do %>
+          <i class="bi bi-wallet2"></i><span class="ms-1 d-none d-sm-inline">Billeteras</span>
+        <% end %>
+      </li>
+      <li class="nav-item">
         <%= link_to sales_path, class: "nav-link text-truncate" do %>
           <i class="bi bi-receipt"></i><span class="ms-1 d-none d-sm-inline">Ventas</span>
         <% end %>

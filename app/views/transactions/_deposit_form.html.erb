@@ -1,0 +1,9 @@
+<%= simple_form_for [wallet, transaction], html: { class: "form" } do |f| %>
+  <%= form_error_notification(transaction) %>
+
+  <%= f.hidden_field :transaction_type, value: "deposit" %>
+  <%= f.input :amount, label: "Cantidad" %>
+
+  <%= f.submit class: "btn btn-warning" %>
+
+<% end %>

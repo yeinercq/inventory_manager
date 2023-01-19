@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="56" class="scrollspy-example" tabindex="0">
+  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true" class="scrollspy-main-page" tabindex="0">
     <div id="flash" class="flash">
       <%= render 'layouts/messages' %>
     </div>

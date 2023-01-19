@@ -18,5 +18,11 @@ Rails.application.routes.draw do
   end
   resources :categories, except: [:show]
   resources :exports, only: [:new, :create, :index]
-  resources :wallets, except: [:destroy]
+  resources :wallets, except: [:destroy] do
+    resources :transactions, only: [:create] do
+      get 'deposit', on: :member
+      get 'withdraw', on: :member
+      get 'transfer', on: :member
+    end
+  end
 end

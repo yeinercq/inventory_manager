@@ -1,0 +1,10 @@
+<div class="container">
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('wallets.singular')}"), wallet_path(@wallet) %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+
+      <h1><%= t('transactions.deposit_transaction') %></h1>
+      <%= render "deposit_form", wallet: @wallet, transaction: @transaction %>
+    </div>
+  </div>
+</div>

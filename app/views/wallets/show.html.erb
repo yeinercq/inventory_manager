@@ -1,0 +1,17 @@
+<div class="container">
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('wallets.plural')}"), wallets_path %>
+  <h2><%= @wallet.name %></h2>
+  <div class="row">
+    <div class="col">
+      Disponible amount: <%= number_to_currency(@wallet.current_amount, unit: "$", format: "%u %n") %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2>Actions </h2>
+      <%= link_to "Deposit", deposit_wallet_transaction_path(@wallet) %>
+      <%= link_to "Withdraw", withdraw_wallet_transaction_path(@wallet) %>
+      <%= link_to "Transfer", transfer_wallet_transaction_path(@wallet) %>
+    </div>
+  </div>
+</div>

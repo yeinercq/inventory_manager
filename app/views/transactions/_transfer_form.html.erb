@@ -1,0 +1,12 @@
+<%= simple_form_for [wallet, transaction] do |f| %>
+  <%= form_error_notification(transaction) %>
+
+  <%= f.hidden_field :transaction_type, value: "transfer" %>
+  <%= f.input :amount, label: "Cantidad" %>
+  <%= f.fields_for :options do |ff| %>
+    <%= ff.input :target_wallet, as: :select, collection: current_company.wallets - [wallet] %>
+  <% end %>
+
+  <%= f.submit class: "btn btn-warning" %>
+
+<% end %>
