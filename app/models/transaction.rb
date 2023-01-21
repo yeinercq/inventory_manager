@@ -24,6 +24,7 @@ class Transaction < ApplicationRecord
   # TODO: see options validation when is blank
   after_create :update_wallet
 
+  # when transaction is created updates wallet amount with new amount
   def update_wallet
     wallet.update(
       amount: wallet.new_amount(transaction_type, amount)

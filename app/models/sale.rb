@@ -62,12 +62,13 @@ class Sale < ApplicationRecord
     state :confirmada, :pagada, :entregada
 
     after_all_transitions :log_status_change
+    # after :pagar, :generate_wallet_transaction
 
     event :confirmar do
       transitions from: :guardada, to: :confirmada
     end
 
-    event :pagar do
+    event :pagar, after: :generate_wallet_deposit do
       transitions from: :confirmada, to: :pagada
     end
 
@@ -88,6 +89,15 @@ class Sale < ApplicationRecord
   end
 
   private
+
+  def generate_wallet_deposit
+    user.transactions.create(
+      transaction_type: "deposit",
+      amount: total_price,
+      wallet_id: company.general_setting.sales_wallet_id,
+      options: { "sale_id" => id }
+    )
+  end
 
   def generate_code
     Sales::GenerateCode.new.call(self)

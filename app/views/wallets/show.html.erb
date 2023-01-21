@@ -27,7 +27,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Amount</th>
                 <th scope="col">User</th>
-                <th scope="col">Target wallet</th>
+                <th scope="col">Options</th>
               </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                   <td><%= transaction.transaction_type %></td>
                   <td><%= formated_currency(transaction.amount) %></td>
                   <td><%= transaction.user.name %></td>
-                  <td><%= transaction.options["target_wallet"] unless transaction.options.nil? %></td>
+                  <td><%= transaction.options unless transaction.options.nil? %></td>
                 </tr>
               <% end %>
             </tbody>
