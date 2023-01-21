@@ -25,4 +25,5 @@ Rails.application.routes.draw do
       get 'transfer', on: :member
     end
   end
+  resources :general_settings, only: [:new, :create, :edit, :update]
 end

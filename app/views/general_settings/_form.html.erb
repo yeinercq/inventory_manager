@@ -1,0 +1,6 @@
+<%= simple_form_for general_setting do |f| %>
+  <%= f.input :sales_wallet_id, as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { autofocus: true, class: 'form-control' } %>
+  <%= f.input :coffee_wallet_id, as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { class: 'form-control' } %>
+
+  <%= f.submit class: "btn btn-warning mt-2" %>
+<% end %>

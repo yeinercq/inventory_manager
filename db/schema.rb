@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_18_164956) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_002154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_164956) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "configurations", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.integer "sales_wallet_id"
+    t.integer "coffee_wallet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_configurations_on_company_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -51,6 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_164956) do
     t.hstore "data_filters", default: {}
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_exports_on_user_id"
+  end
+
+  create_table "general_settings", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.integer "sales_wallet_id"
+    t.integer "coffee_wallet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_general_settings_on_company_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -189,8 +207,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_164956) do
   end
 
   add_foreign_key "categories", "companies"
+  add_foreign_key "configurations", "companies"
   add_foreign_key "customers", "companies"
   add_foreign_key "exports", "users"
+  add_foreign_key "general_settings", "companies"
   add_foreign_key "items", "products"
   add_foreign_key "items", "sales"
   add_foreign_key "movements", "items"

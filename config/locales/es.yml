@@ -5,6 +5,9 @@ es:
       customer:
         one: Cliente
         others: Clientes
+      general_setting:
+        one: Configuración general
+        other: Configuraciones generales
       item:
         one: Ítem
         others: Ítems
