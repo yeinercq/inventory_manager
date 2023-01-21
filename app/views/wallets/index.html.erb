@@ -5,14 +5,14 @@
       <div class="col-12 col-sm-4 col-md-6">
         <%= link_to t('wallets.new_wallet'), new_wallet_path, class: "btn btn-primary", data: { turbo_frame: 'remote_modal' } %>
         <% if current_company.general_setting.nil? %>
-          <%= link_to new_general_setting_path do %>
+          <%= link_to new_general_setting_path, data: { turbo_frame: 'remote_modal' } do %>
             <div class="btn btn-danger">
               <i class="bi bi-gear"></i>
               <%= t('general_settings.configuration') %>
             </div>
           <% end %>
         <% else %>
-          <%= link_to edit_general_setting_path(current_company.general_setting) do %>
+          <%= link_to edit_general_setting_path(current_company.general_setting), data: { turbo_frame: 'remote_modal' } do %>
             <div class="btn btn-danger">
               <i class="bi bi-gear"></i>
               <%= t('general_settings.configuration') %>

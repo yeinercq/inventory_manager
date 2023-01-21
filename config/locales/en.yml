@@ -5,6 +5,9 @@ en:
       customer:
         one: Client
         others: Clients
+      general_setting:
+        one: Configuración general
+        other: Configuraciones generales
       item:
         one: Item
         others: Items
@@ -96,6 +99,14 @@ en:
     new_export: New export
     plural: Plural
     singular: Singular
+  general_settings:
+    coffee_wallet: Coffee wallet
+    configuration: Configuration
+    created_success: Created success
+    edit_general_setting: Edit general setting
+    new_general_setting: New general setting
+    sales_wallet: Sales wallet
+    updated_success: Updated success
   hello: Hello world
   items:
     add_item: Add item

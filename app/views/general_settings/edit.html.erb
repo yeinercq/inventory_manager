@@ -1,1 +1,3 @@
-<%= render "form", general_setting: @general_setting %>
+<%= render "layouts/remote_modal", title: t('general_settings.edit_general_setting') do %>
+  <%= render "form", general_setting: @general_setting %>
+<% end %>

@@ -99,6 +99,14 @@ es:
     new_export: Nuevo reporte
     plural: Reportes
     singular: Reporte
+  general_settings:
+    coffee_wallet: Billetera para cafe
+    configuration: Configuración
+    created_success: Configuración de billeteras fue exitosamente creada.
+    edit_general_setting: Editar configuración de billeteras
+    new_general_setting: Nueva configuración de billeteras
+    sales_wallet: Billetera para ventas
+    updated_success: Configuración de billeteras fue exitosamente actualizada.
   hello: Hello world
   items:
     add_item: Agregar ítem

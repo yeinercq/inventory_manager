@@ -1,6 +1,8 @@
 <%= simple_form_for general_setting do |f| %>
-  <%= f.input :sales_wallet_id, as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { autofocus: true, class: 'form-control' } %>
-  <%= f.input :coffee_wallet_id, as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { class: 'form-control' } %>
+  <%= form_error_notification(general_setting) %>
+
+  <%= f.input :sales_wallet_id, label: t('general_settings.sales_wallet') , as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { autofocus: true, class: 'form-select' } %>
+  <%= f.input :coffee_wallet_id, label: t('general_settings.coffee_wallet'), as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { class: 'form-select' } %>
 
   <%= f.submit class: "btn btn-warning mt-2" %>
 <% end %>
