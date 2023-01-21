@@ -8,9 +8,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def sales_wallet
+    Wallet.find(current_company.general_setting.sales_wallet_id) unless current_company.general_setting.nil?
+  end
+
   def current_company
     @current_company ||= current_user.company if user_signed_in?
   end
 
-  helper_method :current_company
+  helper_method :current_company, :sales_wallet
 end

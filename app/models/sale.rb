@@ -91,12 +91,7 @@ class Sale < ApplicationRecord
   private
 
   def generate_wallet_deposit
-    user.transactions.create(
-      transaction_type: "deposit",
-      amount: total_price,
-      wallet_id: company.general_setting.sales_wallet_id,
-      options: { "sale_id" => id }
-    )
+    Sales::GenerateWalletDeposit.new.call(self)
   end
 
   def generate_code

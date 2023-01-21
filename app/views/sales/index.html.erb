@@ -3,17 +3,11 @@
   <div class="header">
     <h1><%= t('sales.plural') %></h1>
     <section class="balance">
+
+      <h3><%= t('common.quick_balance') %></h3>
+
       <div class="row">
-        <h3><%= t('common.quick_balance') %></h3>
-        <!-- Sales (last month) -->
-        <%= show_balance_card('Mes pasado', Sale.total_last_month) %>
-
-        <!-- Sales (this month) -->
-        <%= show_balance_card('Este mes', Sale.total_this_month) %>
-
-        <!-- Sales (this year) -->
-        <%= show_balance_card('Este ano', Sale.total_this_year) %>
-        <!-- Sales (this year) -->
+        <%= show_balance_card('Saldo billetera', sales_wallet.amount) unless sales_wallet.nil? %>
       </div>
       <div class="row shadow mb-3">
         <div class="col">
