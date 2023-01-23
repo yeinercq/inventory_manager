@@ -22,10 +22,13 @@ class GeneralSettingsController < ApplicationController
   end
 
   def update
-    if @general_setting.update(general_setting_params)
-      redirect_to wallets_path, notice: t('general_settings.updated_success')
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @general_setting.update(general_setting_params)
+        format.html { redirect_to wallets_path, notice: t('general_settings.updated_success') }
+      else
+        format.html {render :edit, status: :unprocessable_entity}
+        format.turbo_stream { render :form_update, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -36,6 +39,15 @@ class GeneralSettingsController < ApplicationController
   end
 
   def general_setting_params
-    params.require(:general_setting).permit(:sales_wallet_id, :coffee_wallet_id)
+    params.require(:general_setting).permit(
+      :sales_wallet_id,
+      :coffee_wallet_id,
+      :base_seco_coffee_price,
+      :base_verde_coffee_price,
+      :base_pasilla_coffee_price,
+      :sample_seco_weight_quantity,
+      :sample_verde_weight_quantity,
+      :sample_pasilla_weight_quantity
+    )
   end
 end

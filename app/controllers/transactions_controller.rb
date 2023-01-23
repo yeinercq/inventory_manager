@@ -33,6 +33,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:transaction_type, :amount, options: [:target_wallet])
+    params.require(:transaction).permit(:transaction_type, :amount, options: [:target_wallet, :from_wallet, :sale_id])
   end
 end

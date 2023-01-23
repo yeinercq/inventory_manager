@@ -4,5 +4,13 @@
   <%= f.input :sales_wallet_id, label: t('general_settings.sales_wallet') , as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { autofocus: true, class: 'form-select' } %>
   <%= f.input :coffee_wallet_id, label: t('general_settings.coffee_wallet'), as: :select, collection: Wallet.where("company_id = ?", current_company.id), input_html: { class: 'form-select' } %>
 
+  <%= f.input :base_seco_coffee_price, label: "Precio base para cafe seco (carga)", class: "form-control" %>
+  <%= f.input :base_verde_coffee_price, label: "Precio base para cafe verde (carga)", class: "form-control" %>
+  <%= f.input :base_pasilla_coffee_price, label: "Precio base para pasilla (carga)", class: "form-control" %>
+
+  <%= f.input :sample_seco_weight_quantity, label: "Muestra para cafe seco (gramos)", class: "form-control" %>
+  <%= f.input :sample_verde_weight_quantity, label: "Muestra para cafe verde (gramos)", class: "form-control" %>
+  <%= f.input :sample_pasilla_weight_quantity, label: "Muestra para pasilla (gramos)", class: "form-control" %>
+
   <%= f.submit class: "btn btn-warning mt-2" %>
 <% end %>

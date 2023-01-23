@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     Wallet.find(current_company.general_setting.sales_wallet_id) unless current_company.general_setting.nil?
   end
 
+  def coffee_wallet
+    Wallet.find(current_company.general_setting.coffee_wallet_id) unless current_company.general_setting.nil?
+  end
+
   def current_company
     @current_company ||= current_user.company if user_signed_in?
   end

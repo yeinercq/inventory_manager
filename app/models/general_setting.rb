@@ -2,15 +2,37 @@
 #
 # Table name: general_settings
 #
-#  id               :bigint           not null, primary key
-#  company_id       :bigint           not null
-#  sales_wallet_id  :integer
-#  coffee_wallet_id :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                             :bigint           not null, primary key
+#  company_id                     :bigint           not null
+#  sales_wallet_id                :integer
+#  coffee_wallet_id               :integer
+#  created_at                     :datetime         not null
+#  updated_at                     :datetime         not null
+#  base_seco_coffee_price         :decimal(10, 2)
+#  base_verde_coffee_price        :decimal(10, 2)
+#  base_pasilla_coffee_price      :decimal(10, 2)
+#  sample_seco_weight_quantity    :decimal(5, 2)
+#  sample_verde_weight_quantity   :decimal(5, 2)
+#  sample_pasilla_weight_quantity :decimal(5, 2)
 #
 class GeneralSetting < ApplicationRecord
   belongs_to :company
 
-  validates :sales_wallet_id, :coffee_wallet_id, presence: true
+  validates :sales_wallet_id,
+  :coffee_wallet_id,
+  :base_seco_coffee_price,
+  :base_verde_coffee_price,
+  :base_pasilla_coffee_price,
+  :sample_seco_weight_quantity,
+  :sample_verde_weight_quantity,
+  :sample_pasilla_weight_quantity,
+  presence: true
+
+  validates :base_seco_coffee_price,
+  :base_verde_coffee_price,
+  :base_pasilla_coffee_price,
+  :sample_seco_weight_quantity,
+  :sample_verde_weight_quantity,
+  :sample_pasilla_weight_quantity,
+  numericality: { greater_than: 0 }
 end
