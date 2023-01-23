@@ -17,6 +17,8 @@ class Customer < ApplicationRecord
 
   belongs_to :company
 
+  has_many :coffee_purchases
+
   validates :name, :email, :phone_number, :id_number, :address, presence: true
   validates :name, :email, uniqueness: {scope: :company_id, message: "has already been taken", case_sensitive: false}
   validates :phone_number, numericality: { only_integer: true, greater_than: 0 }

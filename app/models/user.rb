@@ -24,8 +24,9 @@ class User < ApplicationRecord
   has_many :movements, through: :products # TODO: association with movments through products
   has_many :sales, dependent: :destroy
   has_one :profile, dependent: :destroy
-  has_many :exports
-  has_many :transactions
+  has_many :exports, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+  has_many :coffee_purchases, dependent: :destroy
 
   scope :has_profile, -> { joins(:profile) }
 

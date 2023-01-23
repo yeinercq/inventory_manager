@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_21_002154) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_234953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -22,6 +22,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_002154) do
     t.datetime "updated_at", null: false
     t.bigint "company_id", null: false
     t.index ["company_id"], name: "index_categories_on_company_id"
+  end
+
+  create_table "coffee_purchases", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "client_id", null: false
+    t.decimal "quantity", precision: 10, scale: 2
+    t.integer "coffee_type"
+    t.decimal "base_purchase_price", precision: 10, scale: 2
+    t.integer "packs_count"
+    t.decimal "sample_quantity", precision: 5, scale: 2
+    t.decimal "decrease_quantity", precision: 5, scale: 2
+    t.decimal "sieve_quantity", precision: 5, scale: 2
+    t.decimal "healthy_almond_quantity", precision: 5, scale: 2
+    t.decimal "pasilla_quantity", precision: 5, scale: 2
+    t.decimal "factor_rate", precision: 5, scale: 2
+    t.decimal "purchase_price", precision: 10, scale: 2
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_coffee_purchases_on_client_id"
+    t.index ["user_id"], name: "index_coffee_purchases_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -207,6 +228,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_002154) do
   end
 
   add_foreign_key "categories", "companies"
+  add_foreign_key "coffee_purchases", "customers", column: "client_id"
+  add_foreign_key "coffee_purchases", "users"
   add_foreign_key "configurations", "companies"
   add_foreign_key "customers", "companies"
   add_foreign_key "exports", "users"
