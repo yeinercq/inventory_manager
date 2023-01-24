@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; #{t('common.back')} coffee purchases"), coffee_purchases_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h1>Nueva compra de cafe</h1>
+      <%= render "form", coffee_purchase: @coffee_purchase %>
+    </div>
+  </div>
+</div>

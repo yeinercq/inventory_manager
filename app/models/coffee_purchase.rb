@@ -19,6 +19,7 @@
 #  code                    :string
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  destare_quantity        :decimal(5, 2)
 #
 class CoffeePurchase < ApplicationRecord
   # { client_id: client.id, quantity: 100, coffee_type: "seco", base_purchase_price: 970000.00, packs_count: 2, sample_quantity: 250.0, decrease_quantity: 202.2, sieve_quantity: 1, healthy_almond_quantity: 195.0, pasilla_quantity: 6 }
@@ -28,7 +29,11 @@ class CoffeePurchase < ApplicationRecord
 
   enum coffee_type: { seco: 1, verde: 2, pasilla: 3 }
 
-  before_create :compute_factor_price, :generate_code
+  before_save :set_base_purchase_price, :compute_factor_price, :generate_code
+
+  def total_price
+    ( quantity - ( packs_count * ( destare_quantity / 1000 ) ) ) * purchase_price
+  end
 
   private
 
@@ -38,6 +43,17 @@ class CoffeePurchase < ApplicationRecord
 
   def factor
     17500 / healthy_almond_quantity
+  end
+
+  def set_base_purchase_price
+    case coffee_type
+    when "seco"
+      self.base_purchase_price = user.company.general_setting.base_seco_coffee_price
+    when "verde"
+      self.base_purchase_price = user.company.general_setting.base_verde_coffee_price
+    when "pasilla"
+      self.base_purchase_price = user.company.general_setting.base_pasilla_coffee_price
+    end
   end
 
   def compute_factor_price

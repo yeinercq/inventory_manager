@@ -1,0 +1,39 @@
+<%= simple_form_for coffee_purchase do |f| %>
+  <%= form_error_notification(coffee_purchase) %>
+
+  <div class="row mb-2">
+    <div class="col-12">
+      <%= f.input :coffee_type, as: :select, collection: CoffeePurchase.coffee_types.map { |key, value| key }, input_html: { autofocus: true, class: 'form-select' } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-4">
+      <%= f.input :client_id, label: "Cliente", as: :select, collection: current_company.customers, input_html: { autofocus: true, class: 'form-select' } %>
+    </div>
+    <div class="col-12 col-sm-4">
+      <%= f.input :quantity, label: "Cantidad de cafe (Kg)", input_html: { class: 'form-control' } %>
+    </div>
+    <div class="col-12 col-sm-4">
+      <%= f.input :packs_count, label: "Cantidad de tulas (unidades)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-4">
+      <%= f.input :decrease_quantity, label: "Merma (gramos)" %>
+    </div>
+    <div class="col-12 col-sm-4">
+      <%= f.input :sieve_quantity, label: "Zaranda (gramos)" %>
+    </div>
+    <div class="col-12 col-sm-4">
+      <%= f.input :healthy_almond_quantity, label: "Almendra sana (gramos)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.input :pasilla_quantity, label: "Pasilla (gramos)" %>
+    </div>
+  </div>
+
+  <%= f.submit class: "btn btn-warning mt-2" %>
+
+<% end %>

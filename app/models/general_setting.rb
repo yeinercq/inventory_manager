@@ -14,6 +14,7 @@
 #  sample_seco_weight_quantity    :decimal(5, 2)
 #  sample_verde_weight_quantity   :decimal(5, 2)
 #  sample_pasilla_weight_quantity :decimal(5, 2)
+#  destare_quantity               :decimal(5, 2)
 #
 class GeneralSetting < ApplicationRecord
   belongs_to :company
@@ -26,6 +27,7 @@ class GeneralSetting < ApplicationRecord
   :sample_seco_weight_quantity,
   :sample_verde_weight_quantity,
   :sample_pasilla_weight_quantity,
+  :destare_quantity,
   presence: true
 
   validates :base_seco_coffee_price,
@@ -34,5 +36,6 @@ class GeneralSetting < ApplicationRecord
   :sample_seco_weight_quantity,
   :sample_verde_weight_quantity,
   :sample_pasilla_weight_quantity,
+  :destare_quantity,
   numericality: { greater_than: 0 }
 end

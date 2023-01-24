@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_23_214158) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_24_032908) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_214158) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "destare_quantity", precision: 5, scale: 2
     t.index ["client_id"], name: "index_coffee_purchases_on_client_id"
     t.index ["user_id"], name: "index_coffee_purchases_on_user_id"
   end
@@ -95,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_214158) do
     t.decimal "sample_seco_weight_quantity", precision: 5, scale: 2
     t.decimal "sample_verde_weight_quantity", precision: 5, scale: 2
     t.decimal "sample_pasilla_weight_quantity", precision: 5, scale: 2
+    t.decimal "destare_quantity", precision: 5, scale: 2
     t.index ["company_id"], name: "index_general_settings_on_company_id"
   end
 

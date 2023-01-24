@@ -14,6 +14,7 @@
 #  sample_seco_weight_quantity    :decimal(5, 2)
 #  sample_verde_weight_quantity   :decimal(5, 2)
 #  sample_pasilla_weight_quantity :decimal(5, 2)
+#  destare_quantity               :decimal(5, 2)
 #
 FactoryBot.define do
   factory :general_setting do

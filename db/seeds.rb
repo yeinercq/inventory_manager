@@ -145,3 +145,20 @@ for i in 1..2
 end
 
 puts "Wallets has been created"
+
+for i in 1..3
+  user.coffee_purchases.create!(
+    client_id: i,
+    quantity: 100,
+    coffee_type: "seco",
+    base_purchase_price: 970000.00,
+    packs_count: 2,
+    sample_quantity: 250.0,
+    decrease_quantity: 202.2,
+    sieve_quantity: 1,
+    healthy_almond_quantity: 195.0,
+    pasilla_quantity: 4
+  )
+end
+
+puts "Coffee purchases has been created"

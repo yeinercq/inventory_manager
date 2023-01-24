@@ -26,4 +26,5 @@ Rails.application.routes.draw do
     end
   end
   resources :general_settings, only: [:new, :create, :edit, :update]
+  resources :coffee_purchases
 end

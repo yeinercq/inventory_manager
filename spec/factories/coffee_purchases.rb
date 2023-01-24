@@ -19,6 +19,7 @@
 #  code                    :string
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  destare_quantity        :decimal(5, 2)
 #
 FactoryBot.define do
   factory :coffee_purchase do

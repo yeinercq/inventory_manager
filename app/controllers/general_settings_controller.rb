@@ -47,7 +47,8 @@ class GeneralSettingsController < ApplicationController
       :base_pasilla_coffee_price,
       :sample_seco_weight_quantity,
       :sample_verde_weight_quantity,
-      :sample_pasilla_weight_quantity
+      :sample_pasilla_weight_quantity,
+      :destare_quantity
     )
   end
 end

@@ -1,0 +1,42 @@
+<div class="mt-2">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-3">
+            <%= link_to coffee_purchase.code, coffee_purchase_path(coffee_purchase) %>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="col">
+            <%= t('customers.singular')%>: <%= coffee_purchase.client.name %>
+          </div>
+          <div class="col">
+            <%= t('sales.date') %>: <%= l(coffee_purchase.created_at, format: :long) %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col">
+            <%= coffee_purchase.coffee_type %>
+          </div>
+          <div class="col">
+            <%= coffee_purchase.quantity %>
+          </div>
+          <div class="col">
+            <%= formated_currency( coffee_purchase.total_price ) %>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 d-flex justify-content-end">
+          <%= link_to edit_coffee_purchase_path(coffee_purchase) do %>
+          <div class="btn btn-info me-2">
+            <i class="bi bi-pencil-square"></i>
+          </div>
+          <% end %>
+          <%= link_to coffee_purchase_path(coffee_purchase) do %>
+          <div class="btn btn-danger">
+            <i class="bi bi-trash"></i>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
