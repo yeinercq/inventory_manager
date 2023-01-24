@@ -1,6 +1,7 @@
 class CoffeePurchasesController < ApplicationController
+  before_action :set_coffee_purchase, only: [:show, :edit, :update, :destroy]
   def index
-    @coffee_purchases = current_company.coffee_purchases.all
+    @coffee_purchases = current_company.coffee_purchases.limit(10).ordered
   end
 
   def show
@@ -24,12 +25,24 @@ class CoffeePurchasesController < ApplicationController
   end
 
   def update
+    if @coffee_purchase.update(coffee_purchase_params)
+      redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    if @coffee_purchase.destroy
+      redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly destroyed."
+    end
   end
 
   private
+
+  def set_coffee_purchase
+    @coffee_purchase = current_company.coffee_purchases.find(params[:id])
+  end
 
   def coffee_purchase_params
     params.require(:coffee_purchase).permit(

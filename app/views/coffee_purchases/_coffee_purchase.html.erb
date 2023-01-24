@@ -5,7 +5,7 @@
         <div class="col-12 col-md-3">
             <%= link_to coffee_purchase.code, coffee_purchase_path(coffee_purchase) %>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
           <div class="col">
             <%= t('customers.singular')%>: <%= coffee_purchase.client.name %>
           </div>
@@ -15,12 +15,15 @@
         </div>
         <div class="col">
           <div class="col">
+            Tipo de cafe:
             <%= coffee_purchase.coffee_type %>
           </div>
           <div class="col">
-            <%= coffee_purchase.quantity %>
+            Cantidad:
+            <%= coffee_purchase.quantity %> kg
           </div>
           <div class="col">
+            Total:
             <%= formated_currency( coffee_purchase.total_price ) %>
           </div>
         </div>
@@ -30,7 +33,7 @@
             <i class="bi bi-pencil-square"></i>
           </div>
           <% end %>
-          <%= link_to coffee_purchase_path(coffee_purchase) do %>
+          <%= link_to coffee_purchase_path(coffee_purchase), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
           <div class="btn btn-danger">
             <i class="bi bi-trash"></i>
           </div>

@@ -29,6 +29,28 @@ class CoffeePurchase < ApplicationRecord
 
   enum coffee_type: { seco: 1, verde: 2, pasilla: 3 }
 
+  scope :ordered,-> { order(id: :desc) }
+
+  validates :client_id,
+  :quantity,
+  :coffee_type,
+  :base_purchase_price,
+  :packs_count,
+  :sample_quantity,
+  :decrease_quantity,
+  :sieve_quantity,
+  :healthy_almond_quantity,
+  :pasilla_quantity,
+  presence: true
+
+  validates :quantity,
+  :packs_count,
+  :decrease_quantity,
+  :sieve_quantity,
+  :healthy_almond_quantity,
+  :pasilla_quantity,
+  numericality: { greater_than: 0 }
+
   before_save :set_base_purchase_price, :compute_factor_price, :generate_code
 
   def total_price

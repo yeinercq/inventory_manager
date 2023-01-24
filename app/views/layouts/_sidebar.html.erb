@@ -14,6 +14,11 @@
         <% end %>
       </li>
       <li class="nav-item">
+        <%= link_to coffee_purchases_path, class: "nav-link text-truncate" do %>
+          <i class="bi bi-cup-hot-fill"></i><span class="ms-1 d-none d-sm-inline">Compra de cafe</span>
+        <% end %>
+      </li>
+      <li class="nav-item">
         <%= link_to sales_path, class: "nav-link text-truncate" do %>
           <i class="bi bi-receipt"></i><span class="ms-1 d-none d-sm-inline">Ventas</span>
         <% end %>

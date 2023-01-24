@@ -1,0 +1,90 @@
+<div class="container mb-5">
+  <%= link_to sanitize("&larr; #{t('common.back')} coffee purchases"), coffee_purchases_path %>
+  <div class="card shadow mt-4">
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col-12 col-sm-8">
+          Compra de cafe: <%= @coffee_purchase.code %> <br>
+          Comprador: <%= @coffee_purchase.user.name %> <br>
+          Fecha: <%= l(@coffee_purchase.created_at, format: :long) %>
+        </div>
+        <div class="col-6 col-sm-2">
+          <div class="dropdown">
+            <a class="dropdown-toggle" id="sale--status" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-cloud-download-fill"></i>
+              <%= t('common.action') %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h4>
+            Client: <%= @coffee_purchase.client.name %>, C.C. <%= @coffee_purchase.client.id_number %>
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        <h4>Datos inicales</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Cantidad (kg)</th>
+              <th>Tulas (unidad)</th>
+              <th>Merma (gramos)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @coffee_purchase.coffee_type %></td>
+              <td><%= @coffee_purchase.quantity %></td>
+              <td><%= @coffee_purchase.packs_count %></td>
+              <td><%= @coffee_purchase.decrease_quantity %></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th>Zaranda (gramos)</th>
+              <th>Almendra sana (gramos)</th>
+              <th>Pasilla (gramos)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @coffee_purchase.sieve_quantity %></td>
+              <td><%= @coffee_purchase.healthy_almond_quantity %></td>
+              <td><%= @coffee_purchase.pasilla_quantity %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <h4>Datos de pago</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Precio base (factor 94)</th>
+              <th>Factor de rendimiento</th>
+              <th>Destare por tula (gramos)</th>
+              <th>Precio de pago (carga)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= formated_currency(@coffee_purchase.base_purchase_price) %></td>
+              <td><%= @coffee_purchase.factor_rate %></td>
+              <td><%= @coffee_purchase.destare_quantity %></td>
+              <td><%= formated_currency(@coffee_purchase.purchase_price) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <h4>Pago total</h4>
+        <h3><%= formated_currency(@coffee_purchase.total_price) %></h3>
+      </div>
+  </div>
+</div>
