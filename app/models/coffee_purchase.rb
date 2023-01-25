@@ -34,7 +34,7 @@ class CoffeePurchase < ApplicationRecord
   enum coffee_type: { seco: 1, verde: 2, pasilla: 3 }
 
   scope :ordered,-> { order(id: :desc) }
-
+  
   before_validation :set_base_purchase_price, :compute_factor_price, :generate_code
 
   validates :client_id,
@@ -98,14 +98,7 @@ class CoffeePurchase < ApplicationRecord
   private
 
   def generate_wallet_withdraw
-    target_wallet = Wallet.find(company.general_setting.coffee_wallet_id.to_i)
-    target_wallet.transactions.create(
-      transaction_type: "withdraw",
-      amount: total_price,
-      wallet_id: target_wallet.id,
-      user_id: user_id,
-      options: {"coffee_purchase" => id}
-    )
+    CoffeePurchases::GenerateWalletWithdraw.new.call(self)
   end
 
   def generate_code
