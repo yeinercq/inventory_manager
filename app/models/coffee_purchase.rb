@@ -24,7 +24,7 @@
 #  transitions             :hstore           is an Array
 #
 class CoffeePurchase < ApplicationRecord
-  # { client_id: client.id, quantity: 100, coffee_type: "seco", base_purchase_price: 970000.00, packs_count: 2, sample_quantity: 250.0, decrease_quantity: 202.2, sieve_quantity: 1, healthy_almond_quantity: 195.0, pasilla_quantity: 6 }
+    # { client_id: client.id, quantity: 100, coffee_type: "seco", base_purchase_price: 970000.00, packs_count: 2, sample_quantity: 250.0, decrease_quantity: 202.2, sieve_quantity: 1, healthy_almond_quantity: 195.0, pasilla_quantity: 6 }
   include AASM
 
   belongs_to :user
@@ -35,7 +35,7 @@ class CoffeePurchase < ApplicationRecord
 
   scope :ordered,-> { order(id: :desc) }
 
-  before_save :set_base_purchase_price, :compute_factor_price, :generate_code
+  before_validation :set_base_purchase_price, :compute_factor_price, :generate_code
 
   validates :client_id,
   :quantity,
@@ -56,6 +56,8 @@ class CoffeePurchase < ApplicationRecord
   :healthy_almond_quantity,
   :pasilla_quantity,
   numericality: { greater_than: 0 }
+
+  validates_with CoffeePurchases::GreaterThanWalletAmount
 
   broadcasts_to ->(coffee_purchase) { [coffee_purchase.user.company, "coffee_purchases"] }, inserts_by: :prepend
 
@@ -96,7 +98,14 @@ class CoffeePurchase < ApplicationRecord
   private
 
   def generate_wallet_withdraw
-    puts "withdraw success"
+    target_wallet = Wallet.find(company.general_setting.coffee_wallet_id.to_i)
+    target_wallet.transactions.create(
+      transaction_type: "withdraw",
+      amount: total_price,
+      wallet_id: target_wallet.id,
+      user_id: user_id,
+      options: {"coffee_purchase" => id}
+    )
   end
 
   def generate_code
