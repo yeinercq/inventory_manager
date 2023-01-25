@@ -1,0 +1,7 @@
+<%= turbo_stream.update "coffee_purchase-status" do %>
+  <%= render "coffee_purchases/status_tag", coffee_purchase: @coffee_purchase %>
+<% end %>
+<%= turbo_stream.update "coffee_purchase-action" do %>
+  <%= render "coffee_purchases/status", coffee_purchase: @coffee_purchase %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

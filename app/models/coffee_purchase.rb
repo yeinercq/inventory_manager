@@ -20,12 +20,16 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  destare_quantity        :decimal(5, 2)
+#  status                  :string
+#  transitions             :hstore           is an Array
 #
 class CoffeePurchase < ApplicationRecord
   # { client_id: client.id, quantity: 100, coffee_type: "seco", base_purchase_price: 970000.00, packs_count: 2, sample_quantity: 250.0, decrease_quantity: 202.2, sieve_quantity: 1, healthy_almond_quantity: 195.0, pasilla_quantity: 6 }
+  include AASM
 
   belongs_to :user
   belongs_to :client, class_name: "Customer"
+  delegate :company, to: :user
 
   enum coffee_type: { seco: 1, verde: 2, pasilla: 3 }
 
@@ -59,7 +63,41 @@ class CoffeePurchase < ApplicationRecord
     ( quantity - ( packs_count * ( destare_quantity / 1000 ) ) ) * purchase_price
   end
 
+  def self.available_states
+    aasm.states.map(&:name)
+  end
+
+  aasm column: :status do
+    state :guardada, initial: true
+    state :confirmada, :pagada
+
+    after_all_transitions :log_status_change
+
+    event :confirmar do
+      transitions from: :guardada, to: :confirmada
+    end
+
+    event :pagar, after: :generate_wallet_withdraw do
+      transitions from: :confirmada, to: :pagada
+    end
+  end
+
+  def log_status_change
+    transitions.push(
+      {
+        from_state: aasm.from_state,
+        to_state: aasm.to_state,
+        current_event: aasm.current_event,
+        timestamp: Time.zone.now
+      }
+    )
+  end
+
   private
+
+  def generate_wallet_withdraw
+    puts "withdraw success"
+  end
 
   def generate_code
     CoffeePurchases::GenerateCode.new.call(self)

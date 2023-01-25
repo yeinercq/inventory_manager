@@ -1,5 +1,5 @@
 class CoffeePurchasesController < ApplicationController
-  before_action :set_coffee_purchase, only: [:show, :edit, :update, :destroy]
+  before_action :set_coffee_purchase, only: [:show, :edit, :update, :destroy, :trigger]
   def index
     @coffee_purchases = current_company.coffee_purchases.limit(10).ordered
   end
@@ -43,6 +43,17 @@ class CoffeePurchasesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly destroyed." }
         format.turbo_stream { flash.now[:notice] = "Coffee purchase sucessfuly destroyed." }
+      end
+    end
+  end
+
+  def trigger
+    respond_to do |format|
+      if CoffeePurchases::TriggerEvent.new.call(@coffee_purchase, params[:event])
+        format.html { redirect_to coffee_purchase_path(@coffee_purchase), notice: "Status updated"}
+        format.turbo_stream { flash.now[:notice] = "Status updated" }
+      else
+        render coffee_purchase_path(@coffee_purchase), status: :unprocessable_entity
       end
     end
   end

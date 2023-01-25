@@ -26,5 +26,7 @@ Rails.application.routes.draw do
     end
   end
   resources :general_settings, only: [:new, :create, :edit, :update]
-  resources :coffee_purchases
+  resources :coffee_purchases do
+    patch :trigger, on: :member
+  end
 end

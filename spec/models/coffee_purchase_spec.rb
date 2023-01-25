@@ -20,6 +20,8 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  destare_quantity        :decimal(5, 2)
+#  status                  :string
+#  transitions             :hstore           is an Array
 #
 require 'rails_helper'
 

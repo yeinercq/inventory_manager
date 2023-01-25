@@ -8,12 +8,18 @@
           Comprador: <%= @coffee_purchase.user.name %> <br>
           Fecha: <%= l(@coffee_purchase.created_at, format: :long) %>
         </div>
+        <div id="coffee_purchase-status" class="col-6 col-sm-2">
+          <%= render "coffee_purchases/status_tag", coffee_purchase: @coffee_purchase %>
+        </div>
         <div class="col-6 col-sm-2">
           <div class="dropdown">
             <a class="dropdown-toggle" id="sale--status" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-cloud-download-fill"></i>
               <%= t('common.action') %>
             </a>
+            <div id="coffee_purchase-action" aria-labelledby="saleStatus" class="dropdown-menu">
+              <%= render "coffee_purchases/status", coffee_purchase: @coffee_purchase %>
+            </div>
           </div>
         </div>
       </div>
@@ -27,7 +33,7 @@
         </div>
       </div>
       <div class="row">
-        <h4>Datos inicales</h4>
+        <h4>Datos iniciales</h4>
         <table class="table">
           <thead>
             <tr>
@@ -69,7 +75,7 @@
               <th>Precio base (factor 94)</th>
               <th>Factor de rendimiento</th>
               <th>Destare por tula (gramos)</th>
-              <th>Precio de pago (carga)</th>
+              <th>Precio de pago (kg)</th>
             </tr>
           </thead>
           <tbody>
