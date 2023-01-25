@@ -9,7 +9,7 @@
       </p>
       <div class="row align-items-center justify-content-center">
         <div class="col">
-          <%= link_to edit_wallet_path(wallet) do %>
+          <%= link_to edit_wallet_path(wallet), data: { turbo_frame: 'remote_modal' } do %>
           <div class="btn btn-info">
             <i class="bi bi-pencil-square"></i>
           </div>
