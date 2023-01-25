@@ -1,4 +1,4 @@
-<%= simple_form_for coffee_purchase do |f| %>
+<%= simple_form_for coffee_purchase, html: { class: 'form' } do |f| %>
   <%= form_error_notification(coffee_purchase) %>
 
   <div class="row mb-2">
@@ -33,7 +33,11 @@
       <%= f.input :pasilla_quantity, label: "Pasilla (gramos)" %>
     </div>
   </div>
-
+  <%= link_to :back do %>
+    <div class="btn btn-info mt-2">
+      <i class="bi bi-x-lg"></i>
+    </div>
+  <% end %>
   <%= f.submit class: "btn btn-warning mt-2" %>
 
 <% end %>

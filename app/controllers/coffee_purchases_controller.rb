@@ -15,7 +15,10 @@ class CoffeePurchasesController < ApplicationController
     @coffee_purchase = current_user.coffee_purchases.build(coffee_purchase_params)
     @coffee_purchase.destare_quantity = current_company.general_setting.destare_quantity
     if @coffee_purchase.save
-      redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly created."
+      respond_to do |format|
+        format.html { redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly created." }
+        format.turbo_stream { flash.now[:notice] = "Coffee purchase sucessfuly created." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +29,10 @@ class CoffeePurchasesController < ApplicationController
 
   def update
     if @coffee_purchase.update(coffee_purchase_params)
-      redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly updated."
+      respond_to do |format|
+        format.html { redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly updated." }
+        format.turbo_stream {flash.now[:notice] = "Coffee purchase sucessfuly updated."}
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +40,10 @@ class CoffeePurchasesController < ApplicationController
 
   def destroy
     if @coffee_purchase.destroy
-      redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly destroyed."
+      respond_to do |format|
+        format.html { redirect_to coffee_purchases_path, notice: "Coffee purchase sucessfuly destroyed." }
+        format.turbo_stream { flash.now[:notice] = "Coffee purchase sucessfuly destroyed." }
+      end
     end
   end
 

@@ -31,12 +31,14 @@ class CoffeePurchase < ApplicationRecord
 
   scope :ordered,-> { order(id: :desc) }
 
+  before_save :set_base_purchase_price, :compute_factor_price, :generate_code
+
   validates :client_id,
   :quantity,
   :coffee_type,
-  :base_purchase_price,
+  # :base_purchase_price,
   :packs_count,
-  :sample_quantity,
+  # :sample_quantity,
   :decrease_quantity,
   :sieve_quantity,
   :healthy_almond_quantity,
@@ -51,7 +53,7 @@ class CoffeePurchase < ApplicationRecord
   :pasilla_quantity,
   numericality: { greater_than: 0 }
 
-  before_save :set_base_purchase_price, :compute_factor_price, :generate_code
+  broadcasts_to ->(coffee_purchase) { [coffee_purchase.user.company, "coffee_purchases"] }, inserts_by: :prepend
 
   def total_price
     ( quantity - ( packs_count * ( destare_quantity / 1000 ) ) ) * purchase_price

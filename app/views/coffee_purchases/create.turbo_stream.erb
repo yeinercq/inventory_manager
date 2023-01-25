@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "coffee_purchases", @coffee_purchase %>
+<%= turbo_stream.update CoffeePurchase.new, "" %>
+<%= render_turbo_stream_flash_messages %>

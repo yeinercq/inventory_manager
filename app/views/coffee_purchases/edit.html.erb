@@ -3,7 +3,9 @@
   <div class="card shadow mt-4">
     <div class="card-body">
       <h1>Editar compra de cafe</h1>
-      <%= render "form", coffee_purchase: @coffee_purchase %>
+      <%= turbo_frame_tag @coffee_purchase do %>
+        <%= render "form", coffee_purchase: @coffee_purchase %>
+      <% end %>
     </div>
   </div>
 </div>
