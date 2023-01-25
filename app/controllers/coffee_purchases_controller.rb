@@ -1,7 +1,15 @@
 class CoffeePurchasesController < ApplicationController
   before_action :set_coffee_purchase, only: [:show, :edit, :update, :destroy, :trigger]
+
   def index
-    @coffee_purchases = current_company.coffee_purchases.limit(10).ordered
+    # @coffee_purchases = current_company.coffee_purchases.limit(10).ordered
+    @coffee_purchases = current_company.coffee_purchases.where(nil).limit(10).ordered
+    filtering_params(params).each do |key, value|
+      @coffee_purchases = current_company.coffee_purchases.public_send("filter_by_#{key}", value).ordered if value.present?
+    end
+    if params[:start_date].present? and params[:end_date].present?
+      @coffee_purchases =  @coffee_purchases.filter_by_date(params[:start_date], params[:end_date])
+    end
   end
 
   def show
@@ -59,6 +67,10 @@ class CoffeePurchasesController < ApplicationController
   end
 
   private
+
+  def filtering_params(params)
+    params.slice(:status, :client_id_number, :code, :coffee_type)
+  end
 
   def set_coffee_purchase
     @coffee_purchase = current_company.coffee_purchases.find(params[:id])

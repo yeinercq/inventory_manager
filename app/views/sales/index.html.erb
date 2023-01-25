@@ -59,7 +59,7 @@
           <h4>Buscar</h4>
           <hr>
           <div class="col">
-            <%= form_with( url: sales_path, method: :get, data: {turbo_frame: 'sales', turbo_action: 'advance'} ) do |form| %>
+            <%= form_with( url: sales_path, method: :get, data: {turbo_frame: 'sales'} ) do |form| %>
               <%= form.text_field :client_id_number, placeholder: t("common.search.client_identification"), class: 'form-control mb-2' %>
               <%= form.text_field :status, placeholder: t("common.search.status"), class: 'form-control mb-2' %>
               <%= form.text_field :code, placeholder: t("common.search.code"), class: 'form-control mb-2' %>

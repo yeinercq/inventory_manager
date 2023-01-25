@@ -34,7 +34,17 @@ class CoffeePurchase < ApplicationRecord
   enum coffee_type: { seco: 1, verde: 2, pasilla: 3 }
 
   scope :ordered,-> { order(id: :desc) }
-  
+  scope :valid_countable, -> { where('status != ? AND status != ?', 'guardada', 'confirmada') }
+  scope :last_month, -> { filter_by_date((Date.current - 1.months).beginning_of_month.beginning_of_day, (Date.current - 1.months).end_of_month.end_of_day) }
+  scope :this_month, -> { filter_by_date(Date.current.beginning_of_month.beginning_of_day, Date.current.end_of_month.end_of_day) }
+  scope :this_year, -> { filter_by_date(Date.current.beginning_of_year.beginning_of_day, Date.current.end_of_year.end_of_day) }
+  scope :filter_by_status, ->(status) { where("status = ?", status) }
+  scope :filter_by_code, ->(code) { where("code = ?", code) }
+  scope :filter_by_client_id_number, ->(client_id_number) { joins(:client).where("id_number = ?", client_id_number) }
+  # scope :filter_by_company_id, -> (company_id) { joins(:user).joins(:company).where('company_id = ?', company_id) }
+  scope :filter_by_date, ->(start_date, end_date) { where("coffee_purchases.created_at >= ? AND coffee_purchases.created_at <= ?", start_date, end_date) }
+  scope :filter_by_coffee_type, ->(coffee_type) { where("coffee_type = ?", coffee_type) }
+
   before_validation :set_base_purchase_price, :compute_factor_price, :generate_code
 
   validates :client_id,

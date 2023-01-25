@@ -20,5 +20,5 @@ class ApplicationController < ActionController::Base
     @current_company ||= current_user.company if user_signed_in?
   end
 
-  helper_method :current_company, :sales_wallet
+  helper_method :current_company, :sales_wallet, :coffee_wallet
 end
