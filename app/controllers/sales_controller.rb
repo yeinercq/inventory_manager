@@ -10,7 +10,7 @@ class SalesController < ApplicationController
     # end
 
     # It receives keys->values to filter sale index
-    @sales = current_company.sales.where(nil).ordered.last(10)
+    @sales = current_company.sales.where(nil).ordered.first(10)
     filtering_params(params).each do |key, value|
       @sales = current_company.sales.public_send("filter_by_#{key}", value).ordered if value.present?
     end
