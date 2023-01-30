@@ -3,7 +3,7 @@ class CoffeePurchasesController < ApplicationController
 
   def index
     # @coffee_purchases = current_company.coffee_purchases.limit(10).ordered
-    @coffee_purchases = current_company.coffee_purchases.where(nil).ordered.last(10)
+    @coffee_purchases = current_company.coffee_purchases.where(nil).ordered.first(10)
     filtering_params(params).each do |key, value|
       @coffee_purchases = current_company.coffee_purchases.public_send("filter_by_#{key}", value).ordered if value.present?
     end
