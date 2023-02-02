@@ -18,19 +18,15 @@
     <% else %>
     <%= render 'layouts/navbar' %>
     <% end %>
-    <div class="container-fluid p-0">
-      <div class="row">
-        <main class="main-container col min-vh-100">
-          <!-- Sidebar toggler -->
-          <% if user_signed_in? %>
-            <button class="sidebar-toggle btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-                <i class="bi bi-list" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">Menu</i>
-            </button>
-          <% end %>
-          <%= yield %>
-        </main>
-      </div>
-    </div>
+    <main class="main-container col min-vh-100">
+      <!-- Sidebar toggler -->
+      <% if user_signed_in? %>
+        <button class="sidebar-toggle btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+            <i class="bi bi-list" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">Menu</i>
+        </button>
+      <% end %>
+      <%= yield %>
+    </main>
     <%= turbo_frame_tag "remote_modal", target: "_top" %>
   </body>
 </html>
