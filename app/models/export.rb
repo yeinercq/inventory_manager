@@ -16,7 +16,9 @@ class Export < ApplicationRecord
 
   after_create :generate_report
 
-  VALID_KEYS = [ "ventas_report" ]
+  scope :ordered,-> { order(id: :desc) }
+
+  VALID_KEYS = [ "ventas_report", "cafe_report" ]
   validates :key, inclusion: { in: VALID_KEYS }
 
   def generate_report

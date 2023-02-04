@@ -1,6 +1,6 @@
 class ExportsController < ApplicationController
   def index
-    @exports = current_user.exports
+    @exports = current_user.exports.ordered
   end
 
   def new

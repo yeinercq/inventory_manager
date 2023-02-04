@@ -15,8 +15,7 @@ class SalesController < ApplicationController
       @sales = current_company.sales.public_send("filter_by_#{key}", value).ordered if value.present?
     end
     if params[:start_date].present? and params[:end_date].present?
-      @sales =  @sales.filter_by_date(params[:start_date], params[:end_date])
-    end
+      @sales =  current_company.sales.filter_by_date(Date.parse(params[:start_date]).beginning_of_day, Date.parse(params[:end_date]).end_of_day).ordered    end
 
     # @sales = Sale.filter(filtering_params(params))
   end

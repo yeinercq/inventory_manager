@@ -4,14 +4,26 @@ class VentasReport < TemplateClassCsv
   private
 
   def add_headers
-    csv << ['Sale code', 'Created date', 'Client id number', 'Client name', 'Total price', 'Products count']
+    csv << [
+      'Codigo de factura',
+      'Estado de factura',
+      'Fecha de creacion',
+      'Identificacion cliente',
+      'Nombre',
+      'Precio total',
+      'Cantidad de productos'
+    ]
   end
 
   def add_report_rows
-    sales = Sale.filter_by_date(data_filters["start_date"], data_filters["end_date"])
+    sales = Sale.filter_by_date(
+      Date.parse(data_filters["start_date"]).beginning_of_day,
+      Date.parse(data_filters["end_date"]).end_of_day
+    )
     sales.each do |sale|
       csv << [
         sale.code.to_s,
+        sale.status,
         sale.created_at.to_s,
         sale.client.id_number.to_s,
         sale.client.name.to_s,

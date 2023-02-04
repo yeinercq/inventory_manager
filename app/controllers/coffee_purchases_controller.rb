@@ -8,7 +8,7 @@ class CoffeePurchasesController < ApplicationController
       @coffee_purchases = current_company.coffee_purchases.public_send("filter_by_#{key}", value).ordered if value.present?
     end
     if params[:start_date].present? and params[:end_date].present?
-      @coffee_purchases =  @coffee_purchases.filter_by_date(params[:start_date], params[:end_date])
+      @coffee_purchases =  current_company.coffee_purchases.filter_by_date(Date.parse(params[:start_date]).beginning_of_day, Date.parse(params[:end_date]).end_of_day).ordered
     end
   end
 
