@@ -132,7 +132,7 @@ class CoffeePurchase < ApplicationRecord
 
   def compute_factor_price
     self.factor_rate = factor
-    self.purchase_price = ( base_purchase_price / 125 ) * 94 / factor
+    self.purchase_price = ( ( base_purchase_price / 125 ) * 93 / factor ).floor(-2)
   end
 
 end
