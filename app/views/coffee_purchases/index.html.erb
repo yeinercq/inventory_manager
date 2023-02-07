@@ -1,4 +1,5 @@
 <%= turbo_stream_from current_company, "coffee_purchases" %>
+<%= turbo_stream_from "coffee_wallet_amount" %>
 <div class="container">
   <div class="header">
     <h1><%= "Compra de cafe" %></h1>
@@ -7,9 +8,11 @@
 
       <h3><%= t('common.quick_balance') %></h3>
 
-      <div class="row">
-        <%= show_balance_card('Saldo billetera', coffee_wallet.amount) unless coffee_wallet.nil? %>
-      </div>
+      <% unless coffee_wallet.nil?  %>
+        <div class="row" id="coffee_wallet_amount">
+          <%= render 'metrics/coffee_wallet_amount', coffee_wallet_amount: coffee_wallet.amount %>
+        </div>
+      <% end %>
 
     </section>
 

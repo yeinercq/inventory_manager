@@ -46,26 +46,28 @@ class CoffeePurchase < ApplicationRecord
   scope :filter_by_coffee_type, ->(coffee_type) { where("coffee_type = ?", coffee_type) }
 
   before_validation :set_base_purchase_price, :compute_factor_price, :generate_code
+  after_update_commit -> { broadcast_update_to "coffee_wallet_amount", partial: "metrics/coffee_wallet_amount", locals: { coffee_wallet_amount: Wallet.find(company.general_setting.coffee_wallet_id).amount }, target: "coffee_wallet_amount" }
+
 
   validates :client_id,
-  :quantity,
-  :coffee_type,
-  # :base_purchase_price,
-  :packs_count,
-  # :sample_quantity,
-  :decrease_quantity,
-  :sieve_quantity,
-  :healthy_almond_quantity,
-  :pasilla_quantity,
-  presence: true
+    :quantity,
+    :coffee_type,
+    # :base_purchase_price,
+    :packs_count,
+    # :sample_quantity,
+    :decrease_quantity,
+    :sieve_quantity,
+    :healthy_almond_quantity,
+    :pasilla_quantity,
+    presence: true
 
   validates :quantity,
-  :packs_count,
-  :decrease_quantity,
-  :sieve_quantity,
-  :healthy_almond_quantity,
-  :pasilla_quantity,
-  numericality: { greater_than: 0 }
+    :packs_count,
+    :decrease_quantity,
+    :sieve_quantity,
+    :healthy_almond_quantity,
+    :pasilla_quantity,
+    numericality: { greater_than: 0 }
 
   validates_with CoffeePurchases::GreaterThanWalletAmount
 
