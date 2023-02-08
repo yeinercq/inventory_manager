@@ -38,6 +38,7 @@ class Sale < ApplicationRecord
   scope :filter_by_date, ->(start_date, end_date) { where("sales.created_at >= ? AND sales.created_at <= ?", start_date, end_date) }
 
   broadcasts_to ->(sale) { [sale.company, "sales"] }, inserts_by: :prepend
+  after_update_commit -> { broadcast_update_to "sales_wallet_amount", partial: "metrics/sales_wallet_amount", locals: { sales_wallet_amount: Wallet.find(company.general_setting.sales_wallet_id).amount }, target: "sales_wallet_amount" }
 
   def total_price
     items.sum(&:total_price)
