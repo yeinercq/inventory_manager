@@ -13,6 +13,10 @@ class TransactionsController < ApplicationController
     @transaction = current_user.transactions.build
   end
 
+  def expense
+    @transaction = current_user.transactions.build
+  end
+
   def create
     @transaction = current_user.transactions.build(transaction_params)
     @transaction.wallet_id = @wallet.id
@@ -33,6 +37,10 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:transaction_type, :amount, options: [:target_wallet, :from_wallet, :sale_id])
+    params.require(:transaction).permit(
+      :transaction_type,
+      :amount,
+      options: [:target_wallet, :from_wallet, :sale_id, :expense]
+    )
   end
 end

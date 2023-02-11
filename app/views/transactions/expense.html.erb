@@ -1,0 +1,3 @@
+<%= render "layouts/remote_modal", title: t('transactions.expense_transaction') do %>
+  <%= render "expense_form", wallet: @wallet, transaction: @transaction %>
+<% end %>

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get 'deposit', on: :member
       get 'withdraw', on: :member
       get 'transfer', on: :member
+      get 'expense', on: :member
     end
   end
   resources :general_settings, only: [:new, :create, :edit, :update]

@@ -15,7 +15,7 @@ class Transaction < ApplicationRecord
   belongs_to :wallet
   belongs_to :user
 
-  enum transaction_type: { deposit: 1, withdraw: 2, transfer: 3 }
+  enum transaction_type: { deposit: 1, withdraw: 2, transfer: 3, expense: 4 }
 
   validates :transaction_type, :amount, presence: true
   validates :amount, numericality: { greater_than: 0 }
@@ -50,6 +50,6 @@ class Transaction < ApplicationRecord
   end
 
   def is_output_transaction
-    transaction_type == "withdraw" or transaction_type == "transfer"
+    transaction_type == "withdraw" or transaction_type == "transfer" or transaction_type == "expense"
   end
 end

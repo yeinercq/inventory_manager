@@ -10,6 +10,7 @@
           <%= link_to t('transactions.deposit'), deposit_wallet_transaction_path(@wallet), class: "btn btn-warning", data: { turbo_frame: 'remote_modal' } %>
           <%= link_to t('transactions.withdraw'), withdraw_wallet_transaction_path(@wallet), class: "btn btn-light ms-2", data: { turbo_frame: 'remote_modal' } %>
           <%= link_to t('transactions.transfer'), transfer_wallet_transaction_path(@wallet), class: "btn btn-light ms-2", data: { turbo_frame: 'remote_modal' } %>
+          <%= link_to t('transactions.cost'), expense_wallet_transaction_path(@wallet), class: "btn btn-light ms-2", data: { turbo_frame: 'remote_modal' } %>
         </div>
       </div>
     </div>

@@ -33,6 +33,8 @@ class Wallet < ApplicationRecord
       new_amount = current_amount - amount
     when "transfer"
       new_amount = current_amount - amount
+    when "expense"
+      new_amount = current_amount - amount
     end
     new_amount
   end
