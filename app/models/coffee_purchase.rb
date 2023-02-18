@@ -118,7 +118,11 @@ class CoffeePurchase < ApplicationRecord
   end
 
   def factor
-    17500 / healthy_almond_quantity
+    if coffee_type == "pasilla"
+      healthy_almond_quantity / 0.25
+    else
+      17500 / healthy_almond_quantity
+    end
   end
 
   def set_base_purchase_price
@@ -140,7 +144,7 @@ class CoffeePurchase < ApplicationRecord
     when "verde"
       self.purchase_price = ( ( base_purchase_price / 125 ) * 93 / factor ).floor(-2)
     when "pasilla"
-      self.purchase_price = ( ( base_purchase_price / 125 ) * 94 / factor ).floor(-2)
+      self.purchase_price = ( ( base_purchase_price * factor ) / 125 ).floor(-2)
     end
   end
 
