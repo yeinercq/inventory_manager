@@ -17,6 +17,7 @@ class Company < ApplicationRecord
   has_many :wallets, dependent: :destroy
   has_one :general_setting, dependent: :destroy
   has_many :coffee_purchases, through: :users
+  has_many :locations, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 end

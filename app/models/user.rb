@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :exports, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :coffee_purchases, dependent: :destroy
+  has_many :locations, dependent: :destroy
 
   scope :has_profile, -> { joins(:profile) }
 
