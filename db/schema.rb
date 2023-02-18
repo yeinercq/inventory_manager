@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_142540) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_151006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -242,10 +242,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_142540) do
     t.decimal "amount", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "company_id", null: false
     t.string "code"
     t.string "name", null: false
-    t.index ["company_id"], name: "index_wallets_on_company_id"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_wallets_on_location_id"
   end
 
   add_foreign_key "categories", "companies"
@@ -274,5 +274,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_142540) do
   add_foreign_key "transactions", "users"
   add_foreign_key "transactions", "wallets"
   add_foreign_key "users", "companies"
-  add_foreign_key "wallets", "companies"
+  add_foreign_key "wallets", "locations"
 end

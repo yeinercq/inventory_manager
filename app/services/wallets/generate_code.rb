@@ -2,7 +2,7 @@ class Wallets::GenerateCode
   require 'base64'
 
   def call(wallet)
-    wallet.code = Base64.encode64("#{wallet.company_id}-#{wallet.id}")
+    wallet.code = Base64.encode64("#{wallet.company.id}-#{wallet.id}")
     [true, 'successful']
   rescue => e
     # binding.pry
