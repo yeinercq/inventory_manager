@@ -15,6 +15,7 @@ class Location < ApplicationRecord
   belongs_to :user
 
   has_one :wallet, dependent: :destroy
+  has_many :sales, dependent: :destroy
 
   validates :name, presence: true
 

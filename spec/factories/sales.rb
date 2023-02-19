@@ -11,6 +11,7 @@
 #  client_id   :bigint           not null
 #  status      :string
 #  transitions :hstore           is an Array
+#  location_id :bigint
 #
 FactoryBot.define do
   factory :sale do

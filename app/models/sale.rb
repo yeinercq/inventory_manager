@@ -11,6 +11,7 @@
 #  client_id   :bigint           not null
 #  status      :string
 #  transitions :hstore           is an Array
+#  location_id :bigint
 #
 class Sale < ApplicationRecord
   include AASM
@@ -18,6 +19,7 @@ class Sale < ApplicationRecord
 
   belongs_to :user
   belongs_to :client, class_name: 'Customer'
+  belongs_to :location
 
   has_many :items, dependent: :destroy
   has_many :products, through: :items

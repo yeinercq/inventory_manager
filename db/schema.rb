@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_151006) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_195351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -198,7 +198,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_151006) do
     t.bigint "client_id", null: false
     t.string "status"
     t.hstore "transitions", default: [], array: true
+    t.bigint "location_id"
     t.index ["client_id"], name: "index_sales_on_client_id"
+    t.index ["location_id"], name: "index_sales_on_location_id"
     t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
@@ -269,6 +271,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_151006) do
   add_foreign_key "providers", "companies"
   add_foreign_key "sale_prices", "products"
   add_foreign_key "sales", "customers", column: "client_id"
+  add_foreign_key "sales", "locations"
   add_foreign_key "sales", "users"
   add_foreign_key "stocks", "movements"
   add_foreign_key "transactions", "users"
