@@ -22,6 +22,7 @@
 #  destare_quantity        :decimal(5, 2)
 #  status                  :string
 #  transitions             :hstore           is an Array
+#  location_id             :bigint
 #
 FactoryBot.define do
   factory :coffee_purchase do

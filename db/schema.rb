@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_195351) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_175240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -44,7 +44,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_195351) do
     t.decimal "destare_quantity", precision: 5, scale: 2
     t.string "status"
     t.hstore "transitions", default: [], array: true
+    t.bigint "location_id"
     t.index ["client_id"], name: "index_coffee_purchases_on_client_id"
+    t.index ["location_id"], name: "index_coffee_purchases_on_location_id"
     t.index ["user_id"], name: "index_coffee_purchases_on_user_id"
   end
 
@@ -252,6 +254,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_195351) do
 
   add_foreign_key "categories", "companies"
   add_foreign_key "coffee_purchases", "customers", column: "client_id"
+  add_foreign_key "coffee_purchases", "locations"
   add_foreign_key "coffee_purchases", "users"
   add_foreign_key "configurations", "companies"
   add_foreign_key "customers", "companies"

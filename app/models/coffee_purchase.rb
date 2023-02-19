@@ -22,12 +22,14 @@
 #  destare_quantity        :decimal(5, 2)
 #  status                  :string
 #  transitions             :hstore           is an Array
+#  location_id             :bigint
 #
 class CoffeePurchase < ApplicationRecord
-    # { client_id: client.id, quantity: 100, coffee_type: "seco", base_purchase_price: 970000.00, packs_count: 2, sample_quantity: 250.0, decrease_quantity: 202.2, sieve_quantity: 1, healthy_almond_quantity: 195.0, pasilla_quantity: 6 }
+  # { client_id: client.id, quantity: 100, coffee_type: "seco", base_purchase_price: 970000.00, packs_count: 2, sample_quantity: 250.0, decrease_quantity: 202.2, sieve_quantity: 1, healthy_almond_quantity: 195.0, pasilla_quantity: 6 }
   include AASM
 
   belongs_to :user
+  belongs_to :location, -> { where location_type: "purchase" }
   belongs_to :client, class_name: "Customer"
   delegate :company, to: :user
 

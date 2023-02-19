@@ -16,6 +16,7 @@ class Location < ApplicationRecord
 
   has_one :wallet, dependent: :destroy
   has_many :sales, dependent: :destroy
+  has_many :coffee_purchases, dependent: :destroy
 
   validates :name, presence: true
 
