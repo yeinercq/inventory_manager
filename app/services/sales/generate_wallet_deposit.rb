@@ -3,7 +3,7 @@ class Sales::GenerateWalletDeposit
     sale.user.transactions.create(
       transaction_type: "deposit",
       amount: sale.total_price,
-      wallet_id: sale.company.general_setting.sales_wallet_id,
+      wallet_id: sale.location.wallet.id,
       options: { "sale_id" => sale.id }
     )
     [true, 'successful']
