@@ -19,7 +19,7 @@ class Sale < ApplicationRecord
 
   belongs_to :user
   belongs_to :client, class_name: 'Customer'
-  belongs_to :location
+  belongs_to :location, -> { where location_type: "sale" }
 
   has_many :items, dependent: :destroy
   has_many :products, through: :items
