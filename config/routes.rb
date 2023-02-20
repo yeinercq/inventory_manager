@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   resources :coffee_purchases do
     patch :trigger, on: :member
   end
+  resources :locations
 end

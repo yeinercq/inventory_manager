@@ -18,7 +18,7 @@ class Location < ApplicationRecord
   has_many :sales, dependent: :destroy
   has_many :coffee_purchases, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, :location_type, presence: true
 
   enum location_type: { purchase: 1, sale: 2 }
 

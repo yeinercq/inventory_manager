@@ -1,0 +1,27 @@
+<div class="card shadow-sm mt-2">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-3">
+        <%= link_to location.name, location_path(location) %>
+      </div>
+      <div class="col-12 col-sm-3">
+        Encargado: <%= location.user.name %>
+      </div>
+      <div class="col-12 col-sm-3">
+        Saldo billetera: <%= location.wallet.current_amount %>
+      </div>
+      <div class="col-12 col-sm-3 d-flex justify-content-end">
+        <%= link_to edit_location_path(location) do %>
+          <div class="btn btn-info me-2">
+            <i class="bi bi-pencil-square"></i>
+          </div>
+        <% end %>
+        <%= link_to location_path(location), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+          <div class="btn btn-danger">
+            <i class="bi bi-trash"></i>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

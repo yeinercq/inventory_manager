@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to sanitize("&larr; #{t('common.back')} locations"), locations_path %>
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h1>Nueva ubicacion</h1>
+      <%= render "form", location: @location %>
+    </div>
+  </div>
+</div>

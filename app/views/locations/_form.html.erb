@@ -1,0 +1,13 @@
+<%= simple_form_for location do |f| %>
+  <%= form_error_notification(location) %>
+
+  <%= f.input :name, input_html: { autofocus: true, class: 'form-control' } %>
+  <%= f.input :location_type, as: :select, collection: Location.location_types.map { |key, value| key }, input_html: { class: 'form-select' } %>
+  <%= f.input :user_id, as: :select, collection: current_company.users, input_html: { class: 'form-select' } %>
+  <%= link_to :back do %>
+    <div class="btn btn-info mt-2">
+      <i class="bi bi-x-lg"></i>
+    </div>
+  <% end %>
+  <%= f.submit class: "btn btn-warning mt-2" %>
+<% end %>

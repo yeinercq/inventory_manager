@@ -119,46 +119,51 @@ user.products.create!(
 
 puts "Product has been created"
 
-for i in 1..3
-  sale = user.sales.create!(
-    client_id: Customer.find(i).id
-  )
-end
+location_1 = company.locations.create!(
+  name: "Valencia cafe",
+  location_type: "purchase",
+  user: user
+)
 
-puts "sales has been created"
+location_2 = company.locations.create!(
+  name: "Valencia fertilizante",
+  location_type: "sale",
+  user: user
+)
 
-for i in 1..3
-  user.exports.create!(
-    status: "recordered",
-    key: "ventas_report",
-    data_filters: { start_date: (Date.current.beginning_of_day - (i * 3).days), end_date: Date.current.end_of_day}
-  )
-end
+puts "Locations has been created"
 
-puts "Exports has been created"
+# for i in 1..3
+#   sale = user.sales.create!(
+#     client_id: Customer.find(i).id
+#   )
+# end
+#
+# puts "sales has been created"
+#
+# for i in 1..3
+#   user.exports.create!(
+#     status: "recordered",
+#     key: "ventas_report",
+#     data_filters: { start_date: (Date.current.beginning_of_day - (i * 3).days), end_date: Date.current.end_of_day}
+#   )
+# end
+#
+# puts "Exports has been created"
 
-for i in 1..2
-  company.wallets.create!(
-    name: "Wallet #{i}",
-    amount: 0
-  )
-end
-
-puts "Wallets has been created"
-
-for i in 1..3
-  user.coffee_purchases.create!(
-    client_id: i,
-    quantity: 100,
-    coffee_type: "seco",
-    base_purchase_price: 970000.00,
-    packs_count: 2,
-    sample_quantity: 250.0,
-    decrease_quantity: 202.2,
-    sieve_quantity: 1,
-    healthy_almond_quantity: 195.0,
-    pasilla_quantity: 4
-  )
-end
-
-puts "Coffee purchases has been created"
+# for i in 1..3
+#   user.coffee_purchases.create!(
+#     client_id: i,
+#     quantity: 100,
+#     coffee_type: "seco",
+#     base_purchase_price: 970000.00,
+#     packs_count: 2,
+#     sample_quantity: 250.0,
+#     decrease_quantity: 202.2,
+#     sieve_quantity: 1,
+#     healthy_almond_quantity: 195.0,
+#     pasilla_quantity: 4
+#   )
+# end
+#
+# puts "Coffee purchases has been created"
