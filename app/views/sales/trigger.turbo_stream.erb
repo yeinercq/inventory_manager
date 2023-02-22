@@ -2,7 +2,7 @@
   <%= render "sales/status_tag", sale: @sale %>
 <% end %>
 <%= turbo_stream.update "sale-action" do %>
-  <%= render "sales/status", sale: @sale %>
+  <%= render "sales/status", location: @location, sale: @sale %>
 <% end %>
 <%= turbo_stream.update "add-item" do %>
   <%= render "sales/add_item", sale: @sale %>

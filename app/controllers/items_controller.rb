@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_sale
+  before_action :set_location
   before_action :set_item, only: [:edit, :update, :destroy]
 
   def new
@@ -58,6 +59,10 @@ class ItemsController < ApplicationController
   def update_sale_total
     # @sale.total = @sale.total_price
     @sale.update(total: @sale.total_price)
+  end
+
+  def set_location
+    @location = current_company.locations.find(params[:location_id])
   end
 
   def set_item

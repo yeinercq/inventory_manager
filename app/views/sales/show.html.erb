@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <%= link_to sanitize("&larr; #{t('common.back')} #{t('sales.plural')}"), sales_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('sales.plural')}"), location_path(@location) %>
   <div class="card shadow mt-4">
     <div class="card-header">
       <div class="row align-items-center">
@@ -18,7 +18,7 @@
               <%= t('common.action') %>
             </a>
             <div id="sale-action" aria-labelledby="saleStatus" class="dropdown-menu">
-              <%= render "sales/status", sale: @sale %>
+              <%= render "sales/status", location: @location, sale: @sale %>
             </div>
           </div>
         </div>
@@ -42,14 +42,14 @@
         </div>
         <div class="row mt-4 mb-4">
           <%= turbo_frame_tag "items" do %>
-            <%= render @sale.items, sale: @sale %>
+            <%= render @sale.items, location: @location, sale: @sale %>
           <% end %>
           <%= turbo_frame_tag Item.new %>
         </div>
       </div>
     </div>
     <div id="add-item" class="card-footer">
-        <%= render 'sales/add_item', sale: @sale %>
+        <%= render 'sales/add_item', location: @location, sale: @sale %>
     </div>
   </div>
 </div>

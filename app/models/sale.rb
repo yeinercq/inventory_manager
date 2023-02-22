@@ -19,7 +19,7 @@ class Sale < ApplicationRecord
 
   belongs_to :user
   belongs_to :client, class_name: 'Customer'
-  belongs_to :location, -> { where location_type: "sale" }
+  belongs_to :location
 
   has_many :items, dependent: :destroy
   has_many :products, through: :items
@@ -39,8 +39,8 @@ class Sale < ApplicationRecord
   scope :filter_by_company_id, -> (company_id) { joins(:user).joins(:company).where('company_id = ?', company_id) }
   scope :filter_by_date, ->(start_date, end_date) { where("sales.created_at >= ? AND sales.created_at <= ?", start_date, end_date) }
 
-  broadcasts_to ->(sale) { [sale.company, "sales"] }, inserts_by: :prepend
-  after_update_commit -> { broadcast_update_to "sales_wallet_amount", partial: "metrics/sales_wallet_amount", locals: { sales_wallet_amount: Wallet.find(company.general_setting.sales_wallet_id).amount }, target: "sales_wallet_amount" }
+  # broadcasts_to ->(sale) { [sale.location, "sales"] }, inserts_by: :prepend
+  # after_update_commit -> { broadcast_update_to "sales_wallet_amount", partial: "metrics/sales_wallet_amount", locals: { sales_wallet_amount: Wallet.find(company.general_setting.sales_wallet_id).amount }, target: "sales_wallet_amount" }
 
   def total_price
     items.sum(&:total_price)

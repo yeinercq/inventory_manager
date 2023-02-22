@@ -14,7 +14,7 @@ class Wallet < ApplicationRecord
   belongs_to :location
   delegate :company, to: :location
 
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
   validates :amount, :name, presence: true
   # validates :amount, numericality: { greater_than: 0 }

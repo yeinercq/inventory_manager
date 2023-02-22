@@ -12,10 +12,6 @@ Rails.application.routes.draw do
     resources :movements, only: [:new, :create, :index]
     resources :sale_prices, only: [:new, :create, :edit, :update]
   end
-  resources :sales do
-    patch :trigger, on: :member
-    resources :items, except: [:show, :index]
-  end
   resources :categories, except: [:show]
   resources :exports, only: [:new, :create, :index]
   resources :wallets, except: [:destroy] do
@@ -30,5 +26,10 @@ Rails.application.routes.draw do
   resources :coffee_purchases do
     patch :trigger, on: :member
   end
-  resources :locations
+  resources :locations do
+    resources :sales, except: :index do
+      patch :trigger, on: :member
+      resources :items, except: [:show, :index]
+    end
+  end
 end

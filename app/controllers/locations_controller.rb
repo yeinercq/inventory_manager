@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @sales = @location.sales.ordered
   end
 
   def new

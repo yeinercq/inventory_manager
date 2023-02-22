@@ -1,4 +1,4 @@
-<%= simple_form_for [sale, item], html: { class: "form" } do |f| %>
+<%= simple_form_for [location, sale, item], html: { class: "form" } do |f| %>
   <%= form_error_notification(item) %>
 
   <div class="form-inputs">
@@ -10,7 +10,7 @@
         <%= f.input :quantity, label: t('common.quantity') %>
       </div>
       <div class="col-12 col-sm-3 form-actions mt-2">
-        <%= link_to sale_path(sale) do %>
+        <%= link_to location_sale_path(location, sale) do %>
           <div class="btn btn-info">
             <i class="bi bi-x-lg"></i>
           </div>

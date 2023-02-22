@@ -20,7 +20,7 @@ class Location < ApplicationRecord
 
   validates :name, :location_type, presence: true
 
-  enum location_type: { purchase: 1, sale: 2 }
+  enum location_type: { compra: 1, venta: 2 }
 
   after_create :create_wallet
 

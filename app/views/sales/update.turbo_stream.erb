@@ -1,2 +1,2 @@
-<%= turbo_stream.replace @sale %>
+<%= turbo_stream.replace @sale, partial: 'sales/sale', locals: { location: @location, sale: @sale } %>
 <%= render_turbo_stream_flash_messages %>

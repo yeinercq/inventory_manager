@@ -1,4 +1,23 @@
+<%= turbo_stream_from @location, "sales" %>
 <div class="container">
+  <%= link_to sanitize("&larr; #{t('common.back')} locations"), locations_path %>
+
   <h1><%= @location.name %></h1>
+
+  <% if is_sale_location?(@location) %>
+    <div class="row">
+      <div class="col">
+        <%= link_to t('sales.new_sale'), new_location_sale_path(@location), data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <%= turbo_frame_tag Sale.new %>
+    <div class="row">
+      <%= turbo_frame_tag "sales", class: "mb-2" do %>
+        <%= render @sales, location: @location %>
+      <% end %>
+    </div>
+  <% elsif is_purchase_location?(@location) %>
+    Es una ubicacion de compra
+  <% end %>
 
 </div>

@@ -1,4 +1,4 @@
-<%= simple_form_for sale, html: { class: "form" } do |f| %>
+<%= simple_form_for [ location, sale ], html: { class: "form" } do |f| %>
   <%= form_error_notification(sale) %>
 
   <div class="form-inputs">
@@ -7,7 +7,7 @@
         <%= f.input :client_id, label: t('customers.singular'), as: :select, collection: current_company.customers.all.order(name: :asc), label_method: -> (u) { u.name }, input_html: { class: 'form-select' } %>
       </div>
       <div class="form-actions col-12 col-sm-4 mt-2">
-        <%= link_to sales_path do %>
+        <%= link_to location_path(location) do %>
           <div class="btn btn-info">
             <i class="bi bi-x-lg"></i>
           </div>

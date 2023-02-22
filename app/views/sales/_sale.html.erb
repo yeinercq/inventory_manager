@@ -4,7 +4,7 @@
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-12 col-md-3">
-              <%= link_to sale.code, sale_path(sale), data: { turbo_frame: '_top' } %>
+              <%= link_to sale.code, location_sale_path(location, sale), data: { turbo_frame: '_top' } %>
           </div>
           <div class="col-12 col-md-2 d-flex justify-content-center">
             <span class="status status__<%= sale.status %>"><%= sale.status %></span>
@@ -24,12 +24,12 @@
           </div>
           <% if sale.guardada? %>
           <div class="col-12 col-md-3 d-flex justify-content-end">
-            <%= link_to edit_sale_path(sale) do %>
+            <%= link_to edit_location_sale_path(location, sale) do %>
             <div class="btn btn-info me-2">
               <i class="bi bi-pencil-square"></i>
             </div>
             <% end %>
-            <%= link_to sale_path(sale), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <%= link_to location_sale_path(location, sale), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
             <div class="btn btn-danger">
               <i class="bi bi-trash"></i>
             </div>

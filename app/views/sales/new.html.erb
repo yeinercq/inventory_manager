@@ -1,12 +1,12 @@
 <div class="container">
-  <%= link_to sanitize("&larr; #{t('common.back')} #{t('sales.plural')}"), sales_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} #{t('sales.plural')}"), location_path(@location) %>
   <div class="card shadow mt-4">
     <div class="card-body">
 
       <h1><%= t('sales.new_sale') %></h1>
-      <%= turbo_frame_tag @sale do %>
-        <%= render "form", sale: @sale %>
-      <% end %>
+        <%= turbo_frame_tag @sale do %>
+          <%= render "form", location: @location, sale: @sale %>
+        <% end %>
     </div>
   </div>
 </div>
