@@ -23,13 +23,14 @@ Rails.application.routes.draw do
     end
   end
   resources :general_settings, only: [:new, :create, :edit, :update]
-  resources :coffee_purchases do
-    patch :trigger, on: :member
-  end
   resources :locations do
     resources :sales, except: :index do
       patch :trigger, on: :member
       resources :items, except: [:show, :index]
+    end
+
+    resources :coffee_purchases, except: :index do
+      patch :trigger, on: :member
     end
   end
 end

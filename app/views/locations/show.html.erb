@@ -11,13 +11,23 @@
       </div>
     </div>
     <%= turbo_frame_tag Sale.new %>
+      <div class="row">
+        <%= turbo_frame_tag "sales", class: "mb-2" do %>
+          <%= render @sales, location: @location %>
+        <% end %>
+      </div>
+    <% elsif is_purchase_location?(@location) %>
     <div class="row">
-      <%= turbo_frame_tag "sales", class: "mb-2" do %>
-        <%= render @sales, location: @location %>
-      <% end %>
+      <div class="col">
+        <%= link_to t('coffee_purchases.new_coffee_purchase'), new_location_coffee_purchase_path(@location), data: { turbo_frame: dom_id(CoffeePurchase.new) }, class: "btn btn-primary" %>
+      </div>
     </div>
-  <% elsif is_purchase_location?(@location) %>
-    Es una ubicacion de compra
-  <% end %>
+    <%= turbo_frame_tag CoffeePurchase.new %>
+      <div class="row">
+        <%= turbo_frame_tag "coffee_purchases", class: "mb-2" do %>
+          <%= render @coffee_purchases, location: @location %>
+        <% end %>
+      </div>
+    <% end %>
 
 </div>

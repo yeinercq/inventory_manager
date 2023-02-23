@@ -23,6 +23,19 @@ user3 = company2.users.create!(
 
 puts "Users has been created"
 
+GeneralSetting.create!(
+  company: company,
+  base_seco_coffee_price: 2000000,
+  base_verde_coffee_price: 1000000,
+  base_pasilla_coffee_price: 1600,
+  sample_seco_weight_quantity: 250,
+  sample_verde_weight_quantity: 200,
+  sample_pasilla_weight_quantity: 250,
+  destare_quantity: 300
+)
+
+puts "General Settings has been created"
+
 provider = company.providers.create!(
   name: "Nitrosoil SAS",
   email: "sales@nitrosil.com",
@@ -121,26 +134,55 @@ puts "Product has been created"
 
 location_1 = company.locations.create!(
   name: "Valencia cafe",
-  location_type: "purchase",
+  location_type: "compra",
   user: user
 )
 
 location_2 = company.locations.create!(
   name: "Valencia fertilizante",
-  location_type: "sale",
+  location_type: "venta",
   user: user
 )
 
 puts "Locations has been created"
 
-# for i in 1..3
-#   sale = user.sales.create!(
-#     client_id: Customer.find(i).id
-#   )
-# end
-#
-# puts "sales has been created"
-#
+for i in 1..3
+  location_2.sales.create!(
+    client_id: Customer.find(i).id,
+    user: user
+  )
+end
+
+puts "sales has been created"
+
+location_1.wallet.transactions.create!(
+  transaction_type: "deposit",
+  amount: 10000000,
+  user: user
+)
+
+puts "Deposit transaction to coffe wallet has been done"
+
+for i in 1..3
+  location_1.coffee_purchases.create!(
+    user: user,
+    client_id: i,
+    quantity: 100,
+    coffee_type: "seco",
+    base_purchase_price: 970000.00,
+    packs_count: 2,
+    sample_quantity: 250.0,
+    decrease_quantity: 202.2,
+    sieve_quantity: 1,
+    healthy_almond_quantity: 195.0,
+    pasilla_quantity: 4,
+    destare_quantity: 300
+  )
+end
+
+puts "Coffee purchases has been created"
+
+
 # for i in 1..3
 #   user.exports.create!(
 #     status: "recordered",
@@ -150,20 +192,3 @@ puts "Locations has been created"
 # end
 #
 # puts "Exports has been created"
-
-# for i in 1..3
-#   user.coffee_purchases.create!(
-#     client_id: i,
-#     quantity: 100,
-#     coffee_type: "seco",
-#     base_purchase_price: 970000.00,
-#     packs_count: 2,
-#     sample_quantity: 250.0,
-#     decrease_quantity: 202.2,
-#     sieve_quantity: 1,
-#     healthy_almond_quantity: 195.0,
-#     pasilla_quantity: 4
-#   )
-# end
-#
-# puts "Coffee purchases has been created"

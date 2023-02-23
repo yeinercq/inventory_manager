@@ -29,7 +29,7 @@ class CoffeePurchase < ApplicationRecord
   include AASM
 
   belongs_to :user
-  belongs_to :location, -> { where location_type: "purchase" }
+  belongs_to :location
   belongs_to :client, class_name: "Customer"
   delegate :company, to: :user
 
@@ -48,7 +48,7 @@ class CoffeePurchase < ApplicationRecord
   scope :filter_by_coffee_type, ->(coffee_type) { where("coffee_type = ?", coffee_type) }
 
   before_validation :set_base_purchase_price, :compute_factor_price, :generate_code
-  after_update_commit -> { broadcast_update_to "coffee_wallet_amount", partial: "metrics/coffee_wallet_amount", locals: { coffee_wallet_amount: Wallet.find(company.general_setting.coffee_wallet_id).amount }, target: "coffee_wallet_amount" }
+  # after_update_commit -> { broadcast_update_to "coffee_wallet_amount", partial: "metrics/coffee_wallet_amount", locals: { coffee_wallet_amount: Wallet.find(company.general_setting.coffee_wallet_id).amount }, target: "coffee_wallet_amount" }
 
 
   validates :client_id,
@@ -73,7 +73,7 @@ class CoffeePurchase < ApplicationRecord
 
   validates_with CoffeePurchases::GreaterThanWalletAmount
 
-  broadcasts_to ->(coffee_purchase) { [coffee_purchase.user.company, "coffee_purchases"] }, inserts_by: :prepend
+  # broadcasts_to ->(coffee_purchase) { [coffee_purchase.user.company, "coffee_purchases"] }, inserts_by: :prepend
 
   def total_price
     ( quantity - ( packs_count * ( destare_quantity / 1000 ) ) ) * purchase_price

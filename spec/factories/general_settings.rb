@@ -4,8 +4,6 @@
 #
 #  id                             :bigint           not null, primary key
 #  company_id                     :bigint           not null
-#  sales_wallet_id                :integer
-#  coffee_wallet_id               :integer
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #  base_seco_coffee_price         :decimal(10, 2)

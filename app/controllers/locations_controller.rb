@@ -6,7 +6,11 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @sales = @location.sales.ordered
+    if @location.location_type == "compra"
+      @coffee_purchases = @location.coffee_purchases.ordered
+    elsif @location.location_type == "venta"
+      @sales = @location.sales.ordered
+    end
   end
 
   def new

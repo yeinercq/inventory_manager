@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_175240) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_23_225939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -90,8 +90,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_175240) do
 
   create_table "general_settings", force: :cascade do |t|
     t.bigint "company_id", null: false
-    t.integer "sales_wallet_id"
-    t.integer "coffee_wallet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "base_seco_coffee_price", precision: 10, scale: 2
