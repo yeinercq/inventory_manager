@@ -19,6 +19,8 @@ class Wallet < ApplicationRecord
   validates :amount, :name, presence: true
   # validates :amount, numericality: { greater_than: 0 }
 
+  scope :ordered, -> { order(id: :desc) }
+
   after_create :generate_code
 
   def current_amount

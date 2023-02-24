@@ -8,7 +8,7 @@
         Encargado: <%= location.user.name %>
       </div>
       <div class="col-12 col-sm-3">
-        Saldo billetera: <%= location.wallet.current_amount %>
+        Saldo billetera: <%= formated_currency(location.wallet.current_amount) %>
       </div>
       <div class="col-12 col-sm-3 d-flex justify-content-end">
         <%= link_to edit_location_path(location) do %>

@@ -29,6 +29,9 @@ en:
       sale_price:
         one: Sale price
         others: Sale prices
+      transaction:
+        one: Transacción
+        others: Transacciones
       wallet:
         one: Billetera
         others: Billeteras
@@ -44,6 +47,8 @@ en:
     new_category: New category
     plural: Plural
     updated_success: Updated success
+  coffee_purchases:
+    new_coffee_purchase: New coffee purchase
   common:
     action: Action
     actions: Actions
@@ -202,9 +207,11 @@ en:
     updated_success: Sale was successfully updated.
     view_sales: View sales
   transactions:
+    cost: Cost
     created_success: Created success
     deposit: Deposit
     deposit_transaction: Deposit transaction
+    expense_transaction: Expense transaction
     transfer: Transfer
     transfer_transaction: Transfer transaction
     withdraw: Withdraw

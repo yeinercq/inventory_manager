@@ -4,6 +4,10 @@
 
   <h1><%= @location.name %></h1>
 
+  <div class="row" id="wallet_amount">
+    <%= render 'metrics/wallet_amount', wallet_amount: @location.wallet.amount %>
+  </div>
+
   <% if is_sale_location?(@location) %>
     <div class="row">
       <div class="col">

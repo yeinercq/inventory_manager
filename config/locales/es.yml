@@ -29,6 +29,9 @@ es:
       sale_price:
         one: Precio de venta
         others: Precio de venta
+      transaction:
+        one: Transacción
+        others: Transacciones
       wallet:
         one: Billetera
         others: Billeteras
@@ -44,6 +47,8 @@ es:
     new_category: Nueva categoría
     plural: Categorías
     updated_success: Categoría fue exitosamente actualizada.
+  coffee_purchases:
+    new_coffee_purchase: Nueva compra de cafe
   common:
     action: Acción
     actions: Acciones
@@ -202,9 +207,11 @@ es:
     updated_success: Venta fue exitosamente actualizada.
     view_sales: Ver ventas
   transactions:
+    cost: Gasto
     created_success: Transacción fue exitosamente creada.
     deposit: Depósito
     deposit_transaction: Depósito
+    expense_transaction: Gasto
     transfer: Transferencia
     transfer_transaction: Transferencia
     withdraw: Retiro

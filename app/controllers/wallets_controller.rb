@@ -2,7 +2,7 @@ class WalletsController < ApplicationController
   before_action :set_wallet, only: [:show, :edit, :update]
 
   def index
-    @wallets = current_company.wallets.all
+    @wallets = current_company.wallets.all.ordered  
   end
 
   def show
