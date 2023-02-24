@@ -7,6 +7,7 @@ class VentasReport < TemplateClassCsv
     csv << [
       'Codigo de factura',
       'Estado de factura',
+      'Ubicacion',
       'Fecha de creacion',
       'Identificacion cliente',
       'Nombre',
@@ -24,6 +25,7 @@ class VentasReport < TemplateClassCsv
       csv << [
         sale.code.to_s,
         sale.status,
+        sale.location.name,
         sale.created_at.to_s,
         sale.client.id_number.to_s,
         sale.client.name.to_s,
