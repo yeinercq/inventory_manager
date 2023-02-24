@@ -40,8 +40,6 @@ class GeneralSettingsController < ApplicationController
 
   def general_setting_params
     params.require(:general_setting).permit(
-      :sales_wallet_id,
-      :coffee_wallet_id,
       :base_seco_coffee_price,
       :base_verde_coffee_price,
       :base_pasilla_coffee_price,
