@@ -24,6 +24,7 @@ class Customer < ApplicationRecord
   validates :phone_number, numericality: { only_integer: true, greater_than: 0 }
 
   scope :ordered, -> { order(id: :desc) }
+  scope :name_ordered, -> { order(name: :asc) }
   scope :filter_by_id_number, -> (id_number) { where('id_number LIKE ?', "%#{id_number}%") }
   scope :filter_by_company_id, -> (company_id) { where('company_id = ?', company_id) }
 

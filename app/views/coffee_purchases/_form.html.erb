@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-12 col-sm-4">
-      <%= f.input :client_id, label: "Cliente", as: :select, collection: current_company.customers, input_html: { autofocus: true, class: 'form-select' } %>
+      <%= f.input :client_id, label: "Cliente", as: :select, collection: current_company.customers.name_ordered, input_html: { autofocus: true, class: 'form-select' } %>
     </div>
     <div class="col-12 col-sm-4">
       <%= f.input :quantity, label: "Cantidad de cafe (Kg)", input_html: { class: 'form-control' } %>
