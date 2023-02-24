@@ -1,3 +1,3 @@
-<%= turbo_stream.prepend "coffee_purchases", @coffee_purchase %>
+<%= turbo_stream.prepend "coffee_purchases", partial: 'coffee_purchases/coffee_purchase', locals: { location: @location, coffee_purchase: @coffee_purchase } %>
 <%= turbo_stream.update CoffeePurchase.new, "" %>
 <%= render_turbo_stream_flash_messages %>

@@ -1,2 +1,2 @@
-<%= turbo_stream.replace @coffee_purchase %>
+<%= turbo_stream.replace @coffee_purchase, partial: 'coffee_purchases/coffee_purchase', locals: { location: @location, coffee_purchase: @coffee_purchase } %>
 <%= render_turbo_stream_flash_messages %>

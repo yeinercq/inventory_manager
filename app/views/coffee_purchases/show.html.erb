@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <%= link_to sanitize("&larr; #{t('common.back')} coffee purchases"), coffee_purchases_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} coffee purchases"), :back %>
   <div class="card shadow mt-4">
     <div class="card-header">
       <div class="row align-items-center">
@@ -18,7 +18,7 @@
               <%= t('common.action') %>
             </a>
             <div id="coffee_purchase-action" aria-labelledby="saleStatus" class="dropdown-menu">
-              <%= render "coffee_purchases/status", coffee_purchase: @coffee_purchase %>
+              <%= render "coffee_purchases/status", location: @location, coffee_purchase: @coffee_purchase %>
             </div>
           </div>
         </div>

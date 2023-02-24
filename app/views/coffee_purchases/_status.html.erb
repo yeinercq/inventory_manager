@@ -1,3 +1,3 @@
 <% available_events_for(coffee_purchase).each do |event| %>
-  <%= link_to event, trigger_coffee_purchase_path(coffee_purchase, event: event), data: { turbo_method: :patch, turbo_confirm: "Are you sure?" }, class: 'dropdown-item' %>
+  <%= link_to event, trigger_location_coffee_purchase_path(location, coffee_purchase, event: event), data: { turbo_method: :patch, turbo_confirm: "Are you sure?" }, class: 'dropdown-item' %>
 <% end %>

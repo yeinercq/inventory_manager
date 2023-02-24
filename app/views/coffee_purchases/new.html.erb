@@ -1,10 +1,10 @@
 <div class="container">
-  <%= link_to sanitize("&larr; #{t('common.back')} coffee purchases"), coffee_purchases_path %>
+  <%= link_to sanitize("&larr; #{t('common.back')} coffee purchases"), location_path(@location) %>
   <div class="card shadow mt-4">
     <div class="card-body">
       <h1>Nueva compra de cafe</h1>
       <%= turbo_frame_tag @coffee_purchase do %>
-        <%= render "form", coffee_purchase: @coffee_purchase %>
+        <%= render "form", location: @location, coffee_purchase: @coffee_purchase %>
       <% end %>
     </div>
   </div>

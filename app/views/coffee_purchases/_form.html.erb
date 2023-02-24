@@ -1,4 +1,4 @@
-<%= simple_form_for coffee_purchase, html: { class: 'form' } do |f| %>
+<%= simple_form_for [location, coffee_purchase], html: { class: 'form' } do |f| %>
   <%= form_error_notification(coffee_purchase) %>
 
   <div class="row mb-2">
