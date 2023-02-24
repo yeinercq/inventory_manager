@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
     # end
 
     # .filter() receives keys->values to filter sale index
-    @customers = Customer.filter(filtering_params(params)).filter_by_company_id(current_company.id).ordered
+    @customers = Customer.filter(filtering_params(params)).filter_by_company_id(current_company.id).name_ordered
   end
 
   def show
