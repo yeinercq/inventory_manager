@@ -7,7 +7,19 @@ class LocationsController < ApplicationController
 
   def show
     if @location.location_type == "compra"
-      @coffee_purchases = @location.coffee_purchases.ordered
+
+      # @coffee_purchases = current_company.coffee_purchases.limit(10).ordered
+      @coffee_purchases = @location.coffee_purchases.where(nil).ordered.first(10)
+      filtering_coffee_purchases_params(params).each do |key, value|
+        @coffee_purchases = @location.coffee_purchases.public_send("filter_by_#{key}", value).ordered if value.present?
+      end
+      if params[:start_date].present? and params[:end_date].present?
+        @coffee_purchases =  @location.coffee_purchases.filter_by_date(
+          Date.parse(params[:start_date]).beginning_of_day,
+          Date.parse(params[:end_date]).end_of_day
+        ).ordered
+      end
+      # @coffee_purchases = @location.coffee_purchases.ordered
     elsif @location.location_type == "venta"
 
       # It receives keys->values to filter sales list
@@ -56,6 +68,10 @@ class LocationsController < ApplicationController
   end
 
   private
+
+  def filtering_coffee_purchases_params(params)
+    params.slice(:status, :client_id_number, :code, :coffee_type)
+  end
 
   def filtering_sales_params(params)
     params.slice(:status, :client_id_number, :code)
