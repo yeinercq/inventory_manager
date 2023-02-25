@@ -13,12 +13,49 @@
       <div class="col">
         <%= link_to t('sales.new_sale'), new_location_sale_path(@location), data: { turbo_frame: dom_id(Sale.new) }, class: "btn btn-primary" %>
       </div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#filter-form" aria-expanded="false" aria-controls="collapseExample">
+          Buscar
+        </button>
+      </div>
     </div>
     <%= turbo_frame_tag Sale.new %>
       <div class="row">
-        <%= turbo_frame_tag "sales", class: "mb-2" do %>
-          <%= render @sales, location: @location %>
-        <% end %>
+        <!-- Search form to filter customers by id_number -->
+        <div id="filter-form" class="container collapse col-12 col-md-4 mt-2">
+          <div class="card shadow-sm">
+            <div class="card-body row row-cols-1">
+              <h4>Buscar</h4>
+              <hr>
+              <div class="col">
+                <%= form_with( url: location_path(@location), method: :get, data: {turbo_frame: 'sales'} ) do |form| %>
+                  <%= form.text_field :client_id_number, placeholder: t("common.search.client_identification"), class: 'form-control mb-2' %>
+                  <%= form.text_field :status, placeholder: t("common.search.status"), class: 'form-control mb-2' %>
+                  <%= form.text_field :code, placeholder: t("common.search.code"), class: 'form-control mb-2' %>
+
+                  <div class="row">
+                    <div class="col">
+                      <%= form.label t('common.start_date') %>
+                      <%= form.date_field :start_date, class: 'form-control' %>
+                    </div>
+                    <div class="col">
+                      <%= form.label t('common.end_date') %>
+                      <%= form.date_field :end_date, class: 'form-control' %>
+                    </div>
+                  </div>
+
+                  <%= form.submit "Buscar", class: "btn btn-warning my-2" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <%= turbo_frame_tag "sales", class: "mb-2" do %>
+            <%= render @sales, location: @location %>
+          <% end %>
+        </div>
       </div>
     <% elsif is_purchase_location?(@location) %>
     <div class="row">

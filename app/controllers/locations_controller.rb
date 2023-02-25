@@ -9,7 +9,19 @@ class LocationsController < ApplicationController
     if @location.location_type == "compra"
       @coffee_purchases = @location.coffee_purchases.ordered
     elsif @location.location_type == "venta"
-      @sales = @location.sales.ordered
+
+      # It receives keys->values to filter sales list
+      @sales = @location.sales.where(nil).ordered.first(10)
+      filtering_sales_params(params).each do |key, value|
+        @sales = @location.sales.public_send("filter_by_#{key}", value).ordered if value.present?
+      end
+      if params[:start_date].present? and params[:end_date].present?
+        @sales =  @location.sales.filter_by_date(
+          Date.parse(params[:start_date]).beginning_of_day,
+          Date.parse(params[:end_date]).end_of_day
+        ).ordered
+      end
+      # @sales = @location.sales.ordered
     end
   end
 
@@ -44,6 +56,10 @@ class LocationsController < ApplicationController
   end
 
   private
+
+  def filtering_sales_params(params)
+    params.slice(:status, :client_id_number, :code)
+  end
 
   def set_location
     @location = current_company.locations.find( params[:id] )
