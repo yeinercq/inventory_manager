@@ -7,8 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import MovementController from "./movement_controller"
-application.register("movement", MovementController)
+import SelectController from "./select_controller"
+application.register("select", SelectController)
 
 import RemoteModalController from "./remote_modal_controller"
 application.register("remote-modal", RemoteModalController)

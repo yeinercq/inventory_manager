@@ -2,12 +2,12 @@
   <%= form_error_notification(movement) %>
 
   <div class="form-inputs">
-    <div class="row" data-controller="movement" data-movement-url-value="<%= product_movements_path(product) %>">
+    <div class="row" data-controller="select" data-select-url-value="<%= product_movements_path(product) %>" data-select-param-value="mov_selected">
       <div class="col-12 col-sm-3">
-        <%= f.input :mov_type, label: t('.movement'), as: :select, collection: Movement.mov_types_list.map { |k, v| k }, input_html: { class: 'form-select', data: { action: "change->movement#change" } } %>
+        <%= f.input :mov_type, label: t('.movement'), as: :select, collection: Movement.mov_types_list.map { |k, v| k }, input_html: { class: 'form-select', data: { action: "change->select#change" } } %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :mov_sub_type, label: t('.class'), as: :select, collection: [], input_html: { class: 'form-select', data: { movement_target: "optionSelect" } } %>
+        <%= f.input :mov_sub_type, label: t('.class'), as: :select, collection: [], input_html: { class: 'form-select', data: { select_target: "select" } } %>
       </div>
       <div class="col-12 col-sm-3">
         <%= f.input :quantity, label: t('.quantity') %>
