@@ -24,6 +24,12 @@ class Movement < ApplicationRecord
   enum mov_type: { input: 1, output: 2 }
   enum mov_sub_type: { initial_stock: 1, purchase: 2, client_refund: 3, sale: 4, provider_refund: 5 }
 
+  AVAILABLE_MOV_TYPES = {
+     input: ["initial_stock", "purchase", "client_refund"],
+     output: ["sale", "provider_refund"]
+   }
+
+
   validates :mov_type, :mov_sub_type, :quantity, :unit_price, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_price, numericality: { greater_than: 0 }
@@ -63,6 +69,10 @@ class Movement < ApplicationRecord
       )
       stock.save
     end
+  end
+
+  def self.mov_types_list
+    AVAILABLE_MOV_TYPES
   end
 
   private

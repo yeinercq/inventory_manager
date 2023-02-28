@@ -123,11 +123,11 @@ es:
     updated_success: Ítem fue exitosamente actualizado.
   movements:
     Total: Total
-    class: Clase
+    class: Tipo de movimiento
     created_success: Movimiento fue exitosamente creado.
     date: Fecha
     form:
-      class: Clase
+      class: Tipo de movimiento
       movement: Movimiento
       price: Precio
       quantity: Cantidad

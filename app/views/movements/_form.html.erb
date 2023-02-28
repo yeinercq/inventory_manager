@@ -2,12 +2,12 @@
   <%= form_error_notification(movement) %>
 
   <div class="form-inputs">
-    <div class="row align-movements-end">
+    <div class="row" data-controller="movement" data-movement-url-value="<%= product_movements_path(product) %>">
       <div class="col-12 col-sm-3">
-        <%= f.input :mov_type, label: t('.movement'), as: :select, collection: Movement.mov_types, value_method: -> (r) { r[0] },input_html: { class: 'form-select' } %>
+        <%= f.input :mov_type, label: t('.movement'), as: :select, collection: Movement.mov_types_list.map { |k, v| k }, input_html: { class: 'form-select', data: { action: "change->movement#change" } } %>
       </div>
       <div class="col-12 col-sm-3">
-        <%= f.input :mov_sub_type, label: t('.class'), as: :select, collection: Movement.mov_sub_types, value_method: -> (r) { r[0] }, input_html: { class: 'form-select' } %>
+        <%= f.input :mov_sub_type, label: t('.class'), as: :select, collection: [], input_html: { class: 'form-select', data: { movement_target: "optionSelect" } } %>
       </div>
       <div class="col-12 col-sm-3">
         <%= f.input :quantity, label: t('.quantity') %>
@@ -16,6 +16,8 @@
         <%= f.input :unit_price, label: t('.price') %>
       </div>
     </div>
+
+
     <div class="col-12 col-sm-3 form-actions mt-2">
       <%= link_to product_path(product) do %>
         <div class="btn btn-info">

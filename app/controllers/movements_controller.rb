@@ -1,4 +1,6 @@
 class MovementsController < ApplicationController
+  require 'pry'
+
   before_action :set_product
 
   def index
@@ -19,6 +21,14 @@ class MovementsController < ApplicationController
       end
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def options
+    @target = params[:target]
+    @options = Movement.mov_types_list[ params[:mov_selected].to_sym ]
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 

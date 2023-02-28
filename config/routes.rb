@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   resources :providers, except: [:show]
   resources :customers
   resources :products do
-    resources :movements, only: [:new, :create, :index]
+    resources :movements, only: [:new, :create, :index] do
+      collection do
+        get :options
+      end
+    end
     resources :sale_prices, only: [:new, :create, :edit, :update]
   end
   resources :categories, except: [:show]
