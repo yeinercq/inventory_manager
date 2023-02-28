@@ -1,6 +1,4 @@
 class MovementsController < ApplicationController
-  require 'pry'
-
   before_action :set_product
 
   def index
